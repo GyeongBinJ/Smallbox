@@ -120,14 +120,14 @@ public class MovieDAO {
 	}
 	
 	
-	// 관리자 페이지 - 영화 목록 출력
+	// 관리자 페이지 , 영화 목록 , 박스오피스 - 영화 목록 출력
 	public List<MovieBean> selectMovieList(String keyword, int startRow, int listLimit) {
 		List<MovieBean> movieList = null;
 		
 		try {
 			
 			// keyword(검색어)를 포함하는 제목을 가진 영화 startRow ~ listLimit개만큼 출력
-			String sql = "SELECT * FROM movie WHERE movie_title LIKE ? ORDER BY movie_idx LIMIT ?,?";
+			String sql = "SELECT * FROM movie WHERE movie_title LIKE ? ORDER BY movie_viewer DESC LIMIT ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%"+keyword+"%");
 			pstmt.setInt(2, startRow);
