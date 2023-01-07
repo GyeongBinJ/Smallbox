@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+[ DBCP 설정을 위한 context.xml 파일 설정 ]
+context 태그 사이에 resource 태그를 사용하여 DBCP 관련 정보 설정
+(단, DBCP 라이브러리가 추가되어있어야 한다)
+(Libraries - SErver Runtime [Apac
+
+1.
+2.
+3
+4
+5
+56
+6
+7
+
+ -->
+ <context>
+ 	<Resource
+ 		name="jdbc/MySQL"
+ 		auth="Container"
+ 		type="javax.sql.DataSource"
+ 		driverClassName="com.mysql.cj.jdbc.Driver"
+ 		url="jdbc:mysql://db.itwillbs.dev:3306/class5_220823_team4"
+ 		username="class5_220823_team4"
+ 		password="1234"
+ 		maxTotal="100" 
+ 	/>
+ 	
+ </context>
