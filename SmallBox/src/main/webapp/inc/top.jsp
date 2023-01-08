@@ -124,7 +124,7 @@ function confirm_logout() {
 							<li><a href="ComingMovieList.mv">상영 예정작</a></li>
 						</ul>
 					</li>
-	          		<li class="dropdown"><a href="#">예매<i class="bi bi-chevron-right"></i></a>
+	          		<li class="dropdown"><a href="Reserve.mv">예매<i class="bi bi-chevron-right"></i></a>
 	          			<ul>
 							<li><a href="#">박스오피스</a></li>
 							<li><a href="#">현재 상영작</a></li>
@@ -182,7 +182,7 @@ function confirm_logout() {
 	             </ul>
 	          </li>
 	        <li><a class="nav-link scrollto" href="#services">극장</a></li>
-	        <li><a class="nav-link scrollto" href="#team">공지사항</a></li>
+	        <li><a class="nav-link scrollto" href="Notice_list.ad">공지사항</a></li>
 			<li class="dropdown"><a href="MyPageMain.my">${sessionScope.sId } 님<i class="bi bi-chevron-down"></i></a>
 		   	 <ul>
 					<li class="dropdown"><a href="#"><span>회원정보</span> <i class="bi bi-chevron-right"></i></a>
