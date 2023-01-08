@@ -12,6 +12,7 @@ public class QnaListService {
 	// 회원용 게시물 목록 조회 - selectQnaList()
 	// => 파라미터 : 아이디, 시작행번호, 목록갯수   리턴타입 : List<QnaBean>(boardList)
 	public List<QnaBean> selectQnaList(String member_id, int startRow, int listLimit) {
+		System.out.println("selectQnaList()");
 		List<QnaBean> qnaList = null;
 		
 		// 공통작업-1. Connection 객체 가져오기
@@ -28,7 +29,6 @@ public class QnaListService {
 		qnaList = dao.selectQnaList(member_id, startRow, listLimit);
 		
 		// 공통작업-4. Connection 객체 반환하기
-		JdbcUtil.commit(con);
 		JdbcUtil.close(con);
 		
 		// 조회 결과 리턴
@@ -37,6 +37,7 @@ public class QnaListService {
 	// 관리자용 게시물 목록 조회 - selectAdminQnaList()
 		// => 파라미터 : 시작행번호, 목록갯수   리턴타입 : List<QnaBean>(boardList)
 		public List<QnaBean> selectAdminQnaList(int startRow, int listLimit) {
+			System.out.println("selectAdminQnaList");
 			List<QnaBean> qnaList = null;
 			
 			// 공통작업-1. Connection 객체 가져오기
@@ -53,7 +54,6 @@ public class QnaListService {
 			qnaList = dao.selectAdminQnaList(startRow, listLimit);
 			
 			// 공통작업-4. Connection 객체 반환하기
-			JdbcUtil.commit(con);
 			JdbcUtil.close(con);
 			
 			// 조회 결과 리턴
@@ -63,6 +63,7 @@ public class QnaListService {
 	// 회원용 목록 갯수 조회 - selectQnaListCount()
 	// => 파라미터 : 아이디   리턴타입 : int(listCount)
 	public int selectQnaListCount(String member_id) {
+		System.out.println("selectQnaListCount");
 		int listCount = 0;
 		
 		// 공통작업-1. Connection 객체 가져오기
@@ -79,7 +80,6 @@ public class QnaListService {
 		listCount = dao.selectQnaListCount(member_id);
 		
 		// 공통작업-4. Connection 객체 반환하기
-		JdbcUtil.commit(con);
 		JdbcUtil.close(con);
 		
 		return listCount;
@@ -87,6 +87,7 @@ public class QnaListService {
 	// 관리자용 목록 갯수 조회 - selectAdminQnaListCount()
 		// => 파라미터 : 없음   리턴타입 : int(listCount)
 		public int selectAdminQnaListCount() {
+			System.out.println("selectAdminQnaList");
 			int listCount = 0;
 			
 			// 공통작업-1. Connection 객체 가져오기
@@ -103,7 +104,6 @@ public class QnaListService {
 			listCount = dao.selectAdminQnaListCount();
 			
 			// 공통작업-4. Connection 객체 반환하기
-			JdbcUtil.commit(con);
 			JdbcUtil.close(con);
 			
 			return listCount;
