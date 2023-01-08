@@ -131,7 +131,7 @@
 			<c:forEach var="commingMovie" items="${commingMovieList }">
         		<div class="col">
             	<div class="card" style="object-fit:cover">
-               		 <a href="AdminMovieDetailPro.ad?movie_idx=${commingMovie.movie_idx}&pageNum=${pageNum }"><img src="<%=request.getContextPath() %>/upload/${commingMovie.movie_real_picture}"  width="300" height="350"
+               		 <a href="MovieDetail.mv?movie_idx=${commingMovie.movie_idx}&pageNum=${pageNum }"><img src="<%=request.getContextPath() %>/upload/${commingMovie.movie_real_picture}"  width="300" height="350"
                      class="card-img-top" alt="..." ></a> <!-- 포스터 클릭하면 상세페이지로 이동 -->
                 <div class="card-body">
                 <h5 class="card-title" style="text-align: center;">${commingMovie.movie_title }</h5>

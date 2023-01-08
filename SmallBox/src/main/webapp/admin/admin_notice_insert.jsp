@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -31,6 +32,15 @@
  
 </head>
 <body>
+	<!-- 관리자 아니면 접근 불가 -->
+	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
+		<script type="text/javascript">
+		 	alert("접근 불가합니다.");
+		 	history.back();
+		</script>
+	</c:if>
+	<!-- 관리자 아니면 접근 불가 -->
+
 	<header>
 		<jsp:include page="../inc/top_admin.jsp"></jsp:include>
 	</header>
@@ -53,25 +63,39 @@
 
       </div>
     </section><!-- End Breadcrumbs -->
-	<form action="Admin_notice_writePro.ad" name="fr" method="post" enctype="multipart/form-data" >
-		<table border="1">
-			<!-- 글쓴이는 관리자로 고정 -->
-			<tr><td>제목</td><td><input type="text" name="notice_subject" required="required"></td></tr>
-			<tr>
-				<td>내용</td>
-				<td><textarea name="notice_content" cols="50" rows="10"></textarea></td>
-			</tr>
-			<tr>
-				<td>파일</td>
-				<td><input type="file" name="notice_file" required="required"></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="등록">
-				</td>
-			</tr>
-		</table>
-	</form>
+    
+      <main>
+         <div class="container-fluid px-4">
+             <h1 class="mt-4">공지 등록</h1>
+	            <div class="card mb-4" style="margin-bottom: 30px;">
+	                 <div class="card-body">
+	                     - 관리자로 등록된 회원만 조회할 수 있는 페이지입니다.
+	                 </div>
+	           	</div>  
+	           	
+			<form action="Admin_notice_writePro.ad" name="fr" method="post" enctype="multipart/form-data" >
+				<table style="border: 1;border-radius: 4px;">
+					<!-- 글쓴이는 관리자로 고정 -->
+					<th style="text-align: center;height: 40">공지 정보</th>
+					<th style="text-align: center;height: 40">공지 정보</th>
+					<tr><td>제목</td><td><input type="text" name="notice_subject" required="required"></td></tr>
+					<tr>
+						<td>내용</td>
+						<td><textarea name="notice_content" cols="50" rows="10"></textarea></td>
+					</tr>
+					<tr>
+						<td>파일</td>
+						<td><input type="file" name="notice_file" required="required"></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<div style="text-align: center;">
+							<input class="pagebtn2" type="submit" value="등록">
+						</div>
+						</td>
+					</tr>
+				</table>
+			</form>
 	</main>
 </body>
 </html>

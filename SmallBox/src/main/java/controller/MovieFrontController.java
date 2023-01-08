@@ -16,6 +16,7 @@ import action.CheckMovieLikeProAction;
 import action.ComingMovieListProAction;
 import action.CommentDeleteAction;
 import action.CommentWriteProAction;
+import action.MovieDetailAction;
 import action.MovieLikeProAction;
 import action.MovieListProAction;
 import action.ReservePaymentProAction;
@@ -48,7 +49,7 @@ public class MovieFrontController extends HttpServlet {
 		} else if (command.equals("/MovieDetail.mv")) {
 			System.out.println("controller : MovieList.mv");
 			
-			action = new AdminMovieDetailProAction();
+			action = new MovieDetailAction();
 			forward = action.execute(request, response);
 		
 		} else if (command.equals("/CommentWritePro.mv")) {
