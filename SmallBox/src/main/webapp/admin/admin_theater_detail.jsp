@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +29,15 @@
 <title>관리자 - 상영 영화관 상세정보</title>
 </head>
 <body>
+	<!-- 관리자 아니면 접근 불가 -->
+	<c:if test="${empty sessionScope.member_id or sessionScope.member_id ne 'admin'}">
+		<script type="text/javascript">
+		 	alert("접근 불가합니다.");
+		 	history.back();
+		</script>
+	</c:if>
+	<!-- 관리자 아니면 접근 불가 -->
+
 	<header id="header">
     	<jsp:include page="../inc/top_admin.jsp"></jsp:include>
     </header>
@@ -48,9 +58,9 @@
           <h2>관리자 페이지</h2>
           <ol>
             <li>관리자 페이지</li>
-            <li><a href="Admin.ad">Main</a></li>
+            <li><a href="AdminTheaterList.ad">상영일정</a></li>
             <!-- 페이지 주소, 이름 넣는곳 -->
-            <li><a href="#"></a>상영일정 상세</li>
+            <li><a href="AdminTheaterDetail.ad"></a>상영일정 상세</li>
           </ol>
         </div>
       </div>

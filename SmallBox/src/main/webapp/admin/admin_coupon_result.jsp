@@ -30,6 +30,15 @@
 
 </head>
 <body>
+	<!-- 관리자 아니면 접근 불가 -->
+	<c:if test='${empty sessionScope.member_id or sessionScope.member_id ne "admin"}'>
+		<script type="text/javascript">
+		 	alert("접근 불가합니다.");
+		 	history.back();
+		</script>
+	</c:if>
+	<!-- 관리자 아니면 접근 불가 -->
+	
 <!-- TOP -->
 <header>
 	<jsp:include page="/inc/top.jsp"></jsp:include>

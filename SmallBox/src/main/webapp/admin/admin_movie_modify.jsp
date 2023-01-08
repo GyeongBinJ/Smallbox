@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -31,6 +32,15 @@
  
 </head>
 <body>
+	<!-- 관리자 아니면 접근 불가 -->
+	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
+		<script type="text/javascript">
+		 	alert("접근 불가합니다.");
+		 	history.back();
+		</script>
+	</c:if>
+	<!-- 관리자 아니면 접근 불가 -->
+	
 	<header>
 		<jsp:include page="../inc/top_admin.jsp"></jsp:include>
 	</header>

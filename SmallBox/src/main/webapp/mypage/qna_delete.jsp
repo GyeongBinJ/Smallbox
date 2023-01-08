@@ -35,6 +35,15 @@
   <link href="assets/css/couponlist.css" rel="stylesheet">
 </head>
 <body>
+	<!-- 비회원 접근 불가 -->
+	<c:if test="${empty sessionScope.sId }">
+		<script type="text/javascript">
+		 	alert("접근 불가합니다.");
+		 	history.back();
+		</script>
+	</c:if>
+	<!-- 비회원 접근 불가 -->
+	
 	<header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
 	</header>
