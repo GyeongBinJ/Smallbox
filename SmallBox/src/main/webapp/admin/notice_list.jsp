@@ -48,7 +48,6 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>공지</h2>
           <ol>
-
             <li><a href="./">Home</a></li>
             <li><a href="Admin.ad">관리자 페이지</a></li>
             <!-- 페이지 주소, 이름 넣는곳 -->
