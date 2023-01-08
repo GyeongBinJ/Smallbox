@@ -209,7 +209,6 @@
 			});
 		};
 		
-	
 		
 	});
 </script>	
@@ -257,11 +256,9 @@
 				
 
 		</select>
+				<div class="movie_picture">
+				</div>
 			</div>
-        </div>
-        <div class="theater-part">
-            <div class="reserve-title">극장</div>
-            <div>SmallBox 1관</div>
         </div>
         <div class="day-part">
             <div class="reserve-title">날짜</div>
@@ -275,7 +272,7 @@
 	        
 	         </div>
 	        <input type="hidden" name="session_id" value="${sessionScope.sId }">
-	        <input type="submit" value="좌석 선택하기" class="movie-date-wrapper">
+	        <input type="submit" value="좌석 선택하기" class="submit_btn">
         </div>
     </form>
     </div>
