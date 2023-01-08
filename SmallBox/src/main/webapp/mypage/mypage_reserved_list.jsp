@@ -92,11 +92,11 @@
 		<thead>
 		<tr>
 			<th width="100">예약 번호<br>res_idx</th>
-			<th width="150">영화 제목<br>theater_title</th>
+			<th width="200">영화 제목<br>theater_title</th>
 			<th width="100">상영관<br>theater_idx</th>
 			<th width="100">상영일<br>res_date</th>
 			<th width="100">상영시간<br>res_time</th>
-			<th width="100">좌석<br>res_seat</th>
+			<th width="150">좌석<br>res_seat</th>
 			<th width="100">관람인원<br>res_num</th>
 			<th width="100">예매취소</th>
 			<th width="100">리뷰작성</th>
