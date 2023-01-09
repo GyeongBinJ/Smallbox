@@ -234,9 +234,7 @@
 	                 alert("영화와 상영날짜와 상영시간을 모두 선택하세요!");
 	                return false;
 	             }
-	             
-	          });
-	
+	         
 		
 	});
 </script>	
@@ -262,7 +260,17 @@
       </div>
     </section>
 <!-- --------------------- 들고다니세요 ------------------------------------ -->
-<div class="reserve-sId">${sessionScope.sId }님,</div>
+<div class="reserve-sId">
+	<c:choose>
+		<c:when test="${empty sessionScope.sId }">
+				Guest 님,
+			</c:when>
+			<c:otherwise>
+				${sessionScope.sId }님,
+			</c:otherwise>
+	</c:choose>
+
+</div>
 
     <div class="reserve-container">
         <div class="movie-part">
