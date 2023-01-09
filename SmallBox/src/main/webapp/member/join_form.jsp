@@ -169,17 +169,8 @@ $(function() {
 				url: "MemberAuth.sm",
 				data: {
 					id : $("#member_id").val(),
-// 					authCode: $("#authInputBox").val(),
 					email1 : $("#member_email1").val(),
 					email2 : $("#member_email2").val()
-				},
-				success: function(result) {
-					// 리턴받은 판별 결과("true", "false") 판별
-// 					if(result == "true"){
-					if(result){
-						$("#authInputBox").attr("disabled",true);
-						$("#authEmailCheck").html("이메일 인증 코드 발송!").css("color", "blue");
-					}
 				}
 			});
 	});
@@ -197,14 +188,17 @@ $(function() {
 					authCode: $("#authInputBox").val()
 				},
 				success: function(result) {
+					if(result == $("#authInputBox").val()) { // 입력한 인증코드가 디비에 있는 인증코드와 같다면
 						$("#authEmailCheck").html("이메일 인증 완료!").css("color", "green");
+					} else {
+						$("#authEmailCheck").html("인증 실패").css("color", "red");
+					}	
 				}
+			});
 			
 		});
 	});
 	
-});
-
 	
 </script>
 </head>

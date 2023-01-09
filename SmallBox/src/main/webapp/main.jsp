@@ -33,8 +33,51 @@
 <!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->  
 <!-- 메인페이지 아이콘 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 <!-- 메인페이지 아이콘 -->
 <title>스몰박스</title>
+<!-- Channel Plugin Scripts -->
+<script>
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+  ChannelIO('boot', {
+    "pluginKey": "e7205392-7af0-48bf-a4f4-20c8962688b5"
+  });
+</script>
+<!-- End Channel Plugin -->
 </head>
 
 <body>
@@ -81,15 +124,17 @@
         </div>
 
         <!-- Slide 3 -->
-        <div class="carousel-item" style="background-image: url(assets/img/slide/gentlemen.jpg)">
+        <div class="carousel-item" style="background-image: url(assets/img/slide/bootsCat.jpg)">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">젠틀맨</h2>
+              <h2 class="animate__animated animate__fadeInDown">장화신은 고양이: 끝내주는 모험</h2>
               <p class="animate__animated animate__fadeInUp">
-              	누명을 벗고자 하는 ‘지현수’와 ‘권도훈’을 잡고 싶은 ‘김화진’,
- 				각자의 목표를 위해 손을 잡게 된 두 사람은
- 				거대 로펌 재벌의 추악한 범죄를 파헤치다 전혀 뜻밖의 상황을 맞이하게 되는데...
- 				작전은 완벽하게, 수사는 젠틀하게! 고품격 범죄 오락이 펼쳐진다!
+              	아홉 개의 목숨 중 단 하나의 목숨만 남은 장화신은 고양이. 
+              	마지막 남은 목숨을 지키기 위해 히어로의 삶 대신 반려묘의 삶을 선택한 그에게 찾아온 마지막 기회, 
+              	바로 소원을 들어주는 소원별이 있는 곳을 알려주는 지도! 
+              	잃어버린 목숨을 되찾고 다시 히어로가 되기를 꿈꾸는 장화신은 고양이는 뜻밖의 동료가 된 앙숙 파트너 '키티 말랑손', 
+              	그저 친구들과 함께 라면 모든 게 행복한 강아지 '페로'와 함께 소원별을 찾기 위해 길을 떠난다. 
+              	그리고 소원별을 노리는 또 다른 빌런들과 마주치게 되는데… 새해를 여는 끝내주는 모험이 시작된다!
               </p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">예매하기</a>
             </div>
@@ -109,30 +154,67 @@
     </div>
   </section><!-- End Hero -->
 
+     <!-- ======= Services Section ======= -->
+    <section >
+      <div class="container">
+
+        <div class="section-title">
+        	<h2>개봉작 순위</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" >
+            <div class="icon-box iconbox-yellow">
+              <div class="icon">
+<!--                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"> -->
+<!--                 </svg> -->
+              <img src="assets/img/poster/avatar_poster.jpg"  style="width: 400px">
+             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">예매하기</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div>
+              <div >
+<!--                 <svg width="100" height="100" > -->
+              <img src="assets/img/poster/cat_poster.jpeg" style="width: 400px">
+             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">예매하기</a>
+<!--                 </svg> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" >
+            <div class="icon-box iconbox-teal">
+              <div class="icon">
+<!--                 <svg width="100" height="100"> -->
+	               <img src="assets/img/poster/hero_poster.jpg" style="width: 400px">
+		             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">예매하기</a>	
+<!--                 </svg> -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
 <!-- ====================== 박스오피스 ============================ -->
-<!-- 	<nav id="navbar" class="navbar section-title"> -->
-<!-- 		<a class="getstarted scrollto " href="#about">전체영화 보러가기</a> -->
-영화 포스터, 예매하기, 찜하기 들어갈 곳
-<!-- 	</nav> -->
-<!-- <header> -->
-<!-- 	<section> -->
-<%-- 		<jsp:include page="inc/box_office.jsp"></jsp:include> --%>
-<!-- 	</section> -->
-<!-- </header> --> <!-- 수정후 재업로드...... -->
-<!-- ====================== 박스오피스 ============================ -->
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <main id="main">  
 <!-- ======= Featured Services Section ======= -->
 <section id="featured-services" class="featured-services section-bg ">
 	<div class="container">
 		<div class="row no-gutters" align="center">
 			<div class="col-lg-4 col-md-6">
+			<form action="MovieList.mv">
 				<div class="icon-box">
-					<div class="icon">
-						<i class="fas fa-calendar-alt"></i>
+					<div class="search">
+						<input type="text" placeholder="영화명을 입력해 주세요" title="영화 검색" class="input-text" id="movieName" name="keyword">
+						<input type="submit" value="검색" class="btn">
 					</div>
-					<h4 class="title"><a href="">상영시간표</a></h4>
 				</div>
+			</form>	
 				</div>
 				<div class="col-lg-4 col-md-6" align="center">
 				<div class="icon-box">
@@ -147,7 +229,7 @@
 				<div class="icon">
 					<i class="fas fa-ticket-alt"></i>
 				</div>
-					<h4 class="title"><a href="Reserve.mv">빠른예매</a></h4>
+					<h4 class="title"><a href="">빠른예매</a></h4>
 				</div>
 			</div>
 		</div>
@@ -229,6 +311,76 @@
 
       </div>
     </section><!-- End Our Clients Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>고객지원</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box iconbox-yellow">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,503.46388370962813C374.79870501325706,506.71871716319447,464.8034551963731,527.1746412648533,510.4981551193396,467.86667711651364C555.9287308511215,408.9015244558933,512.6030010748507,327.5744911775523,490.211057578863,256.5855673507754C471.097692560561,195.9906835881958,447.69079081568157,138.11976852964426,395.19560036434837,102.3242989838813C329.3053358748298,57.3949838291264,248.02791733380457,8.279543830951368,175.87071277845988,42.242879143198664C103.41431057327972,76.34704239035025,93.79494320519305,170.9812938413882,81.28167332365135,250.07896920659033C70.17666984294237,320.27484674793965,64.84698225790005,396.69656628748305,111.28512138212992,450.4950937839243C156.20124167950087,502.5303643271138,231.32542653798444,500.4755392045468,300,503.46388370962813"></path>
+                </svg>
+                <i class="fas fa-user-headset"></i>
+              </div>
+              <h4><a href="">고객문의</a></h4>
+              <p>This is the customer inquiry board. If you have any questions or questions about our small box, please feel free to contact us.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box iconbox-red">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"></path>
+                </svg>
+              <i class="fas fa-building"></i>
+              </div>
+              <h4><a href="">조원 소개</a></h4>
+              <p>This is the introduction space of the team members who worked on the project togethe</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box iconbox-teal">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"></path>
+                </svg>
+                <i class="fas fa-camera-movie"></i>
+              </div>
+              <h4><a href="">영화관 소개</a></h4>
+              <p>Let me introduce our movie theater facilities! It's gonna be awesome!</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3>지금 예매하세요!</h3>
+            <p> 돌비사운드의 웅장한 사운드와 프라이빗룸으로 되어 있는 스몰박스가 당신을 초대합니다.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#">예매하러 가기</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
@@ -382,75 +534,6 @@
       </div>
     </section><!-- End Portfolio Section -->
 
- <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-9 text-center text-lg-start">
-            <h3>지금 예매하세요!</h3>
-            <p> 돌비사운드의 웅장한 사운드와 프라이빗룸으로 되어 있는 스몰박스가 당신을 초대합니다.</p>
-          </div>
-          <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">예매하러 가기</a>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
-
-<!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>고객지원</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box iconbox-yellow">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,503.46388370962813C374.79870501325706,506.71871716319447,464.8034551963731,527.1746412648533,510.4981551193396,467.86667711651364C555.9287308511215,408.9015244558933,512.6030010748507,327.5744911775523,490.211057578863,256.5855673507754C471.097692560561,195.9906835881958,447.69079081568157,138.11976852964426,395.19560036434837,102.3242989838813C329.3053358748298,57.3949838291264,248.02791733380457,8.279543830951368,175.87071277845988,42.242879143198664C103.41431057327972,76.34704239035025,93.79494320519305,170.9812938413882,81.28167332365135,250.07896920659033C70.17666984294237,320.27484674793965,64.84698225790005,396.69656628748305,111.28512138212992,450.4950937839243C156.20124167950087,502.5303643271138,231.32542653798444,500.4755392045468,300,503.46388370962813"></path>
-                </svg>
-                <i class="fas fa-user-headset"></i>
-              </div>
-              <h4><a href="">고객문의</a></h4>
-              <p>This is the customer inquiry board. If you have any questions or questions about our small box, please feel free to contact us.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box iconbox-red">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"></path>
-                </svg>
-              <i class="fas fa-building"></i>
-              </div>
-              <h4><a href="">조원 소개</a></h4>
-              <p>This is the introduction space of the team members who worked on the project togethe</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box iconbox-teal">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"></path>
-                </svg>
-                <i class="fas fa-camera-movie"></i>
-              </div>
-              <h4><a href="">영화관 소개</a></h4>
-              <p>Let me introduce our movie theater facilities! It's gonna be awesome!</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
 
   </main><!-- End #main -->
 
