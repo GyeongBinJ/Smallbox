@@ -234,6 +234,8 @@
 	                 alert("영화와 상영날짜와 상영시간을 모두 선택하세요!");
 	                return false;
 	             }
+	             
+	          });
 	         
 		
 	});
@@ -307,7 +309,14 @@
 	        
 	         </div>
 	        <input type="hidden" name="session_id" value="${sessionScope.sId }">
-	        <input type="submit" value="좌석 선택하기" class="submit_btn">
+	        <c:choose>
+				<c:when test="${empty sessionScope.sId }">
+					로그인해주세요.
+				</c:when>
+				<c:otherwise>
+			        <input type="submit" value="좌석 선택하기" class="submit_btn">
+				</c:otherwise>
+	</c:choose>
         </div>
     </form>
     </div>
