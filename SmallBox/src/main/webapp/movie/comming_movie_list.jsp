@@ -58,12 +58,12 @@
 			    	 if(isLike) { // 찜작업이 성공하면
 			    		 $("#btn_like").html('찜해제');
 //	 			    	  location.reload(); // 전체페이지 새로고침
-				    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
+				    	 $(".py-5").load(location.href+' .py-5'); // 특정페이지 새로고침
 			    		 isLike = false;
 			    	 } else {
 			    		 $("#btn_like").html('찜');
 //	 			    	  location.reload(); // 전체페이지 새로고침
-				    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
+				    	 $(".py-5").load(location.href+' .py-5'); // 특정페이지 새로고침
 			    		 isLike = true;
 			    	 }
 			      }
