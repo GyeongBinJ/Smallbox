@@ -35,49 +35,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 <!-- 메인페이지 아이콘 -->
+<style type="text/css">
+.search { 
+ 	padding-top: 50px; 
+ 	border: 5; 
+}
+.input-text {
+	height: 30px;
+}
+</style>
 <title>스몰박스</title>
-<!-- Channel Plugin Scripts -->
-<script>
-  (function() {
-    var w = window;
-    if (w.ChannelIO) {
-      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
-    }
-    var ch = function() {
-      ch.c(arguments);
-    };
-    ch.q = [];
-    ch.c = function(args) {
-      ch.q.push(args);
-    };
-    w.ChannelIO = ch;
-    function l() {
-      if (w.ChannelIOInitialized) {
-        return;
-      }
-      w.ChannelIOInitialized = true;
-      var s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.async = true;
-      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
-      s.charset = 'UTF-8';
-      var x = document.getElementsByTagName('script')[0];
-      x.parentNode.insertBefore(s, x);
-    }
-    if (document.readyState === 'complete') {
-      l();
-    } else if (window.attachEvent) {
-      window.attachEvent('onload', l);
-    } else {
-      window.addEventListener('DOMContentLoaded', l, false);
-      window.addEventListener('load', l, false);
-    }
-  })();
-  ChannelIO('boot', {
-    "pluginKey": "e7205392-7af0-48bf-a4f4-20c8962688b5"
-  });
-</script>
-<!-- End Channel Plugin -->
 </head>
 
 <body>
@@ -207,14 +174,12 @@
 	<div class="container">
 		<div class="row no-gutters" align="center">
 			<div class="col-lg-4 col-md-6">
-			<form action="MovieList.mv">
-				<div class="icon-box">
-					<div class="search">
-						<input type="text" placeholder="영화명을 입력해 주세요" title="영화 검색" class="input-text" id="movieName" name="keyword">
-						<input type="submit" value="검색" class="btn">
-					</div>
+				<div class="search">
+					<input type="text" placeholder="영화명을 입력하세요" title="영화 검색" class="input-text" id="movieName">
+					<button type="button" class="btn" id="btnSearch">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</button>
 				</div>
-			</form>	
 				</div>
 				<div class="col-lg-4 col-md-6" align="center">
 				<div class="icon-box">
@@ -290,27 +255,6 @@
     <section id="clients" class="clients">
       <div class="container">
 
-        <div class="section-title">
-          <h2>스몰박스 안내</h2>
-<!--           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
-        </div>
-
-        <div class="clients-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="assets/img/clients/dolby.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/privateRoom.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/mx.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/boutique.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/comport.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/puppyCinema.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/boutique.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/mx.png" class="img-fluid" alt=""></div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Our Clients Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
