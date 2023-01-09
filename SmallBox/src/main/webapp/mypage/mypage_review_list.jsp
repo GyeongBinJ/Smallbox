@@ -28,6 +28,7 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/couponlist.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 비회원 접근 불가 -->
@@ -84,26 +85,30 @@
    
     <section class="inner-page" style="display: inline-block;">
 		
-		<table border="1" style="text-align: center;">
-			<tr>
-				<th>영화명</th>
-				<th>평점</th>
-				<th>내용</th>
-				<th>등록일</th>
-			</tr>
+		<table style="text-align: center;margin-top: 80px;">
+		    <thead>
+		    <tr>
+		        <th width="150">포스터</th>
+		        <th width="200">내용</th>
+		        <th width="100">평점</th>
+		        <th width="150">작성일</th>
+		
+		    </tr>
+		    </thead>
+	    <tbody>
 			
 			<!-- ReviewListProAction으로 부터 전달받은 request 객체의 reviewList(리뷰 정보)를 꺼내서 출력 -->
 			<c:forEach var="comment" items="${reviewList }">
 			<tr>
-				<td>${comment.movie_idx }</td>
-				<td>${comment.comment_star }</td>
+				<td><img src="<%=request.getContextPath() %>/upload/${comment.movie_real_picture}"  width="300" height="350"></td>
 				<td>${comment.comment_content }</td>
+				<td>${comment.comment_star }</td>
 				<td>${comment.comment_date }</td>
 			</tr>	
 			</c:forEach>
 		</table>
 	
-			<section id="pageList" style="text-align: center;"> <!-- 페이징 처리 영역 -->
+			<section id="pageList" style="text-align: center;margin-left: 320px;"> <!-- 페이징 처리 영역 -->
 	
 			<!-- 만약, pageNum 파라미터가 비어있을 경우 pageNum 변수 선언 및 기본값 1로 설정 -->
 			<c:choose>

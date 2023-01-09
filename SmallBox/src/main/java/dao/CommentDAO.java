@@ -10,6 +10,7 @@ import java.util.List;
 
 import db.JdbcUtil;
 import vo.CommentBean;
+import vo.PosterBean;
 
 public class CommentDAO {
 
@@ -167,29 +168,29 @@ public class CommentDAO {
 	}
 
 	// 마이페이지 - 각 회원의 리뷰 내역 조회
-	public List<CommentBean> selectReviewList(String member_id, int startRow, int commentLimit) {
-		List<CommentBean> reviewList = null;
+	public List<PosterBean> selectReviewList(String member_id, int startRow, int commentLimit) {
+		List<PosterBean> reviewList = null;
 		
 		try {
-			String sql = "SELECT * FROM comment WHERE member_id = ? ORDER BY comment_date DESC LIMIT ?, ?";
+			String sql = "SELECT * FROM poster WHERE member_id = ? ORDER BY comment_date DESC LIMIT ?, ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member_id);
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, commentLimit);
 			rs = pstmt.executeQuery();
 			
-			reviewList = new ArrayList<CommentBean>();
+			reviewList = new ArrayList<PosterBean>();
 			
 			while(rs.next()) {
-				CommentBean comment = new CommentBean();
-				comment.setComment_idx(rs.getInt("comment_idx"));
-				comment.setMember_id(rs.getString("member_id"));
-				comment.setComment_star(rs.getInt("comment_star"));
-				comment.setComment_content(rs.getString("comment_content"));
-				comment.setComment_date(rs.getDate("comment_date"));
-				comment.setMovie_idx(rs.getInt("movie_idx"));
+				PosterBean poster = new PosterBean();
+				poster.setMovie_real_picture(rs.getString("movie_real_picture"));
+				poster.setComment_idx(rs.getInt("comment_idx"));
+				poster.setMember_id(rs.getString("member_id"));
+				poster.setComment_star(rs.getInt("comment_star"));
+				poster.setComment_content(rs.getString("comment_content"));
+				poster.setComment_date(rs.getDate("comment_date"));
 				
-				reviewList.add(comment);
+				reviewList.add(poster);
 			}
 			
 		} catch (SQLException e) {
