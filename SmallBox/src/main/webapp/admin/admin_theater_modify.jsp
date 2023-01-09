@@ -30,7 +30,7 @@
 </head>
 <body>
 	<!-- 관리자 아니면 접근 불가 -->
-	<c:if test="${empty sessionScope.member_id or sessionScope.member_id ne 'admin'}">
+	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
 		<script type="text/javascript">
 		 	alert("접근 불가합니다.");
 		 	history.back();
@@ -83,7 +83,18 @@
 				  </thead>
 				 <tbody>
 					<tr>
-						<td><input type="text" name="theater_title" value="${theater.theater_title }" required="required"></td>
+						<td>
+							<div class="movie_list">
+					            <select name="theater_title">
+									<option>상영영화 선택</option>
+										<c:forEach var="movie" items="${movieList }">
+											<option value="${movie.movie_title }">
+													${movie.movie_title }
+											</option>
+										</c:forEach>
+								</select>
+							</div>
+						</td>
 						<td><input type="date" name="theater_date" value="${theater.theater_date }" required="required"></td>
 						<td>
 							<input type="time" name="theater_time" value="${theater.theater_time }" readonly="readonly"><br><br>

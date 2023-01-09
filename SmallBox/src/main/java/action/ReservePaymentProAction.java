@@ -2,9 +2,12 @@ package action;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.ReservePaymentProService;
 import vo.ActionForward;
@@ -163,9 +166,12 @@ public class ReservePaymentProAction implements Action {
 			} //3일 떄 for end
 		}
 		
-//		forward = new ActionForward();
-//		forward.setPath("ReserveDetail.mv");
-//		forward.setRedirect(true);
+		HttpSession session = request.getSession();
+		session.setAttribute("res_num", res_num);
+		
+		forward = new ActionForward();
+		forward.setPath("ReservePaymentApi.mv");
+		forward.setRedirect(false);
 		
 		return forward;
 	}

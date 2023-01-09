@@ -16,6 +16,7 @@ import action.AdminCouponListAction;
 import action.AdminCouponModifyProAction;
 import action.AdminMovieDetailProAction;
 import action.AdminMovieListProAction;
+import action.AdminReserveListAction;
 import action.AdminTheaterDeleteProAction;
 import action.AdminTheaterDetailAction;
 import action.AdminTheaterInsertFormAction;
@@ -55,6 +56,10 @@ public class AdminFrontController extends HttpServlet {
 	
 		// ----------------------------------------------------------------------
 		if(command.equals("/Admin.ad")) { // 관리자 메인페이지
+			System.out.println("관리자 메인페이지!");
+//			action = new AdminReserveListAction();
+//			forward = action.execute(request, response);
+			
 			forward = new ActionForward();
 			forward.setPath("admin/admin.jsp");
 			forward.setRedirect(false); // 생략도 가능

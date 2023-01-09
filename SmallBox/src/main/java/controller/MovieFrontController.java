@@ -106,6 +106,17 @@ public class MovieFrontController extends HttpServlet {
 			
 			action = new ReservePaymentProAction();
 			forward = action.execute(request, response);
+		
+		} else if(command.equals("/ReservePaymentApi.mv")) {
+			System.out.println("controller : ReservePaymentApi.mv");
+			forward = new ActionForward();
+			forward.setPath("reserve/reserve_payment_api.jsp");
+			forward.setRedirect(false);	
+		} else if(command.equals("/ReserveComplete.mv")) {
+			System.out.println("controller : ReserveComplete.mv");
+			forward = new ActionForward();
+			forward.setPath("reserve/reserve_complete.jsp");
+			forward.setRedirect(false);	
 		}
 		
 		
