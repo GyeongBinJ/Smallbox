@@ -544,6 +544,7 @@ public class MovieDAO {
 		}
 		
 		return listCount;
-	} 
+	}
+	
 	
 }

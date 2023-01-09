@@ -107,7 +107,6 @@ public class MovieFrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		}
 		
-		
 		// ----------------------------------------------------------------------
 		// ActionForward 객체 내용에 따라 각각 다른 방식의 포워딩 작업 수행(공통)
 		// 1. ActionForward 객체가 null 이 아닐 경우 판별

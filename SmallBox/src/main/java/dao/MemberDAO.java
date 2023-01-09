@@ -49,7 +49,7 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				member_idx = rs.getInt(1) +1;
-				sql = "INSERT INTO member VALUES(?, ?, ?, ?, ?, ?, now(), ?, 'N')";
+				sql = "INSERT INTO member VALUES(?, ?, ?, ?, ?, ?, now(), ?, 'Y')";
 				pstmt2 = con.prepareStatement(sql);
 				pstmt2.setInt(1, member_idx);
 				pstmt2.setString(2, member.getMember_id());
@@ -341,12 +341,11 @@ public class MemberDAO {
 		con = JdbcUtil.getConnection();
 		
 		try {
-			// 아이디, 패스워드가 일치하는 레코드 검색
-			String sql = "SELECT member_id FROM member WHERE member_id=? AND member_email=?";
+			// 아이디 일치하는 레코드 검색으로 바꿈 0108 다영이
+			String sql = "SELECT member_id FROM member WHERE member_id=?";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, member.getMember_id());
-			pstmt.setString(2, member.getMember_email());
 			
 			rs = pstmt.executeQuery();
 			
@@ -470,11 +469,12 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			System.out.println("SQL 구문 오류 발생! - updateImsiPW()");
 			e.printStackTrace();
+		}  finally {
+			JdbcUtil.close(pstmt);
 		}
 		
 		return updateImsiPW;
 	}
 	
-		
 		
 }
