@@ -225,9 +225,7 @@
 			
 			
 		};
-		
-<<<<<<< Upstream, based on origin/DY
-<<<<<<< Upstream, based on origin/DY
+
 		// 상영 시간 값을 지정할 때 영화 제목, 상영 날짜, 상영시간을 모두 선택하지 않으면 좌석 페이지로 넘어갈 수 없도록 제어
 	          $('#reserveForm').submit(function() {
 	        	  
@@ -239,22 +237,7 @@
 	             
 	          });
 	
-=======
->>>>>>> f6335e9 notice, top commit
-=======
-		// 상영 시간 값을 지정할 때 영화 제목, 상영 날짜, 상영시간을 모두 선택하지 않으면 좌석 페이지로 넘어갈 수 없도록 제어
-	          $('#reserveForm').submit(function() {
-	        	  
-// 	        	 alert($("input[name=reserved_date]").val());
-	             if($("#movie-select").val() == "" || $("input[name=reserved_date]").val() == null || $(".timeButton.active").val() == null) {
-	                 alert("영화와 상영날짜와 상영시간을 모두 선택하세요!");
-	                return false;
-	             }
-	             
-	          });
-	
->>>>>>> 197ebc4 관리자 접근 수정 및 예매 제약 수정 commit
-		
+
 	});
 </script>	
 </head>
