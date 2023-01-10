@@ -1,39 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8">
-<title>회원 가입</title>
-<!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->
-<!-- css -->
-<link rel="stylesheet" href="assets/css/reset.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/swiper.css">
-<link rel="stylesheet" href="assets/css/style.css">
-
-<!-- Favicons -->
-<link href="assets/img/favicon.png" rel="icon">
-<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-<!-- Vendor CSS Files -->
-<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-<link href="assets/css/style.css" rel="stylesheet">
-<!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- --> 
-
-<link href="css/default.css" rel="stylesheet" type="text/css">
-
-<script src="js/jquery-3.6.3.js"></script>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->
+	<!-- css -->
+	<link rel="stylesheet" href="./assets/css/reset.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
+	<link rel="stylesheet" href="./assets/css/top.css">
+	<link rel="stylesheet" href="./assets/css/swiper.css">
+	<link rel="stylesheet" href="./assets/css/join.css">
+	<!-- Favicons -->
+	<link href="assets/img/favicon.png" rel="icon">
+	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	
+	<!-- Vendor CSS Files -->
+	<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+	<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	
+	<!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- --> 
+    <title>스몰박스 - 회원가입</title>
+</head>
+<body>
+<!-- top -->
+<header>
+	<jsp:include page="/inc/top.jsp"></jsp:include>
+</header>
+<!-- top -->
+<!-- ======= Breadcrumbs ======= -->
+	<section class="breadcrumbs">
+	  <div class="container">
+	
+	    <div class="d-flex justify-content-between align-items-center">
+	      <h2>회원가입</h2>
+	      <ol>
+	        <li><a href="./">Home</a></li>
+	        <li><a href="MyPageMain.my">MyPage</a></li>
+	        <li>Join</li> 
+	      </ol>
+	    </div>
+	  </div>
+	</section>
+<!-- End Breadcrumbs -->
+<div class="formDiv">
+  <form action="MemberJoinPro.sm" method="post" class="joinForm">
+  
+    <h1>회원정보 입력</h1>
+    
+    <fieldset>
+      <label for="name">이름</label>
+      <input type="text" id="member_name" name="member_name" class="inputBox">
+      <span id="checkNameResult"></span><br>
+      
+      <label>아이디</label>
+      <input type="text" name="member_id" id="member_id" class="inputBox">
+   	  <input type="button" value="중복확인" id="duplcheck" class="joinBtn">
+   	  <span id="checkIdResult"></span><br>
+      
+      <label>패스워드</label>
+   	  <input type="password" name="member_passwd" id="member_passwd" required="required" class="inputBox">
+   	  <span id="checkPasswdResult"></span><br>
+	   
+	  <label>패스워드확인</label>
+	  <input type="password" id="member_passwd_check" name="member_passwd_check" required="required" class="inputBox">
+	  <span id="checkPasswdConfirmResult"></span><br>
+	  
+	  <label>전화번호</label>
+      <input type="text" name="member_phone" id="member_phone" required="required" class="inputBox">
+      <span id="checkPhoneResult"></span><br>
+      
+       <label>이메일</label>
+       <input type="text" name="member_email1" id="member_email1" required="required" class="inputBox">@
+       <input type="text" name="member_email2" id="member_email2" required="required" class="inputBox">
+       <select name="selectDomain" id="selectDomain">
+			<option value="">직접입력</option>	
+			<option value="naver.com">naver.com</option>
+			<option value="nate.com">nate.com</option>
+			<option value="daum.com">daum.com</option>
+			<option value="google.gmail">google.gmail</option>
+		</select><br>
+	
+	  <label>이메일 인증번호</label>
+	  <input type="text" id="authInputBox" size="15" placeholder="인증코드입력란" required="required" class="inputBox">
+	  <input type="button" id="authCheck" value="확인" class="joinBtn">
+	  <span id= "authEmailCheck"></span><br>
+	  
+	  <label>생년월일</label>
+  	  <input type="date" name="member_birth_date" required="required" class="inputBox"><br>
+      
+    </fieldset>
+    
+    
+    </fieldset>
+    <div style="padding-left: 190px;">
+    	<button type="submit">가입하기</button>
+    </div>
+  </form>
+</div>
+<!-- ---------------footer------------- -->
+<footer id="header">
+	<jsp:include page="/inc/bottom.jsp"></jsp:include>
+</footer>
+<!-- ---------------footer------------- -->
+</body>
+<script src="http://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script type="text/javascript">
-//아이디 관련
 $(function() {
+
+	//아이디 유효성검사
    $("#member_id").on("change", function() {
       
       var id = $("#member_id").val();
@@ -50,20 +128,16 @@ $(function() {
             },
             success: function(result){
                   if(result == "true"){
-                      $("#checkIdResult").html("이미존재하는아이디").css("color","red");
+                      $("#checkIdResult").html("이미 존재하는 ID").css("color","red");
                   } else {
-                 	 $("#checkIdResult").html("사용 가능한 아이디입니다.").css("color", "green");
+                 	 $("#checkIdResult").html("사용 가능한 ID").css("color", "green");
                  }
                 }
          }); // ajax
       } // if
    });
-});
-  
-// -------------------------------------------------------------------------------------------------------------------------
-	// 이름 정상여부 판별
-$(function() {
 	
+	// 이름 유효성 검사
 	$("#member_name").on("keyup", function() {
 		let name = $("#member_name").val();
 		let regex = /^[가-힣]{2,10}$/;
@@ -73,10 +147,8 @@ $(function() {
 		} else {
 			$("#checkNameResult").html("반갑습니다.").css("color", "green");
 		}
-	});	
-
-// -------------------------------------------------------------------------------------------------------------------------
-
+	});
+	
 	// 이메일 도메인 선택
 	$("#selectDomain").on("change",function(){
 	      let domain = $("#selectDomain").val();
@@ -93,23 +165,25 @@ $(function() {
 	         $("#member_email2").css("background", "lightgray");
 	      }
 	});
-	   
-});
-	   
-// 비밀번호 관련
-$(function() {
-	$("#member_passwd_check").on("keyup", function() {
-		let passwd_check = $("#member_passwd_check").val();
-		let passwd = member_passwd;
+	
+	// 휴대폰 유효성 검사
+	$("#member_phone").on("change", function() {
+		let phone = $("#member_phone").val();
+		let regex = /^01\d\d{4}\d{4}$/;
 		
-		if(!passwd.exec(passwd_check)) {
-			$("#checkPasswdConfirmResult").html("비밀번호를 다시 확인하여주세요.").css("color", "red");
+		if(!regex.exec(phone)) {
+			$("#checkPhoneResult").html("올바른 휴대폰 번호가 아닙니다.").css("color", "red");
 		} else {
-			$("#checkPasswdConfirmResult").html("비밀번호가 일치합니다.").css("color", "green");
+			$("#checkPhoneResult").html("");
 		}
-	});	
+		
+	});
+
+});
+// 비밀번호 정규표현식
+$(function() {
 	
-	
+	// 비밀번호 유효성 검사
 	$("#member_passwd").on("change", function() {
 		let passwd = $("#member_passwd").val();
 		let lengthRegex = /^[A-Za-z0-9!@#$%]{8,16}$/;
@@ -120,7 +194,7 @@ $(function() {
 		let specRegex = /[!@#$%]/; 
 		
 		if(!lengthRegex.exec(passwd)) {
-			$("#checkPasswdResult").html("8~16자 영문 대 소문자, 숫자, 특수문자(!@#$%) 사용하여야 안전합니다").css("color", "red");
+			$("#checkPasswdResult").html("8~16자 영문 대 소문자, 숫자, 특수문자(!@#$%) 필수").css("color", "red");
 		} else {
 			let count = 0;
 			
@@ -138,150 +212,103 @@ $(function() {
 		}
 	});
 	
-	$("#member_passwd_confirm")
-	
-});
-
-function passConfirm() {
-	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
-	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
-	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
-		var member_passwd = document.getElementById('member_passwd');					//비밀번호 
-		var member_passwd_check = document.getElementById('member_passwd_check');	//비밀번호 확인 값
-		var checkPasswdConfirmResult = document.getElementById('checkPasswdConfirmResult');				//확인 메세지
+	// 비밀번호 재확인
+	$("#member_passwd_check").on("change", function() {
+		let passwd_check = $("#member_passwd_check").val();
+		let passwd = member_passwd;
 		
-		if(member_passwd.value == member_passwd_check.value){ //password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
-			checkPasswdConfirmResult.style.color = "GREEN"; /* span 태그의 ID사용  */
-				checkPasswdConfirmResult.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
-		}else{
-			checkPasswdConfirmResult.style.color = "RED";
-			checkPasswdConfirmResult.innerHTML ="비밀번호 불일치";
+		if(!passwd.exec(passwd_check)) {
+			$("#checkPasswdConfirmResult").html("불일치").css("color", "red");
+		} else {
+			$("#checkPasswdConfirmResult").html("일치").css("color", "green");
 		}
-	}
+	});	
 	
-// 이메일 인증 코드 전송
+});	
+
+// 이메일 인증코드
 $(function() {
+	// 이메일 인증 코드 전송
 	// 이메일 인증 하이퍼링크 클릭시 이벤트 처리
 	$("#authCheck").on("click", function() {
 		// AJAX 를 활용하여 MemberAuth.me 서블릿 요청
 		$.ajax({
-				type: "get",
-				url: "MemberAuth.sm",
-				data: {
-					id : $("#member_id").val(),
-					email1 : $("#member_email1").val(),
-					email2 : $("#member_email2").val()
+			type: "get",
+			url: "MemberAuth.sm",
+			data: {
+				id : $("#member_id").val(),
+				authCode: $("#authInputBox").val(),
+				email1 : $("#member_email1").val(),
+				email2 : $("#member_email2").val()
+			},
+			success: function(result) {
+				// 리턴받은 판별 결과("true", "false") 판별
+				if(result == "true"){
+					$("#authInputBox").attr("disabled",true);
+					$("#authEmailCheck").html("이메일 인증 코드 발송!").css("color", "blue");
 				}
-			});
-	});
-});
-	
-// 이메일 인증 코드 비교
-$(function() {
-	$("#authInputBox").on("change", function() {
-		var checkInput = $("#authInputBox")
-		$.ajax({
-				type:"get",
-				url: "MemberAuthCheck.sm",
-				data : {
-					id : $("#member_id").val(),
-					authCode: $("#authInputBox").val()
-				},
-				success: function(result) {
-					if(result == $("#authInputBox").val()) { // 입력한 인증코드가 디비에 있는 인증코드와 같다면
-						$("#authEmailCheck").html("이메일 인증 완료!").css("color", "green");
-					} else {
-						$("#authEmailCheck").html("인증 실패").css("color", "red");
-					}	
-				}
-			});
-			
+			}
 		});
 	});
 	
-	
-</script>
-</head>
-<body>
-<!-- top -->
-<header>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
-</header>
-<!-- top -->
-<h1>회원 가입</h1>
-<form action="MemberJoinPro.sm" method="post" name="joinForm">
-	<table border="1">
-		<tr>
-			<td>이름</td>
-			<td><input type="text" name="member_name" id="member_name" required="required" size="20">
-			<span id="checkNameResult"></span></td>
+	// 이메일 인증 코드 비교
+	$("#authInputBox").on("change", function() {
+		var checkInput = $("#authInputBox")
+		$.ajax({
+			type:"get",
+			url: "MemberAuthCheck.sm",
+			data : {
+				id : $("#member_id").val(),
+				authCode: $("#authInputBox").val()
+			},
+			success: function(result) {
+					$("#authEmailCheck").html("이메일 인증 완료!").css("color", "green");
+			}
 			
-		</tr>
-		<tr>
-		<tr>
-			<td>아이디</td>
-			<td>
-				<input type="text" name="member_id" id="member_id" required="required" size="20" placeholder="4-16자리 영문자,숫자 조합">
-				<span id="checkIdResult"><!-- 자바스크립트에 의해 메세지가 표시될 공간 --></span>
-			</td>
-		<tr>
-		<tr>
-			<td>패스워드</td>
-			<td>
-				<input type="password" name="member_passwd" id="member_passwd" required="required" size="20" placeholder="8-20자리 영문자,숫자,특수문자 조합">
-				<span id="checkPasswdResult"><!-- 자바스크립트에 의해 메세지가 표시될 공간 --></span>
-			</td>
-		</tr>
-		<tr>
-			<td>패스워드 확인</td>
-			<td><input type="password" name="member_passwd_check"
-				id="member_passwd_check" onchange="passConfirm()"
-				required="required" size="20" placeholder="비밀번호를 다시 입력하여주세요.">
-				<span id="checkPasswdConfirmResult">
-					<!-- 자바스크립트에 의해 메세지가 표시될 공간 -->
-			</span></td>
-		</tr>
-		<tr>
-			<td> E-Mail</td>
-				<td>
-					<input type="text" name="member_email1" id="member_email1" required="required" size="10">@
-					<input type="text" name="member_email2" id="member_email2" required="required" size="10">
-					<select name="selectDomain" id="selectDomain">
-						<option value="">직접입력</option>	
-						<option value="naver.com">naver.com</option>
-						<option value="nate.com">nate.com</option>
-						<option value="daum.net">daum.net</option>
-						<option value="gmail.com">gmail.com</option>
-					</select>
-			</td>
-		</tr>
-		<tr>
-			<td>이메일 인증번호</td>
-			<td> 
-				<input type="text" id="authInputBox" size="15" placeholder="인증코드입력란">
-				<input type="button" id="authCheck" value="인증코드 전송!" onclick="alert('인증코드가 발송되었습니다')">
-				<span id = "authEmailCheck"></span>
-			</td>
-		</tr>
-			<tr>
-			<td>연락처</td>
-			<td>
-				<input type="text" name="member_phone" id="member_phone" required="required" size="20">
-			</td>
-		</tr>
-		<tr>
-			<td>생년월일</td>
-			<td>
-				<input type="date" name="member_birth_date" required="required"> 
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="submit" value="회원가입">
-				<input type="button" value="취소" onclick="history.back()">
-			</td>
-		</tr>
-	</table>
-</form>
-</body>
+		});
+	});
+});
+
+$(function() {
+	
+	//회원가입 버튼 눌렀을 때, 빈칸 있으면 다시 유효성 검사진행    
+    $("#signupbtn").on("click",function(){
+ 	   var name = $("#member_name").val();
+ 	   var id = $("#member_id").val();
+ 	   var pw = $("#member_passwd").val();
+ 	   var phone = $("#member_phone").val();
+ 	   
+ 	   var nameregex = /[가-힣]{2,}/;
+ 	   var idregex = /^[a-z][a-z\d]{4,11}$/;
+ 	   var pwregex = /^[A-Za-z\d]{8,12}$/;
+ 	   var phoneregex = /^01\d\d{4}\d{4}$/;
+ 	   
+ 	   var nameregex = nameregex.exec(name);
+ 	   if(nameregex == null){
+ 		   alert("이름양식을 다시 확인해주세요");
+ 		   retrun;
+ 	   }
+ 	   var idregex = idregex.exec(id);
+ 	   if(idregex == null){
+ 		   alert("아이디양식을 다시 확인해주세요");
+ 		   return;
+ 	   }
+ 	   var pwregex = pwregex.exec(pw);
+ 	   if(pwregex == null){
+ 		   alert("비밀번호양식을 다시 확인해주세요");
+ 		   retrun;
+ 	   }
+ 	   var phoneregex = phoneregex.exec(phone);
+ 	   if(phoneregex == null){
+ 		   alert("핸드폰번호양식을 다시 확인해주세요");
+ 		   retrun;
+ 	   }
+ 	   
+      //빈칸 없을 때 제출.
+ 	   $("#joinForm").submit();
+    
+    });
+	
+});
+</script>
 </html>
