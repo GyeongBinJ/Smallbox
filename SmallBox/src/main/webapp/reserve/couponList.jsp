@@ -17,36 +17,36 @@
 			$("#coupon_rate").val(coupon_rate);
 			var cRate = $("#coupon_rate").val();;
 			var priceBeforeDc = opener.document.getElementById("priceBeforeDc").value;
-			alert("제이쿼리로 불러온 할인율 " + cRate);
-			alert("자스로 불러온 금액 " + priceBeforeDc);
+// 			alert("제이쿼리로 불러온 할인율 " + cRate);
+// 			alert("자스로 불러온 금액 " + priceBeforeDc);
 			
 			var dcPrice = cRate * 0.01 * priceBeforeDc;
-			alert("dcPrice : " + dcPrice);
+// 			alert("dcPrice : " + dcPrice);
 			
 			document.getElementById("dcPrice").innerHTML = dcPrice;
 			
 			var totalPrice = priceBeforeDc - dcPrice;
 			document.getElementById("price").innerHTML = totalPrice;
-			alert("total Price : " + totalPrice);
+// 			alert("total Price : " + totalPrice);
 			
 			window.opener.$("#totalPrice").val(totalPrice);
 			var win = window.opener.$("#totalPrice").val();
-			alert("win : " + win);
+// 			alert("win : " + win);
 			
 			window.opener.$('input[name=res_price]').val(totalPrice);
 			var inputpr = window.opener.$('input[name=res_price]').val();
-			alert("inp : " + inputpr)
+// 			alert("inp : " + inputpr)
 			
 			window.opener.document.getElementById("totalPrice").innerHTML = totalPrice;
 			
 			
 			$("#coupon_idx").val(coupon_idx);
 			var cIdx = $("#coupon_idx").val();;
-			alert("제이쿼리로 불러온 쿠폰번호  " + cIdx);
+// 			alert("제이쿼리로 불러온 쿠폰번호  " + cIdx);
 			
 			window.opener.$('input[name=coupon_idx]').val(coupon_idx);
 			var opennerCpIdx = window.opener.$('input[name=coupon_idx]').val();
-			alert("opennerCpIdx : " + opennerCpIdx)
+// 			alert("opennerCpIdx : " + opennerCpIdx)
 			
 // 			window.opener.document.getElementById("couponIdx").innerHTML = cIdx;
 			
@@ -61,15 +61,15 @@
 			var priceBeforeDc = opener.document.getElementById("priceBeforeDc").value;
 			
 			document.getElementById("dcPrice").innerHTML = 0;
-			alert("안쿠폰 일 때 dcPrice : " + dcPrice);
+// 			alert("안쿠폰 일 때 dcPrice : " + dcPrice);
 			
 			var totalPrice = priceBeforeDc;
 			document.getElementById("price").innerHTML = totalPrice;
-			alert("안 쿠폰 일 때 total Price : " + totalPrice);
+// 			alert("안 쿠폰 일 때 total Price : " + totalPrice);
 			
 			window.opener.$('input[name=res_price]').val(totalPrice);
 			var inputpr = window.opener.$('input[name=res_price]').val();
-			alert("inp : " + inputpr)
+// 			alert("inp : " + inputpr)
 			
 			window.opener.document.getElementById("totalPrice").innerHTML = totalPrice;
 			

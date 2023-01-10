@@ -6,10 +6,7 @@
 <head>
 <!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->
 <!-- css -->
-<link rel="stylesheet" href="assets/css/reset.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/swiper.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/terms.css">
 
 <!-- Favicons -->
 <link href="assets/img/favicon.png" rel="icon">
@@ -67,9 +64,23 @@ $(function(){
 	</header>
 	<hr>
 	<!-- //header -->
+	<!-- ======= Breadcrumbs ======= -->
+	<section class="breadcrumbs">
+	  <div class="container">
+	
+	    <div class="d-flex justify-content-between align-items-center">
+	      <h2>약관동의</h2>
+	      <ol>
+	        <li><a href="./">Home</a></li>
+	        <li>Terms</li> 
+	      </ol>
+	    </div>
+	
+	  </div>
+	</section>
+<!-- ======= Breadcrumbs ======= -->
 
-	<form id="terms_form" class="f" align="center" action="MemberJoinForm.sm">
-		<br><br><br><br>
+	<form id="terms_form" class="f" align="center" action="MemberJoinForm.sm" >
 		<p class="page-info-txt" align="center">
 			<strong>약관동의 및 정보활용동의</strong><br> 
 			<span>스몰박스 서비스 이용을 위한 약관에 동의해주세요.</span>
@@ -91,9 +102,9 @@ $(function(){
 			</p>
 			<hr>
 			<p>
-				<label><input type="checkbox" id="check_all" name="check_all" /> 위의 약관에 동의합니다.</label><br>
+				<label><input type="checkbox" id="check_all" name="check_all"/> 위의 약관에 동의합니다.</label><br>
 			</p>
-			<p>
+			<p style="padding-right: 600px;">
 				<input type="button" id="nextBtn" class="button_big" value="다음단계" onclick="location.href='MemberJoinForm.sm'">
 			</p>
 		</div>

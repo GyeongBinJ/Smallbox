@@ -55,7 +55,7 @@
  	<jsp:include page="inc/top.jsp"></jsp:include>
 </header>
 
-  <!-- ======= Hero Section ======= -->
+<!-- ======= Hero Section ======= -->
   <section id="hero">
     <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
@@ -157,7 +157,7 @@
 	<div class="container">
 		<div class="row no-gutters" align="center">
 			<div class="col-lg-4 col-md-6">
-				<div class="search">
+				<div class="search" style="padding-top: 5px;">
 					<input type="text" placeholder="영화명을 입력하세요" title="영화 검색" class="input-text" id="movieName">
 					<button type="button" class="btn" id="btnSearch">
 						<i class="fa-solid fa-magnifying-glass"></i>
@@ -252,8 +252,8 @@
                 </svg>
                 <i class="fas fa-user-headset"></i>
               </div>
-              <h4><a href="">고객문의</a></h4>
-              <p>This is the customer inquiry board. If you have any questions or questions about our small box, please feel free to contact us.</p>
+              <h4><a href="Notice_list.ad">공지사항</a></h4>
+              <p class="hidden">This is the customer inquiry board. If you have any questions or questions about our small box, please feel free to contact us.</p>
             </div>
           </div>
 
@@ -265,8 +265,8 @@
                 </svg>
               <i class="fas fa-building"></i>
               </div>
-              <h4><a href="">조원 소개</a></h4>
-              <p>This is the introduction space of the team members who worked on the project togethe</p>
+              <h4><a href="team.ad">조원 소개</a></h4>
+              <p class="hidden">This is the introduction space of the team members who worked on the project togethe</p>
             </div>
           </div>
 
@@ -278,8 +278,8 @@
                 </svg>
                 <i class="fas fa-camera-movie"></i>
               </div>
-              <h4><a href="">영화관 소개</a></h4>
-              <p>Let me introduce our movie theater facilities! It's gonna be awesome!</p>
+              <h4><a href="teatherList.ad">영화관 소개</a></h4>
+              <p class="hidden">Let me introduce our movie theater facilities! It's gonna be awesome!</p>
             </div>
           </div>
 
@@ -384,12 +384,12 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/dc2.jpeg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/dc2.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>DC</h4>
                 <p>DC</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/dc2.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                  <a href="assets/img/portfolio/dc2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
