@@ -33,8 +33,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/couponlist.css" rel="stylesheet">
-  <!--   아이콘 -->
-  <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 </head>
 <body>
 	<!-- 비회원 접근 불가 -->
@@ -91,38 +89,45 @@
 	<table style="text-align: center;margin-top: 80px;margin-left:50px"><!-- 왼쪽공간이 너무 넓어서 margin-left설정 -->
 		<thead>
 		<tr>
-			<th width="100">예약 번호<br>res_idx</th>
-			<th width="150">영화 제목<br>theater_title</th>
-			<th width="100">상영관<br>theater_idx</th>
-			<th width="100">상영일<br>res_date</th>
-			<th width="100">상영시간<br>res_time</th>
-			<th width="100">좌석<br>res_seat</th>
-			<th width="100">관람인원<br>res_num</th>
-			<th width="100">예매취소</th>
-			<th width="100">리뷰작성</th>
+			<th width="100">예약 번호</th>
+<!-- 			<th width="150">예매자 아이디</th> -->
+			<th width="150">영화 제목</th>
+			<th width="100">상영관<br>theather_title<br>theater_idx</th>
+<!-- 			<th width="100">예약일<br>res_date</th> -->
+			<th width="100">상영일<br>theater_date</th>
+			<th width="150">상영시간<br>res_time</th>
+			<th width="150">좌석</th>
+<!-- 			<th width="150">관람인원</th>예약이 어떻게 될지 봐야 알것같아요.
+근데 좌석 A12, C12 이런식으로 복수개 보여줘도 충분하지 않을까..고민 -->
+			<th width="150">예매 취소하기</th>
+			<th width="150">리뷰 작성하기</th>
 		</tr>
 		</thead>
 		<tbody>
 		<c:forEach var="reserve" items="${reserveList }">
 			<tr>
-				<td>${reserve.res_idx }</td>
-				<td>${reserve.theater_title }</td>
-				<td>${reserve.theater_idx }</td>
+				<td>${reserve.res_num }</td>
+<%-- 				<td>${reserve.member_id }</td> --%>
+				<td>${reserve.movie_title }</td>
+				<td>${theater.theater_title }<br>
+					…………………<br>
+					${reserve.theater_idx }<br>
+				</td>
 				<td>
 <!-- 					JSTL 의 fmt 라이브러리를 활용하여 날짜 표현 형식 변경 -->
 <!-- 					fmt:formatDate - Date 타입 날짜 형식 변경 -->
 <!-- 					fmt:parseDate - String 타입 날짜 형식 변경 -->
-					<fmt:formatDate value="${reserve.res_date }" pattern="yy-MM-dd"/>
+					<fmt:formatDate value="${theater.theater_date }" pattern="yy-MM-dd"/>
 				</td>
 				<td>${reserve.res_time }</td>
 				<td>${reserve.res_seat }</td>
-				<td>${reserve.res_num }</td>
 				<td>
-					<button onclick="location.href='ReserveCancel.my?res_idx=${reserve.res_idx }&pageNum=${pageNum }'"><iconify-icon icon="mdi:movie-off" style="color: #3b0b5f;"></iconify-icon></button>
+					<input type="button" value="취소" onclick="location.href='ReserveCancel.my?res_num=${reserve.res_num }'"><br>
 				</td>
 				<td>
-					<button onclick="location.href='#'"><iconify-icon icon="jam:write-f" style="color: #3b0b5f;"></iconify-icon></button>
+					<input type="button" value="작성" onclick="location.href='ReviewWriteForm.my?res_num=${reserve.res_num }'"><br>
 				</td>
+			</tr>
 		</c:forEach>
 	</table>
 	<!-- 만약, pageNum 파라미터가 비어있을 경우 pageNum 변수 선언 및 기본값 1로 설정 -->
@@ -143,10 +148,10 @@
 		-->
 		<c:choose>
 			<c:when test="${pageNum > 1}">
-				<input type="button" value="이전" onclick="location.href='Reserved.my?pageNum=${pageNum - 1}'">
+				<input type="button" class="pagebtn" value="이전" onclick="location.href='Reserved.my?pageNum=${pageNum - 1}'">
 			</c:when>
 			<c:otherwise>
-				<input type="button" value="이전">
+				<input type="button" class="pagebtn" value="이전">
 			</c:otherwise>
 		</c:choose>
 			
@@ -166,10 +171,10 @@
 		<!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 -->
 		<c:choose>
 			<c:when test="${pageNum < pageInfo.maxPage}">
-				<input type="button" value="다음" onclick="location.href='Reserved.my?pageNum=${pageNum + 1}'">
+				<input type="button" class="pagebtn" value="다음" onclick="location.href='Reserved.my?pageNum=${pageNum + 1}'">
 			</c:when>
 			<c:otherwise>
-				<input type="button" value="다음">
+				<input type="button" class="pagebtn" value="다음">
 			</c:otherwise>
 		</c:choose>
 	</section>

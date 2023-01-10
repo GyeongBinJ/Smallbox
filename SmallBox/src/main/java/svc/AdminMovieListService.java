@@ -11,24 +11,24 @@ import vo.StarMovieBean;
 public class AdminMovieListService {
 	
 	// 관리자 페이지 - 상영일정 등록을 위한 영화 목록 조회(파라미터X)
-		public List<MovieBean> getAdminMovieList() {
-			System.out.println("AdminMovieListService - getAdminMovieList()");
-			List<MovieBean> movieList = null;
-			
-			// 공통작업
-			Connection con = JdbcUtil.getConnection();
-			MovieDAO dao = MovieDAO.getInstance();
-			dao.setConnection(con);
-			
-			// DAO에서 조회한 목록 정보가 담긴 List 객체를 Action 클래스로 리턴
-			movieList = dao.selectMovieList();
-//			System.out.println(movieList);
+	public List<MovieBean> getAdminMovieList() {
+		System.out.println("AdminMovieListService - getAdminMovieList()");
+		List<MovieBean> movieList = null;
 		
-			JdbcUtil.commit(con);
-			JdbcUtil.close(con);
-			
-			return movieList; // AdminTheaterInsertFormAction
-		}
+		// 공통작업
+		Connection con = JdbcUtil.getConnection();
+		MovieDAO dao = MovieDAO.getInstance();
+		dao.setConnection(con);
+		
+		// DAO에서 조회한 목록 정보가 담긴 List 객체를 Action 클래스로 리턴
+		movieList = dao.selectMovieList();
+//			System.out.println(movieList);
+	
+		JdbcUtil.commit(con);
+		JdbcUtil.close(con);
+		
+		return movieList; // AdminTheaterInsertFormAction
+	}
 
 	// 관리자 페이지 - 영화 목록 조회 + 검색기능
 	public List<MovieBean> getAdminMovieList(String keyword, int startRow, int listLimit) {

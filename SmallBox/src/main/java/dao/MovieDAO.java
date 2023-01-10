@@ -9,7 +9,6 @@ import java.util.List;
 
 import db.JdbcUtil;
 import vo.MovieBean;
-import vo.MovieLikeBean;
 import vo.StarMovieBean;
 
 public class MovieDAO {
@@ -587,5 +586,6 @@ public class MovieDAO {
 		
 		return starmovieList;
 	}
+		
 }
 	

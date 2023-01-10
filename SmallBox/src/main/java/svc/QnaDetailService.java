@@ -25,6 +25,7 @@ public class QnaDetailService {
 		qna = dao.selectQna(qna_idx);
 		
 		// 공통작업-4. Connection 객체 반환하기
+		JdbcUtil.commit(con);
 		JdbcUtil.close(con);
 		
 		return qna;

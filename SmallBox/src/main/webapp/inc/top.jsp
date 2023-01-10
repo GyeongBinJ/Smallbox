@@ -95,7 +95,6 @@ function confirm_logout() {
 	          	</ul>
               </li>
 	    	 </nav><!-- .navbar -->
-	    	 </nav><!-- .navbar -->
 	    	  <!-- 로고 -->
 	    	  <h1 class="logo me-auto" style="margin: 0 auto;">
 		    	 <a href="./">
@@ -148,6 +147,5 @@ function confirm_logout() {
 	</c:otherwise>
 </c:choose>
 
-<!-- ======= Header ======= -->
 </body>
 </html>

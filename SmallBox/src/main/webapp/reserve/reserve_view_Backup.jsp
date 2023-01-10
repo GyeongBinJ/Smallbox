@@ -35,7 +35,7 @@
 <style>
 
 
-#movie-select {
+.movie-select {
 	width: 200px; 
 	padding: .8em .5em; 
 	font-size: 15px;
@@ -161,32 +161,17 @@
 
 .timeButton:hover,
 .timeButton.active {
-	background: #3B0B5F;
+	background: #A0A0FF;
   	color: white;
 }
 .timeButton:visited {
-	background: #3B0B5F;
+	background: #A0A0FF;
   	color: white;
 }
 .timeButton {
 	border: 0;
-	width: 90px;
-	height: 40px;
 }
-.submit_btn {
-  position: relative;
-  border: 0;
-  padding: 15px 25px;
-  display: inline-block;
-  text-align: center;
-  color: white;
-  background-color: black;
-  border-radius: 10px;
-}
-.submit_btn:hover,
-.submit_btn:active {
-  background-color: #3B0B5F; 
-}
+
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -206,7 +191,7 @@
 					data: { // 전송할 데이터(파라미터) 지정(일반 파라미터일 경우 중괄호로 묶음)
 						// 폼 데이터를 가져와서 파라미터로 표현(전송)하는 경우
 						// 파라미터명: 데이터 형식으로 지정
-						movie_title: $("#movie-select").val(), // select option에서 선택한 값
+						movie_title: $(".movie-select > option:selected").val(), // select option에서 선택한 값
 						reserve_date: clickDate // 선택한 날짜
 					},
 					dataType: "text", // 응답 데이터에 대한 타입 지정(일반 데이터는 text 이며 HTML 코드도 포함 가능, 자바스크립트 포함되면 html 사용)
@@ -222,8 +207,6 @@
 				});
 				
 			});
-			
-			
 		};
 
 		// 상영 시간 값을 지정할 때 영화 제목, 상영 날짜, 상영시간을 모두 선택하지 않으면 좌석 페이지로 넘어갈 수 없도록 제어
@@ -236,7 +219,6 @@
 	             }
 	             
 	          });
-
 	});
 </script>	
 </head>
@@ -261,6 +243,7 @@
       </div>
     </section>
 <!-- --------------------- 들고다니세요 ------------------------------------ -->
+<<<<<<< HEAD
 <div class="reserve-sId">
 	<c:choose>
 		<c:when test="${empty sessionScope.sId }">
@@ -273,6 +256,9 @@
 
 </div>
 
+<div class="reserve-sId">${sessionScope.sId }님,</div>
+<!-- <h1>예매</h1> -->
+<!--     <form action=""> -->
     <div class="reserve-container">
         <div class="movie-part">
             <div class="reserve-title">영화</div>
@@ -280,28 +266,30 @@
                 <div class="sort-rate sort-selected">예매율순</div>
             </div>
             <div class="movie-list">
-            <select id="movie-select" name="selectName">
+            <select class="movie-select">
 				<option value="">영화를 선택하세요.</option>
 <!-- 			이 밑으로는 디비에서 불러온 값을 넣습니다. 반복문을 사용하여 작업해주시면 됩니다. -->
-				<c:forEach var="movie" items="${movieList }">
-					
-					<option value="${movie.movie_title }">	${movie.movie_grade }
-							<a href="MovieDetail.mv?movie_idx=${movie.movie_idx }">${movie.movie_title }</a>
-					</option>		
-				</c:forEach>
+			<c:forEach var="movie" items="${movieList }">
+				
+				<option id="selectedMovie" value="${movie.movie_title }">	${movie.movie_grade }
+						<a href="MovieDetail.mv?movie_idx=${movie.movie_idx }">${movie.movie_title }</a>
+				</option>		
+			</c:forEach>
 				
 
 		</select>
-				<div class="movie_picture">
-				</div>
 			</div>
+        </div>
+        <div class="theater-part">
+            <div class="reserve-title">극장</div>
+            <div>SmallBox 1관</div>
         </div>
         <div class="day-part">
             <div class="reserve-title">날짜</div>
             <div class="reserve-date"></div>
         </div>
 <!--         </form> -->
-    <form action="ReserveSeat.mv" method="post" id="reserveForm">
+    <form action="ReserveSeat.mv" method="post">
         <div class="time-part">
             <div class="reserve-title">시간</div>
             <div class="theater-list">
@@ -316,6 +304,7 @@
 			        <input type="submit" value="좌석 선택하기" class="submit_btn">
 				</c:otherwise>
 	</c:choose>
+	        <input type="submit" value="좌석 선택하기" class="movie-date-wrapper">
         </div>
     </form>
     </div>
@@ -381,8 +370,6 @@
                 })
                 button.classList.add("movie-date-wrapper-active");
             })
-// 			alert($(button).attr("id"));
-			$(".movie-date-wrapper-active").attr("id", "btn_selected");
         }
         
         

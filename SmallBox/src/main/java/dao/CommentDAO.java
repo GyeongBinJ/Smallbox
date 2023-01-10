@@ -141,7 +141,7 @@ public class CommentDAO {
 		
 		return deleteCount;
 	} // ~~~~method public int deleteComment end~~~~
-
+	
 	public CommentBean getMovieIdx(int comment_idx) {
 		CommentBean comment = null;
 		
