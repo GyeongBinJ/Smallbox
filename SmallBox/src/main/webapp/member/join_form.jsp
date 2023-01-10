@@ -169,17 +169,8 @@ $(function() {
 				url: "MemberAuth.sm",
 				data: {
 					id : $("#member_id").val(),
-// 					authCode: $("#authInputBox").val(),
 					email1 : $("#member_email1").val(),
 					email2 : $("#member_email2").val()
-				},
-				success: function(result) {
-					// 리턴받은 판별 결과("true", "false") 판별
-// 					if(result == "true"){
-					if(result){
-						$("#authInputBox").attr("disabled",true);
-						$("#authEmailCheck").html("이메일 인증 코드 발송!").css("color", "blue");
-					}
 				}
 			});
 	});
@@ -197,14 +188,17 @@ $(function() {
 					authCode: $("#authInputBox").val()
 				},
 				success: function(result) {
+					if(result == $("#authInputBox").val()) { // 입력한 인증코드가 디비에 있는 인증코드와 같다면
 						$("#authEmailCheck").html("이메일 인증 완료!").css("color", "green");
+					} else {
+						$("#authEmailCheck").html("인증 실패").css("color", "red");
+					}	
 				}
+			});
 			
 		});
 	});
 	
-});
-
 	
 </script>
 </head>
@@ -256,8 +250,8 @@ $(function() {
 						<option value="">직접입력</option>	
 						<option value="naver.com">naver.com</option>
 						<option value="nate.com">nate.com</option>
-						<option value="daum.com">daum.com</option>
-						<option value="google.gmail">google.gmail</option>
+						<option value="daum.net">daum.net</option>
+						<option value="gmail.com">gmail.com</option>
 					</select>
 			</td>
 		</tr>
@@ -265,8 +259,7 @@ $(function() {
 			<td>이메일 인증번호</td>
 			<td> 
 				<input type="text" id="authInputBox" size="15" placeholder="인증코드입력란">
-<!-- 					<span id = "authEmailCheck"><a id ="authCheck" href="MemberAuth.sm"> 인증하려면 확인하세요!</a></span> -->
-				<input type="button" id="authCheck" value="이얍!">
+				<input type="button" id="authCheck" value="인증코드 전송!" onclick="alert('인증코드가 발송되었습니다')">
 				<span id = "authEmailCheck"></span>
 			</td>
 		</tr>

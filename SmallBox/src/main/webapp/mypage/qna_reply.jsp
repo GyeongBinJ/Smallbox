@@ -34,15 +34,14 @@
   <script src="https://kit.fontawesome.com/5a85844b1b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<!-- 비회원 접근 불가 -->
-	<c:if test="${empty sessionScope.sId }">
+	<!-- 관리자 아니면 접근 불가 -->
+	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
 		<script type="text/javascript">
 		 	alert("접근 불가합니다.");
 		 	history.back();
 		</script>
 	</c:if>
-	<!-- 비회원 접근 불가 -->
-
+	<!-- 관리자 아니면 접근 불가 -->
 	<header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
 	</header>
@@ -74,13 +73,13 @@
   		<label class="animate">MENU<i class="fa fa-bars float-right"></i></label>
 	  		<ul class="animate">
 			    <li class="animate"><a href="MyPageMain.my">마이페이지</a></li>
-			    <li class="animate"><a href="MemberModifyForm.sm">회원정보수정</a></li>
+			    <li class="animate"><a href="#">회원정보수정</a></li>
 			    <li class="animate"><a href="Reserved.my">예매내역</a></li>
 			    <li class="animate"><a href="CouponList.my">쿠폰함</a></li>
 			    <li class="animate"><a href="MovieLikeList.my">찜목록</a></li>
 			    <li class="animate"><a href="ReviewList.my">리뷰내역</a></li>
 			    <li class="animate"><a href="QnaList.my">문의내역</a></li>
-			    <li class="animate"><a href="MemberDeleteForm.sm">회원탈퇴</a></li>
+			    <li class="animate"><a href="#">회원탈퇴</a></li>
 	  		</ul>
   		</dropdown>
   	<!-- 사이드바 -->

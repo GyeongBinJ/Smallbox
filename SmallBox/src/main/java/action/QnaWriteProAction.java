@@ -63,13 +63,3 @@ public class QnaWriteProAction implements Action {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-

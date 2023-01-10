@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,12 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.AdminMovieListProAction;
 import action.CouponListProAction;
 import action.MovieLikeListProAction;
-import action.MovieLikeProAction;
-import action.MovieListProAction;
 import action.MyPageMainAction;
+import action.QnaDeleteProAction;
+import action.QnaDetailAction;
+import action.QnaListAction;
+import action.QnaReplyFormAction;
+import action.QnaReplyProAction;
+import action.QnaWriteProAction;
+import action.ReserveCancelProAction;
+import action.ReserveListAction;
+import action.ReserveToReviewProAction;
 import action.ReviewDeleteProAction;
 import action.ReviewListProAction;
 import vo.ActionForward;
@@ -50,6 +55,45 @@ public class MyPageFrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		} else if(command.equals("/ReviewDelete.my")) { // 마이페이지 - 리뷰 삭제 (포워딩 경로가 달라서 상세페이지 리뷰 삭제랑 합치면 안됨)
  			action = new ReviewDeleteProAction();
+			forward = action.execute(request, response);
+		} else if (command.equals("/Reserved.my")) { // 마이페이지 - 예약 목록 출력
+			action = new ReserveListAction();
+			forward = action.execute(request, response);
+		} else if (command.equals("/ReserveCancel.my")) { // 마이페이지 - 예약 취소
+			action = new ReserveCancelProAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/QnaWriteForm.my")) { // 마이페이지 - 1:1문의 작성
+			forward = new ActionForward();
+			forward.setPath("mypage/qna_write.jsp");
+			forward.setRedirect(false);
+		} else if(command.equals("/QnaWritePro.my")) { // 마이페이지 - 1:1문의 작성 작업
+			action = new QnaWriteProAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/QnaList.my")) { // 마이페이지 - 1:1문의 내역
+			action = new QnaListAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/QnaDetail.my")) { // 마이페이지 - 1:1문의 상세보기
+			action = new QnaDetailAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/QnaDeleteForm.my")) { // 마이페이지 - 1:1문의 삭제
+			forward = new ActionForward();
+			forward.setPath("mypage/qna_delete.jsp");
+			forward.setRedirect(false); // 생략도 가능
+		} else if(command.equals("/QnaDeletePro.my")) { // 마이페이지 - 1:1문의 내역 삭제
+			action = new QnaDeleteProAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/QnaReplyForm.my")) { //마이페이지 - 1:1문의 관리자 답변
+			// 답글 작성 폼 비즈니스 작업 요청
+			// QnaReplyFormAction 의 execute() 메서드 호출
+			action = new QnaReplyFormAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/QnaReplyPro.my")) { //마이페이지 - 1:1문의 관리자 답변작업
+			// 답글 작성 비즈니스 작업 요청
+			// QnaReplyProAction 의 execute() 메서드 호출
+			action = new QnaReplyProAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/ReserveToReview.my")) {
+			action = new ReserveToReviewProAction();
 			forward = action.execute(request, response);
 		} 
 		
