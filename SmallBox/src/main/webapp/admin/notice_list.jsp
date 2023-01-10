@@ -29,14 +29,6 @@
 <link href="./assets/css/style_admin.css" rel="stylesheet">
 </head>
 <body>
-	<!-- 관리자 아니면 접근 불가 -->
-	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
-		<script type="text/javascript">
-		 	alert("접근 불가합니다.");
-		 	history.back();
-		</script>
-	</c:if>
-	<!-- 관리자 아니면 접근 불가 -->
 
 	<header id="header">
     	<jsp:include page="../inc/top_admin.jsp"></jsp:include>
@@ -49,7 +41,6 @@
           <h2>공지</h2>
           <ol>
             <li><a href="./">Home</a></li>
-            <li><a href="Admin.ad">관리자 페이지</a></li>
             <!-- 페이지 주소, 이름 넣는곳 -->
             <li><a href="Notice_list.ad">공지사항 목록</a></li>
           </ol>
@@ -123,7 +114,9 @@
 						<input type="text" class="pagebtn" name="keyword">
 						<input type="submit" class="pagebtn" value="검색">
 						&nbsp;&nbsp;
-						<input type="button" class="pagebtn" value="글쓰기" onclick="location.href='Admin_notice_write.ad'" />
+						<c:if test="${not empty sessionScope.sId and sessionScope.sId eq 'admin'}">
+							<input type="button" class="pagebtn" value="글쓰기" onclick="location.href='Admin_notice_write.ad'" />
+						</c:if>
 					</form>
 				</section>
 				<section id="pageList">

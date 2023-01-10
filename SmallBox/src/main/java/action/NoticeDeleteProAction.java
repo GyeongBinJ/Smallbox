@@ -59,7 +59,7 @@ public class NoticeDeleteProAction implements Action {
 					}
 					
 					forward = new ActionForward();
-					forward.setPath("NoticeList.ad?pageNum=" + request.getParameter("pageNum"));
+					forward.setPath("Notice_list.ad?pageNum=" + request.getParameter("pageNum"));
 					forward.setRedirect(true);
 				}
 			
