@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<script type="text/javascript">
+function confirm_delete(comment_idx) {
+	let result = confirm("삭제 하시겠습니까?");
+	
+	if(result) {
+		location.href="ReviewDelete.my?comment_idx=" + comment_idx;
+	}
+}
+</script>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -28,6 +37,7 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/couponlist.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 비회원 접근 불가 -->
@@ -70,13 +80,13 @@
   		<label class="animate">MENU<i class="fa fa-bars float-right"></i></label>
 	  		<ul class="animate">
 			    <li class="animate"><a href="MyPageMain.my">마이페이지</a></li>
-			    <li class="animate"><a href="#">회원정보수정</a></li>
-			    <li class="animate"><a href="#">예매내역</a></li>
+			    <li class="animate"><a href="MemberModifyForm.sm">회원정보수정</a></li>
+			    <li class="animate"><a href="Reserved.my">예매내역</a></li>
 			    <li class="animate"><a href="CouponList.my">쿠폰함</a></li>
 			    <li class="animate"><a href="MovieLikeList.my">찜목록</a></li>
 			    <li class="animate"><a href="ReviewList.my">리뷰내역</a></li>
-			    <li class="animate"><a href="#">문의내역</a></li>
-			    <li class="animate"><a href="#">회원탈퇴</a></li>
+			    <li class="animate"><a href="QnaList.my">문의내역</a></li>
+			    <li class="animate"><a href="MemberDeleteForm.sm">회원탈퇴</a></li>
 	  		</ul>
   		</dropdown>
   	<!-- 사이드바 -->
@@ -84,26 +94,32 @@
    
     <section class="inner-page" style="display: inline-block;">
 		
-		<table border="1" style="text-align: center;">
-			<tr>
-				<th>영화명</th>
-				<th>평점</th>
-				<th>내용</th>
-				<th>등록일</th>
-			</tr>
+		<table style="text-align: center;margin-top: 80px;">
+		    <thead>
+		    <tr>
+		        <th width="150">포스터</th>
+		        <th width="200">내용</th>
+		        <th width="100">평점</th>
+		        <th width="150">작성일</th>
+		        <th width="150"></th>
+		
+		    </tr>
+		    </thead>
+	    <tbody>
 			
 			<!-- ReviewListProAction으로 부터 전달받은 request 객체의 reviewList(리뷰 정보)를 꺼내서 출력 -->
 			<c:forEach var="comment" items="${reviewList }">
 			<tr>
-				<td>${comment.movie_idx }</td>
-				<td>${comment.comment_star }</td>
+				<td><img src="<%=request.getContextPath() %>/upload/${comment.movie_real_picture}"  width="150" height="200"></td>
 				<td>${comment.comment_content }</td>
+				<td>${comment.comment_star }</td>
 				<td>${comment.comment_date }</td>
+				<td><input type="button" class="pagebtn"value="삭제" onclick="javascript:confirm_delete(${comment.comment_idx })"></td>
 			</tr>	
 			</c:forEach>
 		</table>
 	
-			<section id="pageList" style="text-align: center;"> <!-- 페이징 처리 영역 -->
+			<section id="pageList" style="text-align: center;margin-left: 320px;"> <!-- 페이징 처리 영역 -->
 	
 			<!-- 만약, pageNum 파라미터가 비어있을 경우 pageNum 변수 선언 및 기본값 1로 설정 -->
 			<c:choose>

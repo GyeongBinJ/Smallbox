@@ -6,6 +6,7 @@ import java.util.List;
 import dao.MovieDAO;
 import db.JdbcUtil;
 import vo.MovieBean;
+import vo.StarMovieBean;
 
 public class AdminMovieListService {
 	
@@ -80,6 +81,23 @@ public class AdminMovieListService {
 		JdbcUtil.close(con);
 		
 		return likeList;
+	}
+
+	public List<StarMovieBean> getStarMovieList(String keyword, int startRow, int listLimit) {
+		List<StarMovieBean> starmovieList = null;
+		
+		Connection con = JdbcUtil.getConnection();
+		MovieDAO dao = MovieDAO.getInstance();
+		dao.setConnection(con);
+		
+		// DAO에서 조회한 목록 정보가 담긴 List 객체를 Action 클래스로 리턴
+		starmovieList = dao.selectStarMovieList(keyword, startRow, listLimit);
+		
+		JdbcUtil.commit(con);
+
+		JdbcUtil.close(con);
+		
+		return starmovieList;
 	}
 
 }

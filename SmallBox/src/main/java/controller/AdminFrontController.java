@@ -198,7 +198,15 @@ public class AdminFrontController extends HttpServlet {
 		} else if (command.equals("/CouponDelete.ad")) { // 만료된 쿠폰 삭제
 			action = new AdminCouponDeleteProAction();
 			forward = action.execute(request, response);
-			
+		
+		// ==============================영준 작업 딱히 어디둬야할지 몰라서...===========================================	
+		// 극장 페이지 이동 매핑
+		} else if (command.equals("/teatherList.ad")) {
+			forward = new ActionForward();
+			forward.setPath("about/teather_list.jsp");
+		} else if (command.equals("/team.ad")) {
+			forward = new ActionForward();
+			forward.setPath("about/project_team.jsp");
 		}
 		
 		// ----------------------------------------------------------------------
