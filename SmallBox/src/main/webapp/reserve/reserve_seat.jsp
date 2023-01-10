@@ -173,7 +173,7 @@ input[type=checkbox] + label{
 
 /*좌석 클릭 시*/
 input[type=checkbox]:checked + label{
-	background-color: pink;
+	background-color: #3B0B5F;
 }
 
 /*이미 예약 된 좌석*/
@@ -182,11 +182,37 @@ input[type=checkbox]:disabled + label{
 }
 
 /*좌석에 마우스 올림*/
- .line:hover { 
- 	background: pink; 
+.line:hover { 
+ 	background: #3B0B5F; 
    	color: white; 
  } 
 
+/*결제버튼*/
+#pagebtn {
+	text-align: center; 
+	margin-top: 30px; 
+	margin-bottom: 10px;
+	color: #3B0B5F;
+	padding: 4px 10px;
+	border-radius: 4px;
+	border: 2px solid #3B0B5F;
+	transition: 0.3s;
+	font-size: 15px;
+	background-color: white;
+}
+/*결제버튼 마우스 올림*/
+#pagebtn:hover {
+	text-align: center; 
+	margin-top: 30px; 
+	margin-bottom: 10px;
+	color: #fff;
+	padding: 4px 10px;
+	border-radius: 4px;
+	border: 2px solid #fff;
+	transition: 0.3s;
+	font-size: 15px;
+	background-color: #3B0B5F;
+}
 
 </style>
 <script src="js/jquery-3.6.3.js"></script>
@@ -833,7 +859,7 @@ $(document).ready(function() {
             <input type="hidden" name="select_number_elderly" value="0">
             <input type="hidden" name="theater_idx" value="${theater_idx }">
             </div>
-           <input type="submit" value="결제하기" class="movie-date-wrapper">
+           <input type="submit" value="결제하기" class="movie-date-wrapper" id="pagebtn">
         </div>
     </form>
     </div>

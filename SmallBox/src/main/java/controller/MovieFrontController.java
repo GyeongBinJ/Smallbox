@@ -19,6 +19,7 @@ import action.CommentWriteProAction;
 import action.MovieDetailAction;
 import action.MovieLikeProAction;
 import action.MovieListProAction;
+import action.ReserveCheckCouponAction;
 import action.ReservePaymentProAction;
 import action.ReserveSeatProAction;
 import action.ReserveSelectProAction;
@@ -106,7 +107,12 @@ public class MovieFrontController extends HttpServlet {
 			
 			action = new ReservePaymentProAction();
 			forward = action.execute(request, response);
-		}
+		} else if(command.equals("/ReserveCheckCoupon.mv")) {
+			System.out.println("controller : ReservePayment.mv");
+			
+			action = new ReserveCheckCouponAction();
+			forward = action.execute(request, response);
+		} 
 		
 		
 		// ----------------------------------------------------------------------

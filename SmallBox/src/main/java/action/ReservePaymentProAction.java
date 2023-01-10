@@ -1,12 +1,15 @@
 package action;
 
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Time;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import svc.ReserveDeleteCouponService;
 import svc.ReservePaymentProService;
+import svc.ReserveSubtractSeatService;
 import vo.ActionForward;
 import vo.ReserveBean;
 
@@ -24,7 +27,11 @@ public class ReservePaymentProAction implements Action {
 		Date res_date = Date.valueOf(request.getParameter("res_date"));
 		Time res_time = Time.valueOf(request.getParameter("res_time"));
 		int res_price = Integer.parseInt(request.getParameter("res_price"));
-
+		int coupon_idx = Integer.parseInt(request.getParameter("coupon_idx"));
+		
+		//좌석 뺼 때 사람 수
+		int people = 0;
+		
 		//예매 번호 만들기
 	//=========================================
 		//너무 길어서 그런가 string으로 계속 뜸
@@ -39,6 +46,7 @@ public class ReservePaymentProAction implements Action {
 		
 		//		좌석은 갯수 때문에 따로 함
 		System.out.println("pro action's theater_idx : " + theater_idx);
+		System.out.println("pro action's coupon_idx : " + coupon_idx);
 //		System.out.println("theater_title : " + theater_title);
 //		System.out.println("member_id : " + member_id);
 //		System.out.println("res_date : " + res_date);
@@ -76,6 +84,8 @@ public class ReservePaymentProAction implements Action {
 		boolean isReserveSuccess = service.reserveAndPayment(reserve);
 		System.out.println("pro action의 isReserveSuccess: " + isReserveSuccess);
 		
+		people = 1;
+		
 		if(arrSeat.length == 2) {
 			reserve = new ReserveBean();
 			reserve.setTheater_idx(theater_idx);
@@ -97,6 +107,8 @@ public class ReservePaymentProAction implements Action {
 			service = new ReservePaymentProService();
 			boolean isReserveSuccess2 = service.reserveAndPayment(reserve);
 			System.out.println("pro action의 isReserveSuccess2: " + isReserveSuccess2);
+			people = 2;
+			System.out.println("2 ? " + people);
 			
 		} else if(arrSeat.length == 3) {
 			for(int i = 1; i <3; i++) {
@@ -124,7 +136,8 @@ public class ReservePaymentProAction implements Action {
 				} else if(i==2) {
 					Boolean isReserveSuccess3 = service.reserveAndPayment(reserve);
 					System.out.println("pro action의 isReserveSuccess3: " + isReserveSuccess3);
-					
+					people = 3;
+					System.out.println("3 ? " + people);
 				}
 			} //3일 떄 for end
 			
@@ -158,14 +171,22 @@ public class ReservePaymentProAction implements Action {
 				} else if(i==3) {
 					Boolean isReserveSuccess4 = service.reserveAndPayment(reserve);
 					System.out.println("pro action의 isReserveSuccess3: " + isReserveSuccess4);
-					
+					people = 4;
+					System.out.println("4 ? " + people);
 				}
 			} //3일 떄 for end
 		}
+	
+//		delete coupon, 극장 번호 조회 후 최대인원 -1;
+		ReserveSubtractSeatService ssservice = new ReserveSubtractSeatService();
+		Boolean isSubtractSeatSuccess = ssservice.substractSeat(theater_idx, people);
 		
-//		forward = new ActionForward();
-//		forward.setPath("ReserveDetail.mv");
-//		forward.setRedirect(true);
+		ReserveDeleteCouponService dcpService = new ReserveDeleteCouponService();
+		boolean isDelCpSuccess = dcpService.deleteCoupon(coupon_idx);
+		
+		forward = new ActionForward();
+		forward.setPath("ReserveDetail.mv");
+		forward.setRedirect(true);
 		
 		return forward;
 	}
