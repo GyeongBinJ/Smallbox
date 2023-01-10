@@ -98,13 +98,13 @@
   		<label class="animate">MENU<i class="fa fa-bars float-right"></i></label>
 	  		<ul class="animate">
 			    <li class="animate"><a href="MyPageMain.my">마이페이지</a></li>
-			    <li class="animate"><a href="#">회원정보수정</a></li>
-			    <li class="animate"><a href="#">예매내역</a></li>
+			    <li class="animate"><a href="MemberModifyForm.sm">회원정보수정</a></li>
+			    <li class="animate"><a href="Reserved.my">예매내역</a></li>
 			    <li class="animate"><a href="CouponList.my">쿠폰함</a></li>
 			    <li class="animate"><a href="MovieLikeList.my">찜목록</a></li>
 			    <li class="animate"><a href="ReviewList.my">리뷰내역</a></li>
-			    <li class="animate"><a href="#">문의내역</a></li>
-			    <li class="animate"><a href="#">회원탈퇴</a></li>
+			    <li class="animate"><a href="QnaList.my">문의내역</a></li>
+			    <li class="animate"><a href="MemberDeleteForm.sm">회원탈퇴</a></li>
 	  		</ul>
   		</dropdown>
   	<!-- 사이드바 -->
@@ -123,7 +123,6 @@
                      class="card-img-top" alt="..." >
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center;">${movie.movie_title }</h5>
-                    <P class="card-star" style="text-align: center;">⭐⭐⭐</P> <!-- 평점 통계낸거~~ 자바스크립트 별적용~~ -->
 				<div class="text-center"> 
 					<button class="btn btn-outline-dark mt-auto" id="btn_like" onclick="cancleLike('${movie.movie_idx}')">찜해제</button>
                 </div>

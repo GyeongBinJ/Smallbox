@@ -9,7 +9,7 @@ import java.util.List;
 
 import db.JdbcUtil;
 import vo.MovieBean;
-import vo.MovieLikeBean;
+import vo.StarMovieBean;
 
 public class MovieDAO {
 
@@ -474,6 +474,8 @@ public class MovieDAO {
 		return movieCount;
 	}
 
+
+
 	// 개봉 예정작 리스트 조회
 	public List<MovieBean> selectCommingMovieList(String keyword, int startRow, int listLimit) {
 		List<MovieBean> commingMovieList = null;
@@ -526,7 +528,7 @@ public class MovieDAO {
 		
 		try {
 			// 영화 제목에 keyword(검색어)를 포함하는 영화의 갯수 
-			String sql = "SELECT * FROM movie m WHERE exists (SELECT * FROM movie v WHERE movie_open_date > curdate() AND m.movie_idx = v.movie_idx)";
+			String sql = "SELECT Count(*) FROM movie m WHERE exists (SELECT * FROM movie v WHERE movie_open_date > curdate() AND m.movie_idx = v.movie_idx) AND movie_title LIKE ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword + "%");
 			rs = pstmt.executeQuery();
@@ -536,7 +538,7 @@ public class MovieDAO {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("SQL 구문 오류! - selectBoardListCount()");
+			System.out.println("SQL 구문 오류! - selectCommingListCount()");
 			e.printStackTrace();
 		} finally {
 			JdbcUtil.close(rs);
@@ -544,7 +546,46 @@ public class MovieDAO {
 		}
 		
 		return listCount;
+	} 
+	
+	// 영화 목록 - 영화 목록 출력 (평점 포함) -> 뷰 이용
+	public List<StarMovieBean> selectStarMovieList(String keyword, int startRow, int listLimit) {
+		List<StarMovieBean> starmovieList = null;
+		
+		try {
+			
+			// keyword(검색어)를 포함하는 제목을 가진 영화 startRow ~ listLimit개만큼 출력
+			String sql = "SELECT * FROM star_movie WHERE movie_title LIKE ? ORDER BY movie_viewer DESC LIMIT ?,?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, listLimit);
+			rs = pstmt.executeQuery();
+			
+			starmovieList = new ArrayList<StarMovieBean>();
+			
+			while(rs.next()) {
+				StarMovieBean starmovie = new StarMovieBean();
+				starmovie.setMovie_idx(rs.getInt("movie_idx"));
+				starmovie.setMovie_title(rs.getString("movie_title"));
+				starmovie.setMovie_open_date(rs.getDate("movie_open_date"));
+				starmovie.setMovie_real_picture(rs.getString("movie_real_picture"));
+				starmovie.setMovie_viewer(rs.getInt("movie_viewer"));
+				starmovie.setComment_star(rs.getDouble("comment_star"));
+				
+				starmovieList.add(starmovie);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류! - selectStarMovieList()");
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return starmovieList;
 	}
-	
-	
+		
 }
+	

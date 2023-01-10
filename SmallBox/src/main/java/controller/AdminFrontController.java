@@ -30,8 +30,6 @@ import action.MovieModifyProAction;
 import action.NoticeDeatilAction;
 import action.NoticeDeleteProAction;
 import action.NoticeListAction;
-import action.NoticeModifyFormAction;
-import action.NoticeModifyProAction;
 import action.NoticeWriteProAction;
 import action.AdminTheaterInsertProAction;
 import vo.ActionForward;
@@ -157,16 +155,6 @@ public class AdminFrontController extends HttpServlet {
 			System.out.println("공지 삭제 요청");
 			action = new NoticeDeleteProAction();
 			forward = action.execute(request, response);
-			
-		} else if(command.equals("/NoticeModifyForm.ad")) {
-			System.out.println("공지 수정 폼 요청");
-			action = new NoticeModifyFormAction();
-			forward = action.execute(request, response);
-		} else if(command.equals("/Admin_notice_modifyPro.ad")) {
-			System.out.println("공지 수정 작업 요청");
-			
-			action = new NoticeModifyProAction();
-			forward = action.execute(request, response);	
 	// 회원	-------------------------------------------------------------	
 		} else if (command.equals("/MemberList.ad")) { // 회원 목록 
 			action = new MemberListAction();
@@ -198,7 +186,15 @@ public class AdminFrontController extends HttpServlet {
 		} else if (command.equals("/CouponDelete.ad")) { // 만료된 쿠폰 삭제
 			action = new AdminCouponDeleteProAction();
 			forward = action.execute(request, response);
-			
+		
+		// ==============================영준 작업 딱히 어디둬야할지 몰라서...===========================================	
+		// 극장 페이지 이동 매핑
+		} else if (command.equals("/teatherList.ad")) {
+			forward = new ActionForward();
+			forward.setPath("about/teather_list.jsp");
+		} else if (command.equals("/team.ad")) {
+			forward = new ActionForward();
+			forward.setPath("about/project_team.jsp");
 		}
 		
 		// ----------------------------------------------------------------------

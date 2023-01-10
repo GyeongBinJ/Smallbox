@@ -59,7 +59,7 @@ public class MovieFrontController extends HttpServlet {
 			action = new CommentWriteProAction();
 			forward = action.execute(request, response);
 		
-		} else if (command.equals("/DelComment.mv")) {
+		} else if (command.equals("/DelComment.mv")) { // 리뷰삭제
 			System.out.println("controller : DelComment.mv");
 			
 			action = new CommentDeleteAction();
@@ -113,6 +113,7 @@ public class MovieFrontController extends HttpServlet {
 			action = new ReserveCheckCouponAction();
 			forward = action.execute(request, response);
 		} 
+		
 		
 		// ----------------------------------------------------------------------
 		// ActionForward 객체 내용에 따라 각각 다른 방식의 포워딩 작업 수행(공통)

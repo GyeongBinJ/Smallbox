@@ -11,6 +11,7 @@ import db.JdbcUtil;
 import vo.ReserveBean;
 
 public class ReserveDAO {
+
 	//==============mvc==========================================
 	private static ReserveDAO instance = new ReserveDAO();
 	

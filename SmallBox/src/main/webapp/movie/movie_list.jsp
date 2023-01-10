@@ -116,7 +116,6 @@
 	  <div style="text-align: center;">	
 		<button class="Listbtn" onclick="location.href='MovieList.mv'">박스오피스</button>
 		<button class="Listbtn" onclick="location.href='ComingMovieList.mv'">상영 예정작</button>
-	  	<!-- movie_open_date를 어케 넘길지 -->
 	  </div>	
         <p>
        	  <section class="py-5">
@@ -129,7 +128,7 @@
         	<div class="wrap">
        		<div class="row row-cols-1 row-cols-md-4 g-4">
         	<!-- MovieLikeListProAction으로 부터 전달받은 request 객체의 likeList(영화 정보)를 꺼내서 출력 -->
-			<c:forEach var="movie" items="${movieList }">
+			<c:forEach var="movie" items="${starmovieList }">
         		<div class="col">
             	<div class="card" style="object-fit:cover">
                		 <a href="MovieDetail.mv?movie_idx=${movie.movie_idx}&pageNum=${pageNum }"><img src="<%=request.getContextPath() %>/upload/${movie.movie_real_picture}"  width="300" height="350"
@@ -137,7 +136,7 @@
                 <div class="card-body">
                 <h5 class="card-title" style="text-align: center;">${movie.movie_title }</h5>
                 <h5 class="card-date" style="text-align: center;font-size: 16px">개봉일 ${movie.movie_open_date }</h5>
-                <P class="card-star" style="text-align: center;">⭐⭐⭐</P> <!-- 평균낸 별점과 자바스크립트 들어가면 될듯 -->
+                <P class="card-star" style="text-align: center;">평점 ${movie.comment_star }</P> <!-- 평균낸 별점과 자바스크립트 들어가면 될듯 -->
                 <div class="text-center"> 
                 
 <!--                 movie.movie_idx가 like.movie_idx를 포함하면 찜해제 아니면 찜 -->

@@ -6,12 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import svc.CouponListService;
 import svc.ReviewListService;
 import vo.ActionForward;
-import vo.CommentBean;
-import vo.CouponBean;
 import vo.PageInfo;
+import vo.PosterBean;
 
 public class ReviewListProAction implements Action {
 
@@ -38,7 +36,7 @@ public class ReviewListProAction implements Action {
 		
 		// 각 회원의 리뷰 내역을 조회하는 DB 작업을 요청하기 위해 서비스의 getReviewList() 호출
 		ReviewListService service = new ReviewListService();
-		List<CommentBean> reviewList = service.getReviewList(member_id, startRow, commentLimit);
+		List<PosterBean> reviewList = service.getReviewList(member_id, startRow, commentLimit);
 		
 		// ------------------------------------------------
 		// [ 페이징 처리 ]

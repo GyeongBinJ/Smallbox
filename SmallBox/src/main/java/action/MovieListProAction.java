@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import svc.AdminMovieListService;
-import svc.MovieLikeProService;
 import vo.ActionForward;
 import vo.MovieBean;
 import vo.PageInfo;
+import vo.StarMovieBean;
 
 public class MovieListProAction implements Action {
 
@@ -47,7 +47,7 @@ public class MovieListProAction implements Action {
 		
 		// 영화 게시글 목록 조회 + 검색 기능
 		AdminMovieListService service = new AdminMovieListService();
-		List<MovieBean> movieList = service.getAdminMovieList(keyword, startRow, listLimit);
+		List<StarMovieBean> starmovieList = service.getStarMovieList(keyword, startRow, listLimit);
 		
 		// 영화 목록 페이지 접속시 각 회원별 찜 목록 가져오기
 		List<Integer> likeList = service.getLikeList(member_id);
@@ -71,11 +71,11 @@ public class MovieListProAction implements Action {
 		// --------------------------------------------------
 		
 		// 뷰페이지에서 사용하기 위해서 페이징 정보도 requset에 저장해서 넘겨야함
-		request.setAttribute("movieList", movieList);
+		request.setAttribute("starmovieList", starmovieList);
 		request.setAttribute("pageInfo", pageInfo);
 		// 찜리스트 저장
 		request.setAttribute("likeList", likeList);
-		System.out.print(likeList);
+//		System.out.print(likeList);
 		
 		// 조회 작업이므로 if문으로 조건 판별없이 바로 포워딩 정보 저장
 		forward = new ActionForward();

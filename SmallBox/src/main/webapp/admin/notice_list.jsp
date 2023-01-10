@@ -31,7 +31,7 @@
 <body>
 
 	<header id="header">
-    	<jsp:include page="../inc/top_admin.jsp"></jsp:include>
+    	<jsp:include page="../inc/top.jsp"></jsp:include>
     </header>
 <!-- ----------------------------------------<관리자 페이지>에 들고다니세요--------------------------------------------------------- -->    
     <section class="breadcrumbs">

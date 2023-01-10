@@ -136,7 +136,6 @@
                 <div class="card-body">
                 <h5 class="card-title" style="text-align: center;">${commingMovie.movie_title }</h5>
                 <h5 class="card-date" style="text-align: center;font-size: 16px">개봉일 ${commingMovie.movie_open_date }</h5>
-                <P class="card-star" style="text-align: center;">⭐⭐⭐</P> <!-- 평균낸 별점과 자바스크립트 들어가면 될듯 -->
                 <div class="text-center"> 
                 
 <!--                 movie.movie_idx가 like.movie_idx를 포함하면 찜해제 아니면 찜 -->
