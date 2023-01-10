@@ -49,6 +49,8 @@ public class MovieLikeProAction implements Action {
 					
 					PrintWriter out = response.getWriter();
 					
+//					out.println("<button class=\"btn btn-outline-dark mt-auto\" id=\"btn_like\" onclick=\"changeLike('${movie.movie_idx}')\">");
+					
 					out.println("<script>");
 					out.println("alert('찜 해제 실패!')");
 					out.println("history.back()"); 
@@ -65,7 +67,7 @@ public class MovieLikeProAction implements Action {
 					response.setContentType("text/html; charset=UTF-8"); // setContentType을 설정해야 HTML 문서로 인식됨
 					
 					PrintWriter out = response.getWriter();
-				
+//					out.println("<input type='button' class='btn btn-outline-dark mt-auto' value='찜해제' id='btn_like' onclick='changeLike('${movie.movie_idx}')>");
 					out.println("<script>");
 					out.println("alert('찜 실패!')");
 					out.println("history.back()"); 

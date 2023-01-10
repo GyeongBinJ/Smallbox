@@ -96,7 +96,7 @@ function confirm_delete(movie_idx) {
         	<div class="wrap">
        		<div class="row row-cols-1 row-cols-md-4 g-4">
         	<!-- MovieLikeListProAction으로 부터 전달받은 request 객체의 likeList(영화 정보)를 꺼내서 출력 -->
-			<c:forEach var="movie" items="${movieList }">
+			<c:forEach var="movie" items="${starmovieList }">
         		<div class="col">
             	<div class="card" style="object-fit:cover">
                		 <a href="AdminMovieDetailPro.ad?movie_idx=${movie.movie_idx}&pageNum=${pageNum }"><img src="<%=request.getContextPath() %>/upload/${movie.movie_real_picture}"  width="300" height="350"
@@ -104,7 +104,7 @@ function confirm_delete(movie_idx) {
                 <div class="card-body">
                 <h5 class="card-title" style="text-align: center;font-size: 19px;">${movie.movie_title }</h5>
                 <h5 class="card-date" style="text-align: center;font-size: 16px;">개봉일 ${movie.movie_open_date }</h5>
-                <P class="card-star" style="text-align: center;">⭐⭐⭐</P> <!-- 평균낸 별점과 자바스크립트 들어가면 될듯 -->
+               	<P class="card-star" style="text-align: center;">평점 ${movie.comment_star }</P><!-- 평균낸 별점과 자바스크립트 들어가면 될듯 -->
                 <div class="text-center"> 
                 	<a class="btn btn-outline-dark mt-auto" href="MovieModifyForm.ad?movie_idx=${movie.movie_idx}&pageNum=${pageNum }">수정</a>
                 	<a class="btn btn-outline-dark mt-auto" href="javascript:confirm_delete(${movie.movie_idx})">삭제</a></div>

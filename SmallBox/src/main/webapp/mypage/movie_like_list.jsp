@@ -46,8 +46,7 @@
 			    	  movie_idx : movie_idx 
 			      }, 
 			      success: function(result) {
-// 			    	  location.reload(); // 전체페이지 새로고침
-			    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
+// 			    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
 		
 			      }
 		      });

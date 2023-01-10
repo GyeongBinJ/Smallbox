@@ -11,6 +11,7 @@ import svc.AdminMovieListService;
 import vo.ActionForward;
 import vo.MovieBean;
 import vo.PageInfo;
+import vo.StarMovieBean;
 
 public class AdminMovieListProAction implements Action {
 
@@ -44,7 +45,7 @@ public class AdminMovieListProAction implements Action {
 		
 		// 영화 게시글 목록 조회 + 검색 기능
 		AdminMovieListService service = new AdminMovieListService();
-		List<MovieBean> movieList = service.getAdminMovieList(keyword, startRow, listLimit);
+		List<StarMovieBean> starmovieList = service.getStarMovieList(keyword, startRow, listLimit);
 		
 		// ------------------------------------------------
 		// [ 페이징 처리 ]
@@ -65,7 +66,7 @@ public class AdminMovieListProAction implements Action {
 		// --------------------------------------------------
 		
 		// 뷰페이지에서 사용하기 위해서 페이징 정보도 requset에 저장해서 넘겨야함
-		request.setAttribute("movieList", movieList);
+		request.setAttribute("starmovieList", starmovieList);
 		request.setAttribute("pageInfo", pageInfo);
 		
 		// 조회 작업이므로 if문으로 조건 판별없이 바로 포워딩 정보 저장
