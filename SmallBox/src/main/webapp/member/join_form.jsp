@@ -250,8 +250,8 @@ $(function() {
 						<option value="">직접입력</option>	
 						<option value="naver.com">naver.com</option>
 						<option value="nate.com">nate.com</option>
-						<option value="daum.com">daum.com</option>
-						<option value="google.gmail">google.gmail</option>
+						<option value="daum.net">daum.net</option>
+						<option value="gmail.com">gmail.com</option>
 					</select>
 			</td>
 		</tr>
@@ -259,8 +259,7 @@ $(function() {
 			<td>이메일 인증번호</td>
 			<td> 
 				<input type="text" id="authInputBox" size="15" placeholder="인증코드입력란">
-<!-- 					<span id = "authEmailCheck"><a id ="authCheck" href="MemberAuth.sm"> 인증하려면 확인하세요!</a></span> -->
-				<input type="button" id="authCheck" value="이얍!">
+				<input type="button" id="authCheck" value="인증코드 전송!" onclick="alert('인증코드가 발송되었습니다')">
 				<span id = "authEmailCheck"></span>
 			</td>
 		</tr>

@@ -23,5 +23,19 @@ public class AuthcodeService {
 		
 		return authcodeConfirm;
 	}
+	
+	// 인증코드 중복 확인시 인증코드 삭제!
+	public void authCodeDelete(String authCode) {
+		Connection con = JdbcUtil.getConnection();
+		
+		AuthDAO dao = AuthDAO.getInstance();
+		dao.setConnection(con);
+		
+		dao.authcodeDelete(authCode);
+
+		JdbcUtil.commit(con);
+		JdbcUtil.close(con);
+		
+	}
 
 }

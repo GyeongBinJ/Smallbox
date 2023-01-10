@@ -43,27 +43,27 @@ public class AuthDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, auth.getAuth_id());
 			rs = pstmt.executeQuery();
-			boolean isAuthCode = rs.next(); 
-				if(isAuthCode) { // 아이디가 존재한다면! 난수로 update!
-					System.out.println("셀렉트 성공");
+				if(rs.next()) { // 아이디가 존재한다면! 난수로 update!
+//					System.out.println("셀렉트 성공");
 //					System.out.println(auth.getAuth_authCode());
 //					System.out.println(auth.getAuth_id());
 					sql = "UPDATE auth SET auth_authCode = ? WHERE auth_id = ?";
 					pstmt2 = con.prepareStatement(sql);
 					pstmt2.setString(1, auth.getAuth_authCode());
 					pstmt2.setString(2, auth.getAuth_id());
-					pstmt2.executeUpdate();
-					if(pstmt2.executeUpdate() > 0) {
+					int count = pstmt2.executeUpdate();
+					if(count > 0) {
 						insertAuthSuccess = true;
 					}
 				} else {
-					System.out.println("값 없음");
+//					System.out.println("값 없음2");
 					sql = "INSERT INTO auth VALUES(?, ?)";
 					pstmt3 = con.prepareStatement(sql);
 					pstmt3.setString(1, auth.getAuth_id());
 					pstmt3.setString(2, auth.getAuth_authCode());
-					pstmt3.executeUpdate();
-					if(pstmt3.executeUpdate() > 0) {
+					int count = pstmt3.executeUpdate();
+					System.out.println("count = " + count );
+					if(count > 0) {
 						insertAuthSuccess = true;
 					}					
 				}
@@ -78,6 +78,7 @@ public class AuthDAO {
 		}
 		return insertAuthSuccess;
 	}
+	
 	
 	
 	// 인증코드 확인작업
@@ -106,4 +107,23 @@ public class AuthDAO {
 		
 		return authcodeConfirm;
 	}
+	
+	// 인증코드 두번 확인시 삭제
+	public void authcodeDelete(String authCode) {
+		System.out.println("authcodeDelete() - dao");
+		try {
+			String sql = "DELETE FROM auth WHERE auth_authCode = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, authCode);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+	}
+
 }

@@ -34,7 +34,9 @@ public class MemberAuthCheckProAction implements Action {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.print(authcodeConfirm);
+				
 			}
+			service.authCodeDelete(authCode);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

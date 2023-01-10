@@ -116,8 +116,8 @@ input {
 				</tr>
 			</table>
 			<tr class="submit" style="text-align: center">
-				<td class="btn_login"><input type="submit" id="findPasswd"
-					value="비밀번호 찾기" class="btn-log" style="margin-bottom: 10px">
+				<td class="btn_login">
+				<input type="submit" id="findPasswd" value="비밀번호 찾기" class="btn-log" style="margin-bottom: 10px" onclick="alert('이메일이 전송되었습니다 메일함을 확인해주세요')">
 					<br></td>
 			</tr>
 		</div>
