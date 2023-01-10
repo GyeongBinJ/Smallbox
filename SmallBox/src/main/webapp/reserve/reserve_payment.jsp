@@ -2,12 +2,42 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>결제하기</title>
+<!-- css -->
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/swiper.css">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- Favicons -->
+<link href="assets/img/favicon.png" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Vendor CSS Files -->
+<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+<link href="./assets/css/style.css" rel="stylesheet">
+<script src="js/jquery-3.6.3.js"></script>
+<script type="text/javascript">
+let openWin;
+function newWindow(sId) {
+	openWin = window.open(
+    "ReserveCheckCoupon.mv?sId="+sId,
+    "cp",
+    "width=500, height=260, top=50, left=50"
+  );
+}
+
+</script>
 <style type="text/css">
 input[type=checkbox] {
 	display: none;
@@ -20,15 +50,59 @@ input[type=checkbox] + label{
 	margin-bottom: 5px;
 	width: 130px;
 	height: 30px;
+	border-radius: 4px;
 }
 input[type=checkbox]:checked + label{
-	background-color: pink;
+	background-color: #3B0B5F;
+	color: #fff;
+}
+/* 꾸미기 */
+#PaymentWrap {
+	margin-left: 80px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+h1 {
+	font-size: 40px;
+}
+
+.pagebtn:hover {
+	text-align: center; 
+	margin-top: 30px; 
+	margin-bottom: 10px;
+	color: #fff;
+	padding: 4px 10px;
+	border-radius: 4px;
+	border: 2px solid #3B0B5F;
+	transition: 0.3s;
+	font-size: 15px;
+	background-color: #3B0B5F;
 }
 
 </style>
 
 </head>
 <body>
+	<header>
+		<jsp:include page="../inc/top.jsp"></jsp:include>
+	</header>
+	
+<!-- --------------------- 들고다니세요 ------------------------------------ -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>예매</h2>
+          <ol>
+            <li><a href="Reserve.mv">예매</a></li>
+            <!-- 페이지 주소, 이름 넣는곳 -->
+            <li><a href="Reserve.mv">빠른 예매</a></li>
+            <li><a href="javascript:window.history.back();">좌석선택</a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+<!-- --------------------- 들고다니세요 ------------------------------------ -->	
+
 <!-- 받아온 정보 변수에 저장 -->
 <c:set var="theater_idx" value="${param.theater_idx }" />
 <c:set var="selectedSeat" value="${param.selectedSeat }" />
@@ -41,18 +115,19 @@ input[type=checkbox]:checked + label{
 <c:set var="select_number_elderly" value="${param.select_number_elderly }" />
 
 <!-- 받아온 정보 변수에 저장 끝 -->
+<div id="PaymentWrap">
 
-<h1>결제</h1>
+<h1>결제하기</h1>
+<hr>
 <!-- 예매한 영화 정보 표시 영역 -->
 ${movie_title }<br>
-극장 번호 : ${theater_idx }<br>
-id : ${sId }<br>
+<!-- 극장 번호 : ${theater_idx }<br> --!>
+<!-- id : ${sId }<br> --!>
 <hr>
 부산 | SmallBox 1관 <!-- 상영관 고정 -->
 ${reserved_date } | ${selected_time }<br>
 <hr>
 좌석 | ${selectedSeat }
-<hr>
 <!-- 받아온 인원 수 표시 영역 -->
 <!-- 성인, 청소년, 우대 요금으로 나눠서 계산, 요금 기억이 안나서 내맘대로 함 , 선택 한 인원이 있을 때 표시-->
 <c:if test="${select_number_adult gt 0}">
@@ -68,81 +143,27 @@ ${reserved_date } | ${selected_time }<br>
 <!-- 할인 전 최종 금액 -->
 <c:set var="priceBeforeDc" value="${(select_number_adult * 15000) + (select_number_teen * 13000) + (select_number_elderly * 8000)}" />
 금액  |  ${priceBeforeDc }
+<input type="hidden" id="priceBeforeDc" value="${priceBeforeDc }">
 <hr>
 <!-- 예매한 영화 정보 표시 영역 끝-->
 
-<!-- 쿠폰 사용 영역 -->
-<div>
-쿠폰 할인 적용
-<form action="ReserveCheckCoupon.mv" method="post">
-	<input type="hidden" name="sId" value="${sId }">
- 	<input type="submit" value="조회하기">
-<!--
-	조회하기 누르면 컨트롤러로 이동 ReserveCheckCoupon.mv 매핑 주소 확인 후 ReserveCheckCouponAction으로 이동
-	ReserveCheckCouponAction에서 ReserveCheckCouponService로 이동
-	ReserveCheckCouponService에서 CouponDao의 getUserCouponList 메서드 호출
-	String sql = "SELECT * FROM coupon WHERE member_id = ?";
-	action에서 
-	List<CouponBean> couponList = service.getUserCouponList(sId);
-	request.setAttribute("couponList", couponList);
--->
-</form>
+<!-- 쿠폰 조회하기 버튼 영역 -->
+쿠폰 할인 적용<br>
+
+ 	<input type="button" value="조회하기" onclick="newWindow('${sId}');" class="pagebtn" style="border-radius: 4px;"><br>
+<!-- 쿠폰 조회하기 버튼 영역 끝 -->
+
 <hr>
-<!-- 쿠폰 조회 결과 영역 -->
-	쿠폰 명  | 할인율	|<br>
-	-------+--------+---<br>
-	웰컴 쿠폰 | 10%	|사용<br>
-	-------+--------+---<br>
-	생일 쿠폰 | 20%	|사용<br>
-	-------+--------+---<br>
-<!-- 쿠폰 조회 결과 영역 -->
-<!--
-<table>
-	<tr>
-		<td>쿠폰</td>
-		<td>할인율</td>
-		<td></td>
-	</tr>
-	
-	<c:forEach var="coupon" items="${couponList }">
-	<tr>
-		<td>${coupon.coupon_type }</td>
-		<td>${coupon.coupon_rate }</td>
-		<td>
-			<input type="button" value="사용" onclick="confirmUse('${coupon.coupon_idx }')">
-		</td>
-	</tr>
-	</c:forEach>
-</table>
-			
--->
-		<script type="text/javascript">
-		
-// 		function confirmUse(coupon_idx) {
-// 			let result = confirm("쿠폰을 사용하시겠습니까?");
-			//쿠폰 사용한다하면 쿠폰 삭제작업 진행
-// 			if(result) {
-				//쿠폰 사용한다 하면 할인율(조회 필요) discout변수에 넣어 넘기기
-// 				let dc = 0; //할인율 받아오기
-// 				document.payment.discount.value = dc;
-				//쿠폰 삭제 매핑주소로 이동
-// 				location.href="UseCoupon.ad?coupon_idx=" + coupon_idx;
-// 			}
-// 		}
-		
-		</script>
-</div>
-<!-- 쿠폰 사용 영역 끝-->
 
 <!-- 결제창으로 넘길 영역 -->
 <!-- 할인금액 변수 -->
 <form action="ReservePaymentPro.mv" method="post" name="payment">
-<fmt:parseNumber var="discountPrice" value="${priceBeforeDc * discount * 0.1}" integerOnly="true" />
-할인 적용  |  ${discountPrice }
-<hr>
+
 <!-- 최종 결제 금액 변수 -->
 <c:set var="price" value="${priceBeforeDc - discountPrice }" />
-최종 결제 금액  |  ${price }
+
+최종 결제 금액  | <span id="totalPrice"></span><br>
+쿠폰 번호 : <span id="couponIdx"></span>
 <hr>
 
 
@@ -163,12 +184,17 @@ ${reserved_date } | ${selected_time }<br>
 <input type="hidden" name="res_date" value="${reserved_date }">
 <input type="hidden" name="res_time" value="${selected_time }">
 <input type="hidden" name="res_seat" value="${selectedSeat }">
-<input type="hidden" name="res_price" value="${price }">
+<input type="hidden" name="res_price" value="">
+<input type="hidden" name="coupon_idx" value="">
 <hr>
-<input type="submit" value="결제">
+<input type="submit" value="결제" class="pagebtn" style="border-radius: 4px;">
 </form>
 <!-- 결제창으로 넘길 영역 끝 -->
-
+</div> <!-- ~~~~payment Wrap end~~~~ -->
+<footer id="footer">
+	<jsp:include page="../inc/bottom.jsp"></jsp:include>
+</footer>
 
 </body>
+
 </html>

@@ -220,4 +220,67 @@ public class ReserveDAO {
 		}
 		return reserve;
 	}
+	//=========0108고은 마이페이지 예매관리===============================
+	
+	//=========0109해연 예매 추가 ===============================
+	
+	//예약 완료 후 전체 좌석 수에서 예약한 좌석 수 빼기
+		public int subtractSeat(int theater_idx, int people) {
+			System.out.println("ReserveDAO : subtractSeat");
+			int subCount = 0;
+			int theater_seat_cnt = 0;
+			
+			try {
+				String sql = "SELECT theater_seat_cnt FROM theater WHERE theater_idx=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, theater_idx);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					theater_seat_cnt = rs.getInt(1)-people;
+					System.out.println("dao : theater_seat_cnt : " + theater_seat_cnt);
+				}
+				
+				sql = "UPDATE theater SET theater_seat_cnt=? WHERE theater_idx=?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setInt(1, theater_seat_cnt);
+				pstmt2.setInt(2, theater_idx);
+				
+				subCount = pstmt2.executeUpdate();
+			} catch (SQLException e) {
+					System.out.println("SQL 구문 오류 - ReserveDAO>subtractSeat()");
+					e.printStackTrace();
+				} finally {
+					JdbcUtil.close(rs);
+					JdbcUtil.close(pstmt);
+					JdbcUtil.close(pstmt2);
+				} // ~~~~finally end~~~~
+			
+			return subCount;
+		}
+		//예약 완료 후 사용한 쿠폰 없애기
+
+		public int deleteUsedCoupon(int coupon_idx) {
+			System.out.println("ReserveDAO : deleteUsedCoupon");
+			int delCount = 0;
+			
+			try {
+				String sql = "DELETE FROM coupon WHERE coupon_idx=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, coupon_idx);
+			
+				delCount = pstmt.executeUpdate();
+			
+			} catch (SQLException e) {
+				System.out.println("SQL 구문 오류 : deleteUsedCoupon");
+				e.printStackTrace();
+			} finally {
+				JdbcUtil.close(pstmt);
+			} // ~~~~finally end~~~~
+
+			return delCount;
+		}	
+	
+	
+	//=========0109해연 예매 추가 ===============================
 }

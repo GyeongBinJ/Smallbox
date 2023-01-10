@@ -7,6 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- css -->
+<link rel="stylesheet" href="./assets/css/reset.css">
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/swiper.css">
+<link rel="stylesheet" href="./assets/css/style.css">
+
+<!-- Favicons -->
+<link href="assets/img/favicon.png" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Vendor CSS Files -->
+<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 <script type="text/javascript">
 	var locked = 0;
 	var i;
@@ -20,7 +37,7 @@
 		for (i = 1; i <= star; i++){
 			image = 'image' + i;
 			el = document.getElementById(image);
-			el.src = "image/star1.png";
+			el.src = "image/star1.jpg";
 		} // ~~~ for end~~~
 		
 	} // ~~~~function mouseover end~~~~
@@ -57,39 +74,161 @@
 	
 	
 </script>
+<style type="text/css">
+	#movieWrapper {
+		height: 400px;
+		background-color: #000; 
+	}
+
+	.movieWrapper_title{
+		color: #fff;
+		font-size: 30px;
+		display: inline-block;
+		margin-left: 20px;
+		margin-top: 20px;
+	}
+
+	.card-img-top {
+		width: 300px;
+		height: 350px;
+		display: inline-block;
+		float: right;
+		margin-top: 20px;
+		margin-right: 20px;
+	}
+
+	.movieWrapper_viewer {
+		color: gray;	
+		display: block;
+		margin-left: 20px;
+		margin-top: 50px;
+	}
+
+	hr {
+	color: gray;
+	}
+	.movieWrapper_actors {
+		color: gray;
+		display: block;
+		margin-left: 20px;
+		margin-top: 20px;
+	}
+	.movieWrapper_genre, .movieWrapper_open {
+		color: gray;
+		display: block;
+		margin-left: 20px;
+		margin-top: 5px;
+	}
+	.movieWrapper_button {
+		margin-left: 20px;
+		margin-top: 80px;
+		text-align: center; 
+		margin-bottom: 10px;
+		width: 60px;
+		height: 40px;
+		
+		color: #fff;
+		padding: 4px 10px;
+		border-radius: 4px;
+		border: 2px solid #3B0B5F;
+		transition: 0.3s;
+		font-size: 15px;
+		background-color: #3B0B5F;
+	
+	}
+	
+	.movieWrapper_button:hover {
+		margin-left: 20px;
+		margin-top: 80px;
+		text-align: center; 
+		margin-bottom: 10px;
+		width: 60px;
+		height: 40px;
+		color: #fff;
+		padding: 4px 10px;
+		border-radius: 4px;
+		border: 2px solid #fff;
+		transition: 0.3s;
+		font-size: 15px;
+		background-color: #000;
+	
+	}
+	
+	#moveTab {
+		margin-top: 30px;
+		margin-left: 20px;
+		
+		
+	}
+	#moveTab1 {
+		padding: 10px;
+		border: 1px solid #e6e6e6;
+		
+		
+	}
+	#moveTab2 {
+		padding: 10px;
+		border: 1px solid #e6e6e6;
+		margin: -6px;
+	}
+
+	#moveTab1:hover {
+		border-top: 1px solid #3B0B5F;
+		border-right: 1px solid #3B0B5F;
+		border-left: 1px solid #3B0B5F;
+		
+	}
+	#moveTab2:hover {
+		border: 1px solid #3B0B5F;
+	}
+	
+</style>
 </head>
 <body>
 	<header>
 		<jsp:include page="../inc/top.jsp"></jsp:include>
 	</header>
 	
-	<h1>영화 상세 정보</h1>
+<!-- --------------------- 들고다니세요 ------------------------------------ -->
+<!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>영화 상세 정보</h2>
+          <ol>
+            <li><a href="./">Home</a></li>
+            <li><a href="MovieList.mv">전체 영화</a></li>
+            <li>영화 상세 정보</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+<!-- --------------------- 들고다니세요 ------------------------------------ -->	
+	<div id="movieWrapper"> <!-- 영화 정보 영역 까만부분 -->
+		<span class="movieWrapper_title"> <!-- 영화 제목 영역 -->
+			${movie.movie_title }
+		</span> 
+		<img src="<%=request.getContextPath() %>/upload/${movie.movie_real_picture}" class="card-img-top" alt="..." >
 	
-		<table border="1">
-		<tr>
-			<th width="150">영화명</th>
-			<th width="150">등급</th>
-			<th width="100">장르</th>
-			<th width="150">개봉 날짜</th>
-			<th width="100">상영시간(runtime)</th>
-			<th width="150">줄거리</th>
-			<th width="150">등장인물</th>
-			<th width="150">영화 포스터</th>
-			<th width="50">누적 관람객 수</th>
-		</tr>
+		<span class="movieWrapper_viewer">누적 관객 수 | ${movie.movie_viewer }</span>
+		<hr>
+		<span class="movieWrapper_actors">${movie.movie_actors }</span>
+		<span class="movieWrapper_genre">장르 | ${movie.movie_genre } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 등급 | ${movie.movie_grade } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 상영시간 | ${movie.movie_runtime } 분</span>
+		<span class="movieWrapper_open">개봉 | ${movie.movie_open_date }</span>
 		
-		<tr>
-			<td>${movie.movie_title }</td>
-			<td>${movie.movie_grade }</td>
-			<td>${movie.movie_genre }</td>
-			<td>${movie.movie_open_date }</td>
-			<td>${movie.movie_runtime }</td>
+		<button type="button" class="movieWrapper_button">예매</button>
+	</div> <!-- 영화 정보 영역 까만부분 끝-->
+	
+	<div id="moveTab"><!-- 줄거리와 관람평 이동 탭 -->
+		<a id="moveTab1">줄거리</a>
+		<a id="moveTab2">관람평</a>
+	</div>
+			<th width="150">줄거리</th>
+			
 			<td>${movie.movie_intro }</td>
-			<td>${movie.movie_actors }</td>
-			<td>${movie.movie_picture }</td>
-			<td>${movie.movie_viewer }</td>
-		</tr>
-		</table>
+		
 		<hr>
 		<!-- 리뷰 작성 영역, 임시로 누구나 작성할 수 있도록 하고 이후에 예매 내역에 해당 영화 제목과 일치하는 제목이 있는
 				     id만 작성할 수 있도록 함(지금 해당 내용을 작성하실 수 있으면 해보시는 것도 좋을 것 같아요!
@@ -166,7 +305,6 @@
 <!-- 				session id 와 리뷰 쓴 아이디가 같을 때 삭제 버튼 표시 -->
 				<c:if test="${sId eq member_id }">	
 <!-- 				<td> -->
-<%-- 					<input type="button" value="수정" onclick="location.href='DelComment.mv?comment_idx=${review.comment_idx }&member_id=${review.member_id }'"> --%>
 <!-- 				</td> -->
 				<td>
 					<input type="button" value="삭제" onclick="confirmDelete('${review.comment_idx }')">
@@ -176,19 +314,8 @@
 		</c:forEach>
 		</table>
 </div>
+
+
+<jsp:include page="../inc/bottom.jsp" />
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
