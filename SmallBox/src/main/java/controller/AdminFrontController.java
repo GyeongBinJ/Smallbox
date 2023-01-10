@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import action.Action;
 import action.AdminCouponDeleteProAction;
 import action.AdminCouponInsertProAction;
 import action.AdminCouponListAction;
+import action.AdminCouponListTotalAction;
 import action.AdminCouponModifyProAction;
 import action.AdminMovieDetailProAction;
 import action.AdminMovieListProAction;
@@ -35,6 +37,7 @@ import action.NoticeModifyProAction;
 import action.NoticeWriteProAction;
 import action.AdminTheaterInsertProAction;
 import vo.ActionForward;
+import vo.CouponBean;
 
 @WebServlet("*.ad")
 public class AdminFrontController extends HttpServlet {
@@ -182,9 +185,13 @@ public class AdminFrontController extends HttpServlet {
 			action = new AdminCouponInsertProAction();
 			forward = action.execute(request, response);	
 			
-		} else if (command.equals("/CouponList.ad")) { // 쿠폰 리스트 출력
+		} else if (command.equals("/CouponList.ad")) { //  회원별 쿠폰 리스트 출력
 			action = new AdminCouponListAction();
 			forward = action.execute(request, response);
+		
+		} else if (command.equals("/CouponListTotal.ad")) { // 전체 쿠폰 리스트 출력
+			action = new AdminCouponListTotalAction();
+			forward = action.execute(request, response);	
 			
 		} else if (command.equals("/CouponModify.ad")) { // 쿠폰 수정
 			forward = new ActionForward();

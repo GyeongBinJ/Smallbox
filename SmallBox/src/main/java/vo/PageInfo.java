@@ -20,6 +20,12 @@ public class PageInfo {
 		this.endPage = endPage;
 	}
 
+	@Override
+	public String toString() {
+		return "PageInfo [listCount=" + listCount + ", pageListLimit=" + pageListLimit + ", maxPage=" + maxPage
+				+ ", startPage=" + startPage + ", endPage=" + endPage + "]";
+	}
+
 	// Getter&Setter 정의
 	public int getListCount() {
 		return listCount;

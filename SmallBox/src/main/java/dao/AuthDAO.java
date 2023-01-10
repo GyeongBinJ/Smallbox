@@ -45,7 +45,7 @@ public class AuthDAO {
 			rs = pstmt.executeQuery();
 			boolean isAuthCode = rs.next(); 
 				if(isAuthCode) { // 아이디가 존재한다면! 난수로 update!
-//					System.out.println("셀렉트 성공");
+					System.out.println("셀렉트 성공");
 //					System.out.println(auth.getAuth_authCode());
 //					System.out.println(auth.getAuth_id());
 					sql = "UPDATE auth SET auth_authCode = ? WHERE auth_id = ?";

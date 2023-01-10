@@ -526,7 +526,7 @@ public class MovieDAO {
 		
 		try {
 			// 영화 제목에 keyword(검색어)를 포함하는 영화의 갯수 
-			String sql = "SELECT * FROM movie m WHERE exists (SELECT * FROM movie v WHERE movie_open_date > curdate() AND m.movie_idx = v.movie_idx)";
+			String sql = "SELECT * FROM movie m WHERE exists (SELECT * FROM movie v WHERE movie_open_date > curdate() AND m.movie_idx = v.movie_idx) AND movie_title LIKE ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword + "%");
 			rs = pstmt.executeQuery();
@@ -536,7 +536,7 @@ public class MovieDAO {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("SQL 구문 오류! - selectBoardListCount()");
+			System.out.println("SQL 구문 오류! - selectCommingListCount()");
 			e.printStackTrace();
 		} finally {
 			JdbcUtil.close(rs);

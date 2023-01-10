@@ -67,6 +67,8 @@ public class MemberAuthEmailProAction implements Action {
 		Session mailSession = Session.getDefaultInstance(props, myAuth);
 		
 		try {
+			
+			Address senderAddress = new InternetAddress("sdo7653@gamil.com", "Smallbox");
 			// 수신자 정보 설정을 위한 InternetAddress 객체 생성
 			Address resceiverAddress = new InternetAddress(email1 + "@" + email2);
 			
@@ -78,7 +80,7 @@ public class MemberAuthEmailProAction implements Action {
 			// 수신자 정보 설정
 			mailMessage.setRecipient(Message.RecipientType.TO, resceiverAddress);
 			// 발신자 정보 설정
-			mailMessage.setFrom(new InternetAddress("yongs1041@naver.com"));
+			mailMessage.setFrom(senderAddress);
 			// 메일 제목 설정
 			mailMessage.setSubject("[SmallBox] 인증 코드입니다");
 			// 메일 본문 설정

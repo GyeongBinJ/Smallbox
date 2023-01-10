@@ -33,7 +33,7 @@ public class MemberAuthCheckProAction implements Action {
 				System.out.println("확인 완료!");
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
-				System.out.print(authcodeConfirm);
+				out.print(authcodeConfirm);
 			}
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 <meta charset="UTF-8">
 <script type="text/javascript">
 function confirm_logout() {
@@ -15,6 +15,11 @@ function confirm_logout() {
 	}
 }
 </script>
+<style type="text/css">
+.topLogo {
+	padding-left: 20px;
+}
+</style>
 </head>
 <body>
 <c:choose>
@@ -23,72 +28,30 @@ function confirm_logout() {
 	    <div class="container d-flex align-items-center">
 	    	<nav id="navbar" class="navbar">
 	    	<li class="dropdown">
-              	<div style="margin-right: 100px;"><i class="fas fa-bars fa-2x"></i></div> 
+              	<div style="margin-right: 10px;"><i class="fas fa-bars fa-2x menu"></i></div> 
               		<ul>
 	          		<li class=""><h4>전체 메뉴</h4></li>
           			<li class="dropdown"><a href="MovieList.mv"><span>영화</span> <i class="bi bi-chevron-right"></i></a>
 						<ul>
 							<li><a href="MovieList.mv">박스오피스</a></li>
-							<li><a href="ComingMovieList.mv">상영 예정작</a></li>
+							<li><a href="ComingMovieList.mv">개봉 예정작</a></li>
 						</ul>
 					</li>
-	          		<li class="dropdown"><a href="#">예매<i class="bi bi-chevron-right"></i></a>
-	          			<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-							<li><a href="#">개봉 예정작</a></li>
-						</ul>
-	          		</li>
-	          		<li class="dropdown"><a href="#">극장<i class="bi bi-chevron-right"></i></a>
-	          			<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-						</ul>
-	          		</li>
-	          		<li class="dropdown"><a href="#">이벤트<i class="bi bi-chevron-right"></i></a>
-	          			<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-						</ul>
-	          		</li>
-	          		<li class="dropdown"><a href="#">혜택<i class="bi bi-chevron-right"></i></a>
-	          			<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-						</ul>
-	          		</li>
-                    <li class="dropdown"><a href="#">고객센터<i class="bi bi-chevron-right"></i></a>
-                    	<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-							<li><a href="#">개봉 예정작</a></li>
-						</ul>
-                    </li>
-                    <li class="dropdown"><a href="#">조원소개<i class="bi bi-chevron-right"></i></a>
-                    	<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-							<li><a href="#">개봉 예정작</a></li>
-						</ul>
-                    </li>
-                    <li class="dropdown"><a href="#">이용정책<i class="bi bi-chevron-right"></i></a>
-                    	<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-							<li><a href="#">개봉 예정작</a></li>
-						</ul>
+	          		<li class="dropdown"><a href="Reserve.mv">예매</a>
+                    <li class="dropdown"><a href="Notice_list.ad">공지사항</a>
+                    <li class="dropdown"><a href="team.ad">조원소개</a>
+                    <li class="dropdown"><a href="teatherList.ad">영화관 소개</a>
                     </li>
 	          	</ul>
               </li>
 	    	 </nav><!-- .navbar -->
 	    	  <!-- 로고 -->
-		      <h1 class="logo me-auto" style="margin: 0 auto;">
+		      <h1 class="logo me-auto">
 			      <a href="./">
-			        <img src="assets/img/logo.png">
+			        <img src="assets/img/logo.png" class="topLogo">
 			      </a>
 		      </h1>
 		        <!-- 로고 끝 -->
-		      
 	
 	      <nav id="navbar" class="navbar">
 	        <ul>
@@ -98,7 +61,7 @@ function confirm_logout() {
                     <li><a href="ComingMovieList.mv">상영 예정작</a></li>
 	          	</ul>
 	          </li>
-	          <li><a class="nav-link scrollto" href="#services">극장</a></li>
+	          <li><a class="nav-link scrollto" href="teatherList.ad">극장</a></li>
 	          <li><a class="nav-link scrollto" href="Notice_list.ad">공지</a></li>
               <li><a class="nav-link scrollto" href="MemberLoginForm.sm">로그인</a></li>
 	          <li><button class="getstarted scrollto" href="Reserve.mv">빠른예매</button></li>
@@ -115,59 +78,35 @@ function confirm_logout() {
 			<nav id="navbar" class="navbar">
 			
 	    	<li class="dropdown">
-              	<div style="margin-right: 100px;"><i class="fas fa-bars fa-2x"></i></div> 
+              	<div style="margin-right: 10px;"><i class="fas fa-bars fa-2x menu"></i></div> 
               		<ul>
 	          		<li class=""><h4>전체 메뉴</h4></li>
           			<li class="dropdown"><a href="MovieList.mv"><span>영화</span> <i class="bi bi-chevron-right"></i></a>
 						<ul>
 							<li><a href="MovieList.mv">박스오피스</a></li>
-							<li><a href="ComingMovieList.mv">상영 예정작</a></li>
+							<li><a href="ComingMovieList.mv">개봉 예정작</a></li>
 						</ul>
 					</li>
-	          		<li class="dropdown"><a href="Reserve.mv">예매<i class="bi bi-chevron-right"></i></a>
-	          			<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-							<li><a href="#">개봉 예정작</a></li>
-						</ul>
-	          		</li>
-	          		<li class="dropdown"><a href="MyPageMain.my">마이페이지<i class="bi bi-chevron-right"></i></a>
-	          			<ul>
-							<li><a href="#">회원정보수정</a></li>
-							<li><a href="#">예매내역</a></li>
+	          		<li class="dropdown"><a href="Reserve.mv">예매</a>
+                    <li class="dropdown"><a href="Notice_list.ad">공지사항</a>
+                    <li class="dropdown"><a href="team.ad">조원소개</a>
+                    <li class="dropdown"><a href="teatherList.ad">영화관 소개</a>
+                    <li class="dropdown"><a href="MyPageMain.my">마이페이지<i class="bi bi-chevron-right"></i></a>
+                    	<ul>
+							<li><a href="MovieList.mv">예매내역</a></li>
 							<li><a href="CouponList.my">쿠폰함</a></li>
 							<li><a href="MovieLikeList.my">찜목록</a></li>
 							<li><a href="ReviewList.my">리뷰내역</a></li>
-							<li><a href="#">문의내역</a></li>
-							<li><a href="#">회원탈퇴</a></li>
-						</ul>
-	          		</li>
-	          		<li class="dropdown"><a href="#">이벤트<i class="bi bi-chevron-right"></i></a>
-	          			<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-							<li><a href="#">개봉 예정작</a></li>
-						</ul>
-	          		</li>
-                    <li class="dropdown"><a href="#">고객센터<i class="bi bi-chevron-right"></i></a>
-                    	<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-							<li><a href="#">개봉 예정작</a></li>
-						</ul>
-                    </li>
-                    <li class="dropdown"><a href="#">조원소개<i class="bi bi-chevron-right"></i></a>
-                    	<ul>
-							<li><a href="#">박스오피스</a></li>
-							<li><a href="#">현재 상영작</a></li>
-							<li><a href="#">개봉 예정작</a></li>
+							<li><a href="qnaList.my">문의내역</a></li>
+							<li><a href="MemberDeleteForm.sm">회원탈퇴</a></li>
 						</ul>
                     </li>
 	          	</ul>
               </li>
 	    	 </nav><!-- .navbar -->
+	    	 </nav><!-- .navbar -->
 	    	  <!-- 로고 -->
-	    	  <h1 class="logo me-auto" style="margin: 0 auto;">
+	    	  <h1 class="logo me-auto">
 		    	 <a href="./">
 		     		<img src="assets/img/logo.png">
 		     	 </a>
@@ -181,14 +120,14 @@ function confirm_logout() {
                     <li><a href="ComingMovieList.mv">상영 예정작</a></li>
 	             </ul>
 	          </li>
-	        <li><a class="nav-link scrollto" href="#services">극장</a></li>
+	        <li><a class="nav-link scrollto" href="teatherList.ad">극장</a></li>
 	        <li><a class="nav-link scrollto" href="Notice_list.ad">공지사항</a></li>
 			<li class="dropdown"><a href="MyPageMain.my">${sessionScope.sId } 님<i class="bi bi-chevron-down"></i></a>
 		   	 <ul>
 					<li class="dropdown"><a href="#"><span>회원정보</span> <i class="bi bi-chevron-right"></i></a>
 						<ul>
-							<li><a href="#">회원정보수정</a></li>
-							<li><a href="#">회원탈퇴</a></li>
+							<li><a href="MemberModifyForm.sm">회원정보수정</a></li>
+							<li><a href="MemberDeleteForm.sm">회원탈퇴</a></li>
 						</ul>
 					</li>
 					<c:if test='${sessionScope.sId eq "admin"}'> 
@@ -205,7 +144,7 @@ function confirm_logout() {
 					<li><a href="CouponList.my">쿠폰함</a></li>
 					<li><a href="MovieLikeList.my">찜목록</a></li>
 					<li><a href="ReviewList.my">리뷰내역</a></li>
-					<li><a href="#">문의내역</a></li>
+					<li><a href="qnaList.my">문의내역</a></li>
 				</ul>
 			</li>
 	          <li><a class="nav-link scrollto" href="MemberLogout.sm">로그아웃</a></li>

@@ -178,8 +178,8 @@ public class CouponDAO {
 				System.out.println("SQL 구문 오류! - selectMemberCouponList()");
 				e.printStackTrace();
 			} finally {
-				JdbcUtil.close(pstmt);
 				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
 			}
 			
 			
@@ -216,8 +216,8 @@ public class CouponDAO {
 				System.out.println("SQL 구문 오류! - selectMemberCouponList()");
 				e.printStackTrace();
 			} finally {
-				JdbcUtil.close(pstmt);
 				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
 			}
 			
 			
@@ -242,11 +242,145 @@ public class CouponDAO {
 				System.out.println("SQL 구문 오류! - selectMemberCouponCount()");
 				e.printStackTrace();
 			} finally {
-				JdbcUtil.close(pstmt);
 				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
 			}
 			
 			return CouponCount;
+		}
+		
+		// 관리자 페이지 - 쿠폰 전체 목록 조회
+		public List<CouponBean> selectMemberCouponList() {
+			List<CouponBean> couponListTotal = null;
+//			System.out.println("selectMemberCouponList()");
+			try {
+				String sql = "SELECT * FROM coupon ORDER BY coupon_end_date ASC";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				couponListTotal = new ArrayList<CouponBean>();
+				
+				while(rs.next()) {
+					CouponBean coupon = new CouponBean();
+					coupon.setMember_id(rs.getString("member_id"));
+					coupon.setCoupon_idx(rs.getInt("coupon_idx"));
+					coupon.setCoupon_type(rs.getString("coupon_type"));
+					coupon.setCoupon_rate(rs.getInt("coupon_rate"));
+					coupon.setCoupon_date(rs.getDate("coupon_date"));
+					coupon.setCoupon_end_date(rs.getDate("coupon_end_date"));
+					
+					couponListTotal.add(coupon);
+				}
+				
+			} catch (SQLException e) {
+				System.out.println("SQL 구문 오류! - selectMemberCouponList()");
+				e.printStackTrace();
+			} finally {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
+			}
+			
+			
+			return couponListTotal;
+		}
+		
+		// 회원가입시 웰컴쿠폰
+		public int welcomeCoupon(MemberBean member) {
+			System.out.println("CouponDAO - welcomeCoupon()");
+			int insertCount = 0;
+			
+			try {
+				int coupon_idx = 1; // 새 글 번호
+				
+				String sql = "SELECT MAX(coupon_idx) FROM coupon";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					coupon_idx = rs.getInt(1) +1;
+					sql = "INSERT INTO coupon VALUES(?, ?, ?, 10, now(), DATE_ADD(NOW(), INTERVAL 14 DAY))";
+					pstmt2 = con.prepareStatement(sql);
+					pstmt2.setString(1, member.getMember_id());
+					pstmt2.setInt(2, coupon_idx);
+					pstmt2.setString(3, "웰컴 쿠폰!");
+					insertCount = pstmt2.executeUpdate();
+				}
+			} catch (SQLException e) {
+				System.out.println("SQL 구문 오류 발생! - insertCoupon()!");
+				e.printStackTrace();
+			} finally {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt2);
+				JdbcUtil.close(pstmt);
+			}		
+			return insertCount;
+		}
+		
+		// 페이징,,
+		public List<CouponBean> searchCouponList(String keyword, int startRow, int listLimit) {
+			System.out.println("CouponDAO - searchCouponList()");
+			List<CouponBean> searchCouponList = null;
+			
+			try {
+				String sql = "SELECT * FROM coupon WHERE coupon_type LIKE ? ORDER BY coupon_end_date ASC LIMIT ?, ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + keyword + "%");
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, listLimit);
+				rs = pstmt.executeQuery();
+				
+				searchCouponList = new ArrayList<CouponBean>();
+				
+				while(rs.next()) {
+					CouponBean coupon = new CouponBean();
+					coupon.setMember_id(rs.getString("member_id"));
+					coupon.setCoupon_idx(rs.getInt("coupon_idx"));
+					coupon.setCoupon_type(rs.getString("coupon_type"));
+					coupon.setCoupon_rate(rs.getInt("coupon_rate"));
+					coupon.setCoupon_date(rs.getDate("coupon_date"));
+					coupon.setCoupon_end_date(rs.getDate("coupon_end_date"));
+					
+					System.out.println(coupon);
+					
+					searchCouponList.add(coupon);
+				}
+				
+			} catch (SQLException e) {
+				System.out.println("SQL 구문 오류! - searchCouponList()");
+				e.printStackTrace();
+			} finally {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
+			}
+			
+			
+			return searchCouponList;
+		}
+		
+		// 페이징 목록갯수
+		public int searchCouponListCount(String keyword) {
+			int searchCouponListCount = 0;
+			
+			try {
+				String sql = "SELECT Count(*) FROM coupon WHERE coupon_type LIKE ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + keyword + "%");
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					searchCouponListCount = rs.getInt(1);
+				}
+				
+			} catch (SQLException e) {
+				System.out.println("SQL 구문 오류! - searchCouponListCount()");
+				e.printStackTrace();
+			} finally {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
+			}
+			
+			
+			return searchCouponListCount;
 		}
 	
 }
