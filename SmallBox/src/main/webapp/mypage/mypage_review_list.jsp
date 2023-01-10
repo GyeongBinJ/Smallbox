@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<script type="text/javascript">
-function confirm_delete(comment_idx) {
-	let result = confirm("삭제 하시겠습니까?");
-	
-	if(result) {
-		location.href="ReviewDelete.my?comment_idx=" + comment_idx;
-	}
-}
-</script>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -38,6 +29,33 @@ function confirm_delete(comment_idx) {
   
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/couponlist.css" rel="stylesheet">
+   <!-- jquery -->
+<script src="js/jquery-3.6.3.js"></script>
+<script type="text/javascript">
+	// 삭제버튼 클릭시
+	function delete_comment(comment_idx) {
+		
+			$.ajax({
+			      type: "POST",
+			      url: "ReviewDelete.my", 
+			      data: { 
+			    	  comment_idx : comment_idx
+			      }, 
+			      success: function(result) {
+			    	  
+			    	  alert("삭제 하시겠습니까?");
+			    	  
+			    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
+			    	  
+			      }
+		      });
+
+			}
+
+</script>
+<!-- jquery -->
+  
+  
 </head>
 <body>
 	<!-- 비회원 접근 불가 -->
@@ -114,7 +132,7 @@ function confirm_delete(comment_idx) {
 				<td>${comment.comment_content }</td>
 				<td>${comment.comment_star }</td>
 				<td>${comment.comment_date }</td>
-				<td><input type="button" class="pagebtn"value="삭제" onclick="javascript:confirm_delete(${comment.comment_idx })"></td>
+				<td><input type="button" class="pagebtn"value="삭제" onclick="delete_comment('${comment.comment_idx }')"></td>
 			</tr>	
 			</c:forEach>
 		</table>

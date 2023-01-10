@@ -53,22 +53,14 @@
 			      }, 
 			      success: function(result) {
 			    	  
-			    	 let isLike = "${sessionScope.isLike}";
+			    	  $("#btn_like"+movie_idx).html(result);
+// 			    	  console.log(movie_idx);
 			    	  
-			    	 if(isLike) { // 찜작업이 성공하면
-			    		 $("#btn_like").html('찜해제');
-				    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
-			    		 isLike = false;
-			    	 } else {
-			    		 $("#btn_like").html('찜');
-				    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
-			    		 isLike = true;
-			    	 }
 			      }
 		      });
 
 			}
-
+	
 </script>
 <!-- jquery -->
 
@@ -148,10 +140,10 @@
 <%-- 	                     		</c:when> --%>
 					               			<c:choose>
 						               			<c:when test="${likeList.contains(movie.movie_idx)}">
-						               				<button class="btn btn-outline-dark mt-auto" id="btn_like" onclick="changeLike('${movie.movie_idx}')">찜해제</button>
+						               				<button class="btn btn-outline-dark mt-auto" id="btn_like${movie.movie_idx}" onclick="changeLike('${movie.movie_idx}')">찜해제</button>
 						               			</c:when>
 						               			<c:otherwise>
-						               				<button class="btn btn-outline-dark mt-auto" id="btn_like" onclick="changeLike('${movie.movie_idx}')">찜</button>
+						               				<button class="btn btn-outline-dark mt-auto" id="btn_like${movie.movie_idx}" onclick="changeLike('${movie.movie_idx}')">찜</button>
 						               			</c:otherwise>
 		              			 			</c:choose>
 	                   		 </c:when>

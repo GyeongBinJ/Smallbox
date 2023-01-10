@@ -40,49 +40,33 @@ public class MovieLikeProAction implements Action {
 			if(isLike) { // 찜이 되어있다면 찜 해제 작업 수행
 				 
 				boolean isCancelLikeSuccess = service.CancelMovieLike(movie_idx, member_id);
-				isLike = false;
-				
-				session.setAttribute("isLike", isLike);
-				
-				if(!isCancelLikeSuccess) { // 찜 해제 작업 실패시
-					response.setContentType("text/html; charset=UTF-8"); // setContentType을 설정해야 HTML 문서로 인식됨
 					
-					PrintWriter out = response.getWriter();
+				response.setContentType("text/html; charset=UTF-8"); // setContentType을 설정해야 HTML 문서로 인식됨
 					
-//					out.println("<button class=\"btn btn-outline-dark mt-auto\" id=\"btn_like\" onclick=\"changeLike('${movie.movie_idx}')\">");
+				PrintWriter out = response.getWriter();
 					
-					out.println("<script>");
-					out.println("alert('찜 해제 실패!')");
-					out.println("history.back()"); 
-					out.println("</script>");
-				}
+				out.println("찜"); // 찜해제 작업 수행 후 버튼을 찜으로 표기
+//				}
 			} else { // 찜이 되어있지 않다면 찜 작업 수행
 				
 				boolean isLikeSuccess = service.MovieLike(movie_idx, member_id);
-				isLike = true;
-				
-				session.setAttribute("isLike", isLike);
-				
-				if(!isLikeSuccess) {
-					response.setContentType("text/html; charset=UTF-8"); // setContentType을 설정해야 HTML 문서로 인식됨
+//				
+				response.setContentType("text/html; charset=UTF-8"); // setContentType을 설정해야 HTML 문서로 인식됨
 					
-					PrintWriter out = response.getWriter();
-//					out.println("<input type='button' class='btn btn-outline-dark mt-auto' value='찜해제' id='btn_like' onclick='changeLike('${movie.movie_idx}')>");
-					out.println("<script>");
-					out.println("alert('찜 실패!')");
-					out.println("history.back()"); 
-					out.println("</script>");
+				PrintWriter out = response.getWriter();
 					
-				}
+				out.println("찜해제"); // 찜작업 수행 후 버튼을 찜해제로 표기
+					
+//				}
 			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		forward = new ActionForward();
-		forward.setPath("MovieList.mv"); // 영화 목록으로 이동
-		forward.setRedirect(true);
+//		forward = new ActionForward();
+//		forward.setPath("MovieList.mv"); // 영화 목록으로 이동
+//		forward.setRedirect(true);
 		
 		return forward;
 	}
