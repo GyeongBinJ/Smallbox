@@ -1598,10 +1598,6 @@ section {
   font-size: 13px;
 }
 
-
-
-
-
 .pagebtn {
 	text-align: center; 
 	margin-top: 30px; 
@@ -1625,18 +1621,5 @@ section {
 	border: 2px solid black;
 	transition: 0.3s;
 	font-size: 18px;
-	background-color: white;
-}
-
-.pagebtn3 {
-	text-align: center; 
-	margin-top: 5px; 
-	margin-bottom: 5px;
-	color: black;
-	padding: 4px 10px;
-	border-radius: 4px;
-	border: 2px solid black;
-	transition: 0.3s;
-	font-size: 15px;
 	background-color: white;
 }
