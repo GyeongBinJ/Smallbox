@@ -62,7 +62,7 @@ public class MovieLikeProService {
 		
 		// DAO에서 수행한 DB 작업 결과를 deletelikeCount 변수에 저장
 		int deletelikeCount = dao.deleteMovieLike(movie_idx, member_id);
-		System.out.print(deletelikeCount);
+//		System.out.print(deletelikeCount);
 		
 		if(deletelikeCount > 0) { // // DB 작업 성공시 (= 찜 해제(삭제) 성공시)
 			JdbcUtil.commit(con); 

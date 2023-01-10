@@ -99,7 +99,7 @@
         <li><a style="color: white;" href="MovieLikeList.my"><span class="typicons-heart icon"></span>찜<br>${sessionScope.movieCount }개</a></li>
         <li><a style="color: white;" href="CouponList.my"><span class="typicons-star icon"></span>쿠폰<br>${sessionScope.couponCount }개</a></li>
         <li><a style="color: white;" href="ReviewList.my"><span class="typicons-edit icon"></span>리뷰<br>${sessionScope.commentCount }개</a></li>
-        <li><a style="color: white;" href="#"><span class="typicons-cog icon"></span>회원정보수정</a></li>
+        <li><a style="color: white;" href="MemberModifyForm.sm"><span class="typicons-cog icon"></span>회원정보수정</a></li>
       </ul>
     </div>
   </div>

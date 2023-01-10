@@ -274,6 +274,7 @@ h6 {
   transition: 0.3s;
   font-size: 14px;
   text-decoration: none;
+  background-color: white;
 }
 
 .navbar .getstarted:hover,
