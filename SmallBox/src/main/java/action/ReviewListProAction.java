@@ -11,7 +11,6 @@ import svc.ReviewListService;
 import vo.ActionForward;
 import vo.CommentBean;
 import vo.CouponBean;
-import vo.MovieBean;
 import vo.PageInfo;
 import vo.PosterBean;
 

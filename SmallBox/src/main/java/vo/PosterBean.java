@@ -3,6 +3,7 @@ package vo;
 import java.sql.Date;
 
 public class PosterBean {
+	private int movie_idx;
 	private String movie_real_picture;
 	private int comment_idx;
 	private String member_id;
@@ -10,6 +11,12 @@ public class PosterBean {
 	private String comment_content;
 	private Date comment_date;
 	
+	public int getMovie_idx() {
+		return movie_idx;
+	}
+	public void setMovie_idx(int movie_idx) {
+		this.movie_idx = movie_idx;
+	}
 	public String getMovie_real_picture() {
 		return movie_real_picture;
 	}
@@ -49,10 +56,11 @@ public class PosterBean {
 	
 	@Override
 	public String toString() {
-		return "PosterBean [movie_real_picture=" + movie_real_picture + ", comment_idx=" + comment_idx + ", member_id="
-				+ member_id + ", comment_star=" + comment_star + ", comment_content=" + comment_content
-				+ ", comment_date=" + comment_date + "]";
+		return "PosterBean [movie_idx=" + movie_idx + ", movie_real_picture=" + movie_real_picture + ", comment_idx="
+				+ comment_idx + ", member_id=" + member_id + ", comment_star=" + comment_star + ", comment_content="
+				+ comment_content + ", comment_date=" + comment_date + "]";
 	}
+	
 	
 	
 }

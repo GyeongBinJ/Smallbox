@@ -74,11 +74,11 @@
 	  		<ul class="animate">
 			    <li class="animate"><a href="MyPageMain.my">마이페이지</a></li>
 			    <li class="animate"><a href="#">회원정보수정</a></li>
-			    <li class="animate"><a href="Reserved.my">예매내역</a></li>
+			    <li class="animate"><a href="#">예매내역</a></li>
 			    <li class="animate"><a href="CouponList.my">쿠폰함</a></li>
 			    <li class="animate"><a href="MovieLikeList.my">찜목록</a></li>
 			    <li class="animate"><a href="ReviewList.my">리뷰내역</a></li>
-			    <li class="animate"><a href="QnaList.my">문의내역</a></li>
+			    <li class="animate"><a href="#">문의내역</a></li>
 			    <li class="animate"><a href="#">회원탈퇴</a></li>
 	  		</ul>
   		</dropdown>

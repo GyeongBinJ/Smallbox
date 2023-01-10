@@ -10,8 +10,6 @@ import java.util.List;
 import db.JdbcUtil;
 import vo.QnaBean;
 
-//0108 고은 수정된 QndaDAO 업로드==qna테이블에 member_id컬럼 추가필요============================
-
 // 실제 비즈니스 로직을 수행하는 BoardDAO 클래스 정의
 // => 각 Service 클래스 인스턴스에서 BoardDAO 인스턴스에 접근 시 고유 데이터가 불필요하므로
 //    BoardDAO 인스턴스는 애플리케이션에서 단 하나만 생성하여 공유해도 된다!
@@ -112,11 +110,10 @@ public class QnaDAO {
 			// => 정렬 : 참조글번호(qna_re_ref) 기준 내림차순, 
 			//           순서번호(qna_re_seq) 기준 오름차순
 			// => 조회 시작 레코드 행번호(startRow) 부터 listLimit 갯수(10) 만큼만 조회
-			String sql = "SELECT * "
-					+ "FROM qna a, (SELECT qna_re_ref FROM qna WHERE member_id = ?) id_ref "
-					+ "WHERE a.qna_re_ref = id_ref.qna_re_ref "
-					+ "ORDER BY a.qna_re_ref DESC, a.qna_re_seq ASC "
-					+ "LIMIT ?,?";
+			String sql = "SELECT * FROM qna "
+								+ "WHERE member_id = ? "
+								+ "ORDER BY qna_re_ref DESC, qna_re_seq ASC "
+								+ "LIMIT ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, sId);
 			pstmt.setInt(2, startRow);
@@ -125,6 +122,7 @@ public class QnaDAO {
 			
 			// 전체 목록 저장할 List 객체 생성
 			qnaList = new ArrayList<QnaBean>();
+			
 			// 조회 결과가 있을 경우
 			while(rs.next()) {
 				// QnaBean 객체(qna) 생성 후 조회 데이터 저장
@@ -137,7 +135,8 @@ public class QnaDAO {
 				qna.setQna_re_lev(rs.getInt("qna_re_lev"));
 				qna.setQna_re_seq(rs.getInt("qna_re_seq"));
 				qna.setMember_id(rs.getString("member_id"));
-				System.out.println("qna : " + qna);
+//				System.out.println(qna);
+				
 				// 전체 목록 저장하는 List 객체에 1개 게시물 정보가 저장된 BoardBean 객체 추가
 				qnaList.add(qna);
 			}
@@ -216,8 +215,8 @@ public class QnaDAO {
 		try {
 			// qna 테이블의 모든 레코드 갯수 조회
 			String sql = "SELECT COUNT(*) "
-						+ "FROM qna a, (SELECT qna_re_ref FROM qna WHERE member_id=?) id_ref "
-						+ "WHERE a.qna_re_ref = id_ref.qna_re_ref";
+								+ "FROM qna "
+								+ "WHERE member_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, sId);
 			rs = pstmt.executeQuery();

@@ -239,7 +239,7 @@ private NoticeDAO() {}
 			pstmt.setInt(1, notice_idx);
 			deleteCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("NoticeDAO - deleteNotice()");
+			System.out.println("BoardDAO - deleteBoard()");
 			e.printStackTrace();
 		} finally {
 			// DB 자원 반환
@@ -247,47 +247,5 @@ private NoticeDAO() {}
 		}
 		
 		return deleteCount;
-	}
-
-	public int updateNotice(NoticeBean notice) {
-		int updateCount = 0;
-		
-		PreparedStatement pstmt = null;
-		
-		try {
-			String sql = "UPDATE notice"
-							+ " SET"
-							+ " notice_subject = ?"
-							+ ", notice_content = ?";
-			
-						if(notice.getNotice_file() != null) {
-							sql += ", notice_file = ?"
-									+ ", notice_real_file = ?";
-						}
-					sql		+= " WHERE"
-							+ " 	notice_idx = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, notice.getNotice_subject());
-			pstmt.setString(2, notice.getNotice_content());
-			
-			if(notice.getNotice_file() != null) {
-				pstmt.setString(3, notice.getNotice_file());
-				pstmt.setString(4, notice.getNotice_real_file());
-				pstmt.setInt(5, notice.getNotice_idx());
-			} else {
-				pstmt.setInt(3, notice.getNotice_idx());
-			}
-			
-			updateCount = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("NoticeDAO - updateNotice()");
-			e.printStackTrace();
-		} finally {
-			// DB 자원 반환
-			JdbcUtil.close(pstmt);
-		}
-	
-		
-		return updateCount;
 	}
 }

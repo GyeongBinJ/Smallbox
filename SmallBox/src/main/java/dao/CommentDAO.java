@@ -141,7 +141,7 @@ public class CommentDAO {
 		
 		return deleteCount;
 	} // ~~~~method public int deleteComment end~~~~
-
+	
 	public CommentBean getMovieIdx(int comment_idx) {
 		CommentBean comment = null;
 		
@@ -183,6 +183,7 @@ public class CommentDAO {
 			
 			while(rs.next()) {
 				PosterBean poster = new PosterBean();
+				poster.setMovie_idx(rs.getInt("movie_idx"));
 				poster.setMovie_real_picture(rs.getString("movie_real_picture"));
 				poster.setComment_idx(rs.getInt("comment_idx"));
 				poster.setMember_id(rs.getString("member_id"));

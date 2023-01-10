@@ -24,98 +24,40 @@
 <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
 <link href="assets/css/style.css" rel="stylesheet">
-<!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->  
-<style type="text/css">
-.btn_area {
-	margin-top: 30px;
-}
-.table {
-	width: 350px;
-	height: 100px;
-}
-body table tr td {
-	font-size: 20px;
-	text-align: center;
-}
-th td {
-	margin-top: 20px;
-}
-
-th {
-	font-size: 20px;
-	text-align: center;
-	padding-left: 20px;
-}
-
-.welcome {
-	width: 300px;
-	height: 80px;
-}
-.btn-log{
-	width: 350px;
-	height: 50px;
-	background: #3B0B5F;
-	color: #fff;
-}
-input {
-	width: 200px;
-	height: 30px;
-}
-</style>  
+<!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->    
 <title>스몰박스 - 로그인</title>
+<style type="text/css">
+</style>
 </head>
 <body>
 <!-- TOP -->
 <header>
-	<jsp:include page="../inc/top.jsp"></jsp:include>
+	<jsp:include page="/inc/top.jsp"></jsp:include>
 </header>
 <!-- TOP -->
-<!-- ======= Breadcrumbs ======= -->
-	<section class="breadcrumbs">
-	  <div class="container">
-	
-	    <div class="d-flex justify-content-between align-items-center">
-	      <h2>로그인</h2>
-	      <ol>
-	        <li><a href="./">Home</a></li>
-	        <li>Login</li> 
-	      </ol>
-	    </div>
-	
-	  </div>
-	</section>
-<!-- ======= Breadcrumbs ======= -->
-
-<!--=========== Login 본문 =================-->
-
-<form action="MemberLoginPro.sm" method="post">	
-	<div align="center">
-		<div class="welcome">
-			<img src="./assets/img/welcome.png">
-		</div>
-		<table border="2"  class="table">
-			<tr>
-				<th>아이디</th>
-				<td><input type="text" name="member_id" required="required" value="${sessionScope.sId }"></td>
-			</tr>	
-			<tr>
-				<th>패스워드</th>
-				<td><input type="password" name="member_passwd" required="required"></td>
-			</tr>	
+	<hr>
+    <!-- //header -->
+<div id="container" class="f" align="center">
+	<form action="MemberLoginPro.sm" method="post">
+		<h2 align="center">스몰박스 로그인</h2>
+			<table border="1" >
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" name="member_id" required="required" value="${sessionScope.sId }"></td>
+				</tr>	
+				<tr>
+					<th>패스워드</th>
+					<td><input type="password" name="member_passwd" required="required"></td>
+				</tr>	
+				<tr align="center">
+					<td colspan="1" align="center"><input type="submit" value="로그인"></td>
+				</tr>
 		</table>
-			<tr class="submit"	style="text-align: center">
-				<td class="btn_login">
-					<input type="submit" value="로그인"  class="btn-log">
-				</td>
-			</tr>
-		<div class="btn_area">
-       		<a href="FindIdForm.sm">아이디 찾기</a> | 
-       		<a href="FindPasswdForm.sm">비밀번호 찾기</a> | 
-       		<a href="MemberTermsForm.sm">회원가입</a>
+		<div align="center">
+       		<button> <a href="FindIdForm.sm">아이디 찾기</a></button> | <button><a href="FindPasswdForm.sm">비밀번호 찾기</a></button> | <button><a href="MemberTermsForm.sm">회원가입</a></button>
        	</div>
-	</div>
-</form>
-<!--=========== Login 본문 끝=================-->
+	</form>
+</div>
 
 <!-- ---------------footer------------- -->
 <footer id="footer">

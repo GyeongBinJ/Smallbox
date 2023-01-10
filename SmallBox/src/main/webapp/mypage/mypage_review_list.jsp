@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<script type="text/javascript">
+function confirm_delete(comment_idx) {
+	let result = confirm("삭제 하시겠습니까?");
+	
+	if(result) {
+		location.href="ReviewDelete.my?comment_idx=" + comment_idx;
+	}
+}
+</script>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -92,6 +101,7 @@
 		        <th width="200">내용</th>
 		        <th width="100">평점</th>
 		        <th width="150">작성일</th>
+		        <th width="150"></th>
 		
 		    </tr>
 		    </thead>
@@ -100,10 +110,11 @@
 			<!-- ReviewListProAction으로 부터 전달받은 request 객체의 reviewList(리뷰 정보)를 꺼내서 출력 -->
 			<c:forEach var="comment" items="${reviewList }">
 			<tr>
-				<td><img src="<%=request.getContextPath() %>/upload/${comment.movie_real_picture}"  width="300" height="350"></td>
+				<td><img src="<%=request.getContextPath() %>/upload/${comment.movie_real_picture}"  width="150" height="200"></td>
 				<td>${comment.comment_content }</td>
 				<td>${comment.comment_star }</td>
 				<td>${comment.comment_date }</td>
+				<td><input type="button" class="pagebtn"value="삭제" onclick="javascript:confirm_delete(${comment.comment_idx })"></td>
 			</tr>	
 			</c:forEach>
 		</table>

@@ -30,32 +30,32 @@
 </head>
 <body>
 	<!-- 관리자 아니면 접근 불가 -->
-	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
+	<c:if test='${empty sessionScope.sId or sessionScope.sId ne "admin"}'>
 		<script type="text/javascript">
 		 	alert("접근 불가합니다.");
 		 	history.back();
 		</script>
 	</c:if>
 	<!-- 관리자 아니면 접근 불가 -->
+	
 
 	<header id="header">
     	<jsp:include page="../inc/top_admin.jsp"></jsp:include>
     </header>
 <!-- ----------------------------------------<관리자 페이지>에 들고다니세요--------------------------------------------------------- -->    
-    <section class="breadcrumbs">
+    <section class="breadcrumbs_admin">
       <div class="container">
-
         <div class="d-flex justify-content-between align-items-center">
-          <h2>공지</h2>
+          <h2>관리자 페이지</h2>
           <ol>
-            <li><a href="./">Home</a></li>
-            <li><a href="Notice_list.ad">공지</a></li>
+            <li><a href="Admin.ad">관리자 페이지</a></li>
+            <!-- 페이지 주소, 이름 넣는곳 -->
+            <li><a href="Notice_list.ad">공지관리</a></li>
+            <li><a href="Notice_list.ad">공지사항 목록</a></li>
           </ol>
         </div>
-
       </div>
-    </section><!-- End Breadcrumbs -->
-	
+    </section>
 <!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- --> 
 	<!-- 본문 영역 시작 -->
     <div id="layoutSidenav_content">
@@ -64,6 +64,7 @@
 	             <h1 class="mt-4">공지사항 목록</h1>
 		            <div class="card mb-4">
 		                 <div class="card-body">
+		                     - 관리자로 등록된 회원만 조회할 수 있는 페이지입니다.
 		                 </div>
 		           	</div>
 			           	<c:choose>
