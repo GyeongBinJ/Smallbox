@@ -89,7 +89,7 @@
    
    <section class="inner-page" style="display: inline-block;">
    
-	<table style="text-align: center;margin-top: 80px;margin-left:50px"><!-- 왼쪽공간이 너무 넓어서 margin-left설정 -->
+	<table style="text-align: center;margin-top: 80px;"><!-- 왼쪽공간이 너무 넓어서 margin-left설정 -->
 		<thead>
 		<tr>
 			<th width="100">예약 번호</th>
