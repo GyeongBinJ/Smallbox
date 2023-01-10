@@ -180,6 +180,28 @@ public class ReserveDAO {
 		}
 		return cancelCount;
 	}
+	
+	// 결제 취소건에 대해 예매내역 삭제 작업
+			public int cancelReserve2(int res_num) {
+				System.out.println("ReserveDAO - cancelReserve2()");
+				int cancelCount = 0;
+				PreparedStatement pstmt = null;
+				
+				try {
+					String sql = "DELETE FROM reserve WHERE res_num=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, res_num);
+					cancelCount = pstmt.executeUpdate();
+					
+				} catch (SQLException e) {
+					System.out.println("SQL 구문 오류 - cancelReserve2()");
+					e.printStackTrace();
+				} finally {
+					JdbcUtil.close(pstmt);
+				}
+				return cancelCount;
+			}
+	
 	// 예약 상세정보 조회
 	public ReserveBean selectReserve(int res_num) {
 		ReserveBean reserve = null;

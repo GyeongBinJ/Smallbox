@@ -29,13 +29,15 @@
 </head>
 <body>
 	<!-- 관리자 아니면 접근 불가 -->
-	<c:if test='${empty sessionScope.sId or sessionScope.sId ne "admin"}'>
+	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
 		<script type="text/javascript">
 		 	alert("접근 불가합니다.");
 		 	history.back();
 		</script>
 	</c:if>
 	<!-- 관리자 아니면 접근 불가 -->
+	
+	
 
 	<header id="header">
     	<jsp:include page="../inc/top_admin.jsp"></jsp:include>
@@ -91,7 +93,7 @@
 								</select>
 							</div>
 						</td>
-						<td><input type="date" name="theater_date" required="required"></td>
+						<td><input type="date" name="theater_date" style="border-radius: 4px;"required="required"></td>
 						<td>
 							1회차 [09:00]&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="09:00:00"><br>
 							2회차 [12:00]&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="12:00:00"><br>
@@ -100,13 +102,13 @@
 							5회차 [21:00]&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="21:00:00"><br>
 							6회차 [24:00]&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="24:00:00">
 						</td>
-						<td><input type="number" name="theater_seat_cnt"></td>
+						<td><input type="number" style="border-radius: 4px;" name="theater_seat_cnt"></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td colspan="5">
 							<i class="fas fa-table me-1"></i>
-							<input type="submit" class="pagebtn" value="등록">
+							<input type="submit" class="pagebtn3"  style="border-radius: 4px;" value="등록">
 						</td>
 					</tr>
 		 		</tbody>
@@ -115,6 +117,7 @@
 		 </div>
        </main>
      </div>
+<!-- 본문 영역 끝 -->         
             
             
             

@@ -30,7 +30,7 @@
 </head>
 <body>
 	<!-- 관리자 아니면 접근 불가 -->
-	<c:if test='${empty sessionScope.sId or sessionScope.sId ne "admin"}'>
+	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
 		<script type="text/javascript">
 		 	alert("접근 불가합니다.");
 		 	history.back();
@@ -104,8 +104,8 @@
 							<tr>
 								<td colspan="6" id="td_right">
 									<form action="AdminTheaterList.ad">
-										<input type="text" id="datatablesSimple" name="keyword">
-										<input type="submit" id="datatablesSimple" value="검색">
+										<input type="text" id="datatablesSimple" style="border-radius: 4px;" name="keyword">
+										<input type="submit" class="pagebtn3" id="datatablesSimple" style="border-radius: 4px;" value="검색">
 										&nbsp;&nbsp;
 									</form>
 								</td>
@@ -115,10 +115,10 @@
 									<!-- 페이징 처리를 위한 코드 -->
 										<c:choose>
 											<c:when test="${pageNum > 1}">
-												<input type="button" value="이전" onclick="location.href='AdminTheaterList.ad?pageNum=${pageNum - 1}'">
+												<input type="button" style="border-radius: 4px;" class="pagebtn3" value="이전" onclick="location.href='AdminTheaterList.ad?pageNum=${pageNum - 1}'">
 											</c:when>
 											<c:otherwise>
-												<input type="button" value="이전">
+												<input type="button" style="border-radius: 4px;" class="pagebtn3" value="이전">
 											</c:otherwise>
 										</c:choose>
 											
@@ -138,10 +138,10 @@
 										<!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 -->
 										<c:choose>
 											<c:when test="${pageNum < pageInfo.maxPage}">
-												<input type="button" value="다음" onclick="location.href='AdminTheaterList.ad?pageNum=${pageNum + 1}'">
+												<input type="button" class="pagebtn3" style="border-radius: 4px;" value="다음" onclick="location.href='AdminTheaterList.ad?pageNum=${pageNum + 1}'">
 											</c:when>
 											<c:otherwise>
-												<input type="button" value="다음">
+												<input type="button" class="pagebtn3" style="border-radius: 4px;" value="다음">
 											</c:otherwise>
 										</c:choose>
 								</td>

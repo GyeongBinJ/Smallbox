@@ -20,6 +20,7 @@ import action.MovieDetailAction;
 import action.MovieLikeProAction;
 import action.MovieListProAction;
 import action.ReserveCheckCouponAction;
+import action.ReservePaymentCancelProAction;
 import action.ReservePaymentProAction;
 import action.ReserveSeatProAction;
 import action.ReserveSelectProAction;
@@ -112,7 +113,22 @@ public class MovieFrontController extends HttpServlet {
 			
 			action = new ReserveCheckCouponAction();
 			forward = action.execute(request, response);
-		} 
+		
+		} else if(command.equals("/ReservePaymentApi.mv")) { // 예매결제 api
+			System.out.println("controller : ReservePaymentApi.mv");
+			forward = new ActionForward();
+			forward.setPath("reserve/reserve_payment_api.jsp");
+			forward.setRedirect(false);	
+		} else if(command.equals("/ReservePaymentCancel.mv")) { // 결제 중 취소
+			System.out.println("controller : ReservePaymentCancel.mv");
+			action = new ReservePaymentCancelProAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/ReserveComplete.mv")) { // 결제 완
+			System.out.println("controller : ReserveComplete.mv");
+			forward = new ActionForward();
+			forward.setPath("reserve/reserve_complete.jsp");
+			forward.setRedirect(false);	
+		}
 		
 		
 		// ----------------------------------------------------------------------

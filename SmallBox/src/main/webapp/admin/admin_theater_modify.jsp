@@ -30,7 +30,7 @@
 </head>
 <body>
 	<!-- 관리자 아니면 접근 불가 -->
-	<c:if test='${empty sessionScope.sId or sessionScope.sId ne "admin"}'>
+	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
 		<script type="text/javascript">
 		 	alert("접근 불가합니다.");
 		 	history.back();
@@ -38,6 +38,8 @@
 	</c:if>
 	<!-- 관리자 아니면 접근 불가 -->
 	
+	
+
 	<header id="header">
     	<jsp:include page="../inc/top_admin.jsp"></jsp:include>
     </header>
@@ -81,10 +83,21 @@
 				  </thead>
 				 <tbody>
 					<tr>
-						<td><input type="text" name="theater_title" value="${theater.theater_title }" required="required"></td>
-						<td><input type="date" name="theater_date" value="${theater.theater_date }" required="required"></td>
 						<td>
-							<input type="time" name="theater_time" value="${theater.theater_time }" readonly="readonly"><br><br>
+							<div class="movie_list">
+					            <select name="theater_title">
+									<option>상영영화 선택</option>
+										<c:forEach var="movie" items="${movieList }">
+											<option value="${movie.movie_title }">
+													${movie.movie_title }
+											</option>
+										</c:forEach>
+								</select>
+							</div>
+						</td>
+						<td><input type="date" name="theater_date" style="border-radius: 4px;" value="${theater.theater_date }" required="required"></td>
+						<td>
+							<input type="time" name="theater_time" style="border-radius: 4px;" value="${theater.theater_time }" readonly="readonly"><br><br>
 							1회차 [09:00]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="${theater.theater_time }"><br>
 							2회차 [12:00]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="${theater.theater_time }"><br>
 							3회차 [15:00]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="${theater.theater_time }"><br>
@@ -92,13 +105,13 @@
 							5회차 [21:00]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="${theater.theater_time }"><br>
 							6회차 [24:00]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="${theater.theater_time }">
 						</td>
-						<td><input type="number" name="theater_seat_cnt" value="${theater.theater_seat_cnt }"></td>
+						<td><input type="number" name="theater_seat_cnt" style="border-radius: 4px;" value="${theater.theater_seat_cnt }"></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td colspan="5" id="td_right">
 							<i class="fas fa-table me-1"></i>
-							<input type="submit" class="pagebtn" value="수정완료">
+							<input type="submit" class="pagebtn3" style="border-radius: 4px;" value="수정완료">
 						</td>
 					</tr>
 		 		</tbody>

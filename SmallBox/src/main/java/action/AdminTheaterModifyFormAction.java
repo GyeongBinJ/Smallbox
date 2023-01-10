@@ -1,10 +1,14 @@
 package action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import svc.AdminMovieListService;
 import svc.AdminTheaterDetailService;
 import vo.ActionForward;
+import vo.MovieBean;
 import vo.TheaterBean;
 
 public class AdminTheaterModifyFormAction implements Action {
@@ -24,8 +28,13 @@ public class AdminTheaterModifyFormAction implements Action {
 		AdminTheaterDetailService service = new AdminTheaterDetailService();
 		TheaterBean theater = service.getTheater(theater_idx);
 		
+		// 상영 일정 수정을 위해 movie 테이블에서 영화목록 가져오기
+		AdminMovieListService service2 = new AdminMovieListService();
+		List<MovieBean> movieList = service2.getAdminMovieList();
+				
 		// 뷰페이지로 데이터 전달을 위해 request 객체에 저장
 		request.setAttribute("theater", theater);
+		request.setAttribute("movieList", movieList);
 		
 		forward = new ActionForward();
 		forward.setPath("admin/admin_theater_modify.jsp");

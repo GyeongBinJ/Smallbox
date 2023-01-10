@@ -6,6 +6,7 @@ import java.sql.Time;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.ReserveDeleteCouponService;
 import svc.ReservePaymentProService;
@@ -184,9 +185,12 @@ public class ReservePaymentProAction implements Action {
 		ReserveDeleteCouponService dcpService = new ReserveDeleteCouponService();
 		boolean isDelCpSuccess = dcpService.deleteCoupon(coupon_idx);
 		
+		HttpSession session = request.getSession();
+		session.setAttribute("res_num", res_num);
+		
 		forward = new ActionForward();
-		forward.setPath("ReserveDetail.mv");
-		forward.setRedirect(true);
+		forward.setPath("ReservePaymentApi.mv");
+		forward.setRedirect(false);
 		
 		return forward;
 	}

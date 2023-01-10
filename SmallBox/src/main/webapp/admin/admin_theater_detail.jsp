@@ -30,7 +30,7 @@
 </head>
 <body>
 	<!-- 관리자 아니면 접근 불가 -->
-	<c:if test='${empty sessionScope.sId or sessionScope.sId ne "admin"}'>
+	<c:if test="${empty sessionScope.sId or sessionScope.sId ne 'admin'}">
 		<script type="text/javascript">
 		 	alert("접근 불가합니다.");
 		 	history.back();
@@ -95,14 +95,14 @@
 						<tr>
 							<td colspan="5">
 								<i class="fas fa-table me-1"></i>
-								<input type="button" class="pagebtn" value="상영일정 수정" onclick="location.href='AdminTheaterModifyForm.ad?theater_idx=${theater.theater_idx}'">&nbsp;
-								<input type="button" class="pagebtn" value="상영일정 삭제" 
+								<input type="button" class="pagebtn3" style="border-radius: 4px;" value="상영일정 수정" onclick="location.href='AdminTheaterModifyForm.ad?theater_idx=${theater.theater_idx}'">&nbsp;
+								<input type="button" class="pagebtn3" style="border-radius: 4px;" value="상영일정 삭제" 
 										onclick="confirmDelete('${theater.theater_idx}')">&nbsp;
 							</td>
 						</tr>
 						<tr>
 							<td colspan="5" id="td_center">
-							<input type="button" class="pagebtn" value="목록" onclick="location.href='AdminTheaterList.ad'">
+							<input type="button" class="pagebtn3" style="border-radius: 4px;" value="목록" onclick="location.href='AdminTheaterList.ad'">
 							</td>
 						<tr>
 		 			</tbody>
