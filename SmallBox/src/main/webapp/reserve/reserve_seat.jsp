@@ -293,6 +293,21 @@ $(document).ready(function() {
          
          
         });
+        
+        $("#seatFormId").submit(function() {
+        	  
+//       	 alert($("input[name=reserved_date]").val());
+           if($(".price_result").text() == 0) {
+               alert("인원을 선택하세요!");
+              return false;
+           } else if($("#result").text() == "") {
+           	alert("좌석을 선택하세요!");
+              return false;
+           }
+              
+        });
+        
+        
       });
 </script>
 </head>
@@ -382,7 +397,7 @@ $(document).ready(function() {
                   <div class="screen-view">SCREEN</div>
 <!-- ========================================================================================= -->                  
 <!-- 혜연 추가한곳 -->
-   <form action="ReservePayment.mv" method="post" name="seatForm">
+   <form action="ReservePayment.mv" method="post" name="seatForm" id="seatFormId">
 		<c:set var="selectedSeatList" value="${selectedSeatList}"></c:set>	
 		<div id="seatSelectWrapper">
 		<div> <!-- 1열 1~4번 반복문 -->
