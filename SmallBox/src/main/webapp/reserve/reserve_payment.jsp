@@ -185,8 +185,11 @@ ${reserved_date } | ${selected_time }<br>
 <input type="hidden" name="res_time" value="${selected_time }">
 <input type="hidden" name="res_seat" value="${selectedSeat }">
 <input type="hidden" name="res_price" value="">
-<input type="hidden" name="coupon_idx" value="">
+<input type="hidden" name="coupon_idx" value="${0 }">
 <hr>
+<!-- 0110추가한부분  -->
+
+<!-- 0110추가한부분  -->
 <input type="submit" value="결제" class="pagebtn" style="border-radius: 4px;">
 </form>
 <!-- 결제창으로 넘길 영역 끝 -->

@@ -52,10 +52,30 @@
 			
 			window.close();
 		
-		
-		}
+		} // ~~~~confirm use end~~~~
 	
+		//=====0110 추가//
 	}
+		
+		function notUse() {
+			var priceBeforeDc = opener.document.getElementById("priceBeforeDc").value;
+			
+			document.getElementById("dcPrice").innerHTML = 0;
+			alert("안쿠폰 일 때 dcPrice : " + dcPrice);
+			
+			var totalPrice = priceBeforeDc;
+			document.getElementById("price").innerHTML = totalPrice;
+			alert("안 쿠폰 일 때 total Price : " + totalPrice);
+			
+			window.opener.$('input[name=res_price]').val(totalPrice);
+			var inputpr = window.opener.$('input[name=res_price]').val();
+			alert("inp : " + inputpr)
+			
+			window.opener.document.getElementById("totalPrice").innerHTML = totalPrice;
+			
+			window.close();
+		} // not use end
+		
 </script>
 <style type="text/css">
 * {
@@ -139,9 +159,10 @@ footer {
 		</td>
 	</tr>
 </c:forEach>
-
 </table>
-
+<!-- 사용 안하는 버튼 만들기 
+만약 쿠폰 사용하지 않기 버튼을 누르면 함수 호출 -->
+<input type="button" value="쿠폰 사용하지 않기" onclick="notUse()">
 
  <!-- 금액 표시 영역 -->
 <footer>

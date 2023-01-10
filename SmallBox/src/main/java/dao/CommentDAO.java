@@ -105,7 +105,7 @@ public class CommentDAO {
 		double starAvg = 0;
 		
 		try {
-			String sql = "SELECT AVG(c.comment_star) FROM comment c JOIN movie m ON c.movie_idx = m.movie_idx WHERE c.movie_idx=? GROUP BY c.movie_idx";
+			String sql = "SELECT ROUND(AVG(c.comment_star), 1) FROM comment c JOIN movie m ON c.movie_idx = m.movie_idx WHERE c.movie_idx=? GROUP BY c.movie_idx";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, movie_idx);
 			rs = pstmt.executeQuery();

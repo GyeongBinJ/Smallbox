@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="./assets/css/swiper.css">
 <link rel="stylesheet" href="./assets/css/style.css">
 
+<link href="assets/css/style.css" rel="stylesheet">
 <!-- Favicons -->
 <link href="assets/img/favicon.png" rel="icon">
 <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -75,6 +76,17 @@
 	
 </script>
 <style type="text/css">
+	@font-face {
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+	
+	*{
+	font-family: 'ONE-Mobile-Regular';
+	}
+
 	#movieWrapper {
 		height: 400px;
 		background-color: #000; 
@@ -153,7 +165,7 @@
 		background-color: #000;
 	
 	}
-	
+	/* 0110 commit 후 새로 작업한 부분 */
 	#moveTab {
 		margin-top: 30px;
 		margin-left: 20px;
@@ -163,13 +175,14 @@
 	#moveTab1 {
 		padding: 10px;
 		border: 1px solid #e6e6e6;
-		
+		text-decoration: none;
 		
 	}
 	#moveTab2 {
 		padding: 10px;
 		border: 1px solid #e6e6e6;
 		margin: -6px;
+		text-decoration: none;
 	}
 
 	#moveTab1:hover {
@@ -182,6 +195,64 @@
 		border: 1px solid #3B0B5F;
 	}
 	
+	
+	
+	#content {
+		margin-top: 30px;
+		margin-left: 20px;
+	
+	}
+	
+		#content_top, #reviewWrite, #avg{
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+		
+		#content_intro {
+			margin-top: 20px;
+			display: block;
+			
+		}
+	
+		#content, #review {
+		margin-top: 30px;
+		margin-left: 20px;
+	
+	}
+	
+	#rating > img {
+		width: 20px;
+		height: 20px;
+		
+	}
+	
+	#avgStar {
+		margin-top: 30px;
+		margin-left: 20px;
+	}
+	
+	#commentList {
+		border-spacing: 0 10px;
+		border-collapse: separate;
+	}
+	.writeAndDelBTN {
+		text-align: center; 
+		color: #3B0B5F;
+		border: 2px solid #3B0B5F;
+		transition: 0.3s;
+		background-color: white;
+	}
+	.writeAndDelBTN:hover {
+		text-align: center; 
+		color: #fff;
+		border: 2px solid #3B0B5F;
+		transition: 0.3s;
+		background-color: #3B0B5F;
+	}
+	footer {
+	margin-top: 100px;
+	}
+	/* 0110 commit 후 새로 작업한 부분 끝 */
 </style>
 </head>
 <body>
@@ -222,19 +293,22 @@
 	</div> <!-- 영화 정보 영역 까만부분 끝-->
 	
 	<div id="moveTab"><!-- 줄거리와 관람평 이동 탭 -->
-		<a id="moveTab1">줄거리</a>
-		<a id="moveTab2">관람평</a>
+		<a id="moveTab1" href="#content">줄거리</a>
+		<a id="moveTab2" href="#review">관람평</a>
 	</div>
-			<th width="150">줄거리</th>
-			
-			<td>${movie.movie_intro }</td>
+	<!-- 0110 commit 후 새로 작업한 부분 -->
+	<div id="content"> <!-- 줄거리 -->
+		<span id="content_top">줄거리</span><br>
+		<span id="content_intro">${movie.movie_intro }</span>
+	</div> <!-- 줄거리 끝 -->
 		
-		<hr>
-		<!-- 리뷰 작성 영역, 임시로 누구나 작성할 수 있도록 하고 이후에 예매 내역에 해당 영화 제목과 일치하는 제목이 있는
-				     id만 작성할 수 있도록 함(지금 해당 내용을 작성하실 수 있으면 해보시는 것도 좋을 것 같아요!
-				     review_writePro.jsp파일은 개인이 만들기! -->
-		<h2>영화 리뷰 쓰기</h2>
+	<hr>
+		
+	<div id="review"> <!-- 리뷰 영역 -->
+		<span id="reviewWrite">영화 리뷰 쓰기</span><br>
+		<span id="content_intro"></span>
 	
+	<!-- commit 후 새로 작업한 부분 끝-->
 		<c:set var="sId" value="${sessionScope.sId }" />
 
 <%-- 		session아이디에 저장한 session id : <c:out value="${sId}" /> --%>
@@ -244,75 +318,76 @@
 		<form action="CommentWritePro.mv" method="post" name ="commentForm">
 		<table border="1">
 			<tr>
-				<td width="150" height="20">
+				<td width="150" height="30">
 					<div id="rating" align="center">
-						<span>
 							<img id="image1" onmouseover=mouseover(1) onclick=onClk(1) onmouseout=mouseout(1) src="image/star0.png" width="20" height="20">
 							<img id="image2" onmouseover=mouseover(2) onclick=onClk(2) onmouseout=mouseout(2) src="image/star0.png" width="20" height="20">
 							<img id="image3" onmouseover=mouseover(3) onclick=onClk(3) onmouseout=mouseout(3) src="image/star0.png" width="20" height="20">
 							<img id="image4" onmouseover=mouseover(4) onclick=onClk(4) onmouseout=mouseout(4) src="image/star0.png" width="20" height="20">
 							<img id="image5" onmouseover=mouseover(5) onclick=onClk(5) onmouseout=mouseout(5) src="image/star0.png" width="20" height="20">
 						<!-- 	함수명 onclick 으로 하니까 인식을 못하네요; -->
-						</span>
 					</div>
 					<input type="hidden" name="star" >
 				</td>
-				<td width="700">댓글 : <input type="text" name = "comment_content"></td>
+				<td width="700">댓글 : <input type="text" name="comment_content" style="width:600px;"></td>
 				
-				<td width="70">
+				<td width="40">
 					<input type="hidden" name="movie_title" value="${movie.movie_title }">	
 					<input type="hidden" name="movie_idx" value="${movie.movie_idx }">	
 					<input type="hidden" name="member_id" value="${sId }">	
-					<input type="submit" name="submit" value="등록">
+					<input type="submit" name="submit" class="writeAndDelBTN" value="등록" style="border-radius: 4px;">
 				</td>			
 			</tr>
-		
 		</c:if>
 		<!-- 댓글 영역 session Id 가 있을 경우 표시됨 -->
-		
-		
-		
 		</table>
 	
 	</form>
+	</div> <!-- 리뷰영역 끝 -->
 	<hr>
+<!-- 		<span id="content_top">줄거리</span><br> -->
+<%-- 		<span id="content_intro">${movie.movie_intro }</span> --%>
 	
 	<!--평균평점과 영화 제목 표시 영역 -->
-	<h3>평균 평점 : ${staravg }</h3>
+	<div id="avgStar">
+	<span id="avg">
+		평균 평점 : ${staravg }
+	</span>
 	
 	<hr>
 	
 	<!-- replyViewArea 영역(댓글 표시 영역) -->
 	<div id="reviewArea">
-		<table border="1">
-			<tr>
-				<td width="150">별점</td>
+		<table id="commentList">
+			<tr style="text-align: center; border-bottom: 1px solid gray;">
+				<td width="50">별점</td>
 				<td width="150">작성자</td>			
 				<td width="500">내용</td>			
 				<td width="150">작성일</td>			
 <!-- 				<td>수정</td>			 -->
-				<td>삭제</td>			
+				<td></td>			
 			</tr>
 		
 		<c:forEach var="review" items="${reviewList }">
 			<tr>
 			<c:set var="member_id" value="${review.member_id }" />
 			<c:set var="sId" value="${sessionScope.sId }" />
-				<td>${review.comment_star }</td>
-				<td>${member_id }</td>
+				<td align="center">${review.comment_star }</td>
+				<td align="center">${member_id }</td>
 				<td>${review.comment_content }</td>
-				<td>${review.comment_date }</td>
+				<td align="center">${review.comment_date }</td>
 <!-- 				session id 와 리뷰 쓴 아이디가 같을 때 삭제 버튼 표시 -->
 				<c:if test="${sId eq member_id }">	
 <!-- 				<td> -->
 <!-- 				</td> -->
 				<td>
-					<input type="button" value="삭제" onclick="confirmDelete('${review.comment_idx }')">
+					<input type="button" class="writeAndDelBTN" value="삭제" onclick="confirmDelete('${review.comment_idx }')" style="border-radius: 4px;">
 				</td>
 				</c:if>
 			</tr>
 		</c:forEach>
 		</table>
+		</div> <!-- 평균 평점 끝 -->
 </div>
 
 
