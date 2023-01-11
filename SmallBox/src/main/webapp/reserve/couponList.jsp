@@ -162,7 +162,7 @@ footer {
 </table>
 <!-- 사용 안하는 버튼 만들기 
 만약 쿠폰 사용하지 않기 버튼을 누르면 함수 호출 -->
-<input type="button" value="쿠폰 사용하지 않기" onclick="notUse()">
+<input type="button" class="usebtn" style="margin-top: 5px; margin-left: 5px;" value="쿠폰 사용하지 않기" onclick="notUse()">
 
  <!-- 금액 표시 영역 -->
 <footer>

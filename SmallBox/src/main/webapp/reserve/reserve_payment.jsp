@@ -36,7 +36,18 @@ function newWindow(sId) {
     "width=500, height=260, top=50, left=50"
   );
 }
+//제이쿼리 시작부분
+$(document).ready(function() {
+	$("#paymentForm").submit(function() {
+	
+	  if($("#totalPrice").text() == 0 || $("#totalPrice").text() == "") {
+	      alert("쿠폰을 조회해주세요");
+	     return false;
+	  } // if end
+	     
+	}); // 결제버튼 end
 
+});
 </script>
 <style type="text/css">
 input[type=checkbox] {
@@ -78,7 +89,9 @@ h1 {
 	font-size: 15px;
 	background-color: #3B0B5F;
 }
-
+	#couponIdxnone {
+		display: none;
+	}
 </style>
 
 </head>
@@ -93,10 +106,10 @@ h1 {
         <div class="d-flex justify-content-between align-items-center">
           <h2>예매</h2>
           <ol>
-            <li><a href="Reserve.mv">예매</a></li>
             <!-- 페이지 주소, 이름 넣는곳 -->
             <li><a href="Reserve.mv">빠른 예매</a></li>
             <li><a href="javascript:window.history.back();">좌석선택</a></li>
+            <li>결제하기</li>
           </ol>
         </div>
       </div>
@@ -157,13 +170,13 @@ ${reserved_date } | ${selected_time }<br>
 
 <!-- 결제창으로 넘길 영역 -->
 <!-- 할인금액 변수 -->
-<form action="ReservePaymentPro.mv" method="post" name="payment">
+<form action="ReservePaymentPro.mv" method="post" name="payment" id="paymentForm">
 
 <!-- 최종 결제 금액 변수 -->
 <c:set var="price" value="${priceBeforeDc - discountPrice }" />
 
 최종 결제 금액  | <span id="totalPrice"></span><br>
-쿠폰 번호 : <span id="couponIdx"></span>
+<span id="couponIdxnone">쿠폰 번호 : <span id="couponIdx"></span></span>
 <hr>
 
 

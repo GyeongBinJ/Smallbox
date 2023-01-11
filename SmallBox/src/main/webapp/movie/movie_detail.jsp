@@ -176,26 +176,33 @@
 		padding: 10px;
 		border: 1px solid #e6e6e6;
 		text-decoration: none;
+		color: #000;
 		
 	}
 	#moveTab2 {
 		padding: 10px;
 		border: 1px solid #e6e6e6;
-		margin: -6px;
+		margin: -5px;
 		text-decoration: none;
+		color: #000;
+	}
+	#moveTab3 {
+		padding: 10px;
+		border: 1px solid #e6e6e6;
+		margin: 1px;
+		text-decoration: none;
+		color: #000;
 	}
 
 	#moveTab1:hover {
-		border-top: 1px solid #3B0B5F;
-		border-right: 1px solid #3B0B5F;
-		border-left: 1px solid #3B0B5F;
-		
+		border: 1px solid #3B0B5F;
 	}
 	#moveTab2:hover {
 		border: 1px solid #3B0B5F;
 	}
-	
-	
+	#moveTab3:hover {
+		border: 1px solid #3B0B5F;
+	}
 	
 	#content {
 		margin-top: 30px;
@@ -203,12 +210,12 @@
 	
 	}
 	
-		#content_top, #reviewWrite, #avg{
+		#content_top, #reviewWrite, #teaser_top, #avg{
 			font-size: 20px;
 			margin-bottom: 10px;
 		}
 		
-		#content_intro {
+		#content_intro, #teaser_teaser {
 			margin-top: 20px;
 			display: block;
 			
@@ -249,6 +256,13 @@
 		transition: 0.3s;
 		background-color: #3B0B5F;
 	}
+	
+	#teaser {
+		margin-top: 30px;
+		margin-left: 20px;
+	
+	}
+	
 	footer {
 	margin-top: 100px;
 	}
@@ -289,20 +303,30 @@
 		<span class="movieWrapper_genre">장르 | ${movie.movie_genre } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 등급 | ${movie.movie_grade } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 상영시간 | ${movie.movie_runtime } 분</span>
 		<span class="movieWrapper_open">개봉 | ${movie.movie_open_date }</span>
 		
-		<button type="button" class="movieWrapper_button">예매</button>
+		<button type="button" class="movieWrapper_button" onclick="location.href='Reserve.mv';">예매</button>
 	</div> <!-- 영화 정보 영역 까만부분 끝-->
 	
 	<div id="moveTab"><!-- 줄거리와 관람평 이동 탭 -->
 		<a id="moveTab1" href="#content">줄거리</a>
-		<a id="moveTab2" href="#review">관람평</a>
+		<a id="moveTab2" href="#teaser">예고편</a>
+		<a id="moveTab3" href="#review">관람평</a>
 	</div>
-	<!-- 0110 commit 후 새로 작업한 부분 -->
+	<hr>
 	<div id="content"> <!-- 줄거리 -->
 		<span id="content_top">줄거리</span><br>
 		<span id="content_intro">${movie.movie_intro }</span>
 	</div> <!-- 줄거리 끝 -->
 		
 	<hr>
+	<!-- 0111추가 부분 -->
+	<div id="teaser"> <!-- 예고편 -->
+		<span id="teaser_top">예고편</span><br>
+		<span id="teaser_teaser">
+			<iframe width="800" height="400" src="${movie.movie_teaser }?autoplay=1&mute=1"></iframe>	
+		</span>
+	</div>	<!-- 예고편 끝 -->
+	<hr>
+	<!-- 0111추가 부분 -->
 		
 	<div id="review"> <!-- 리뷰 영역 -->
 		<span id="reviewWrite">영화 리뷰 쓰기</span><br>
@@ -345,8 +369,6 @@
 	</form>
 	</div> <!-- 리뷰영역 끝 -->
 	<hr>
-<!-- 		<span id="content_top">줄거리</span><br> -->
-<%-- 		<span id="content_intro">${movie.movie_intro }</span> --%>
 	
 	<!--평균평점과 영화 제목 표시 영역 -->
 	<div id="avgStar">
