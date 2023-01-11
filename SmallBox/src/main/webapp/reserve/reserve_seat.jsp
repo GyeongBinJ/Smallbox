@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>예매 날짜 선택</title>
+<title>예매 좌석 선택</title>
 <!-- css -->
 <link rel="stylesheet" href="assets/css/reset.css">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -169,6 +169,7 @@ input[type=checkbox] + label{
 	margin-bottom: 5px;
 	width: 30px;
 	height: 30px;
+	border-radius: 4px;
 }
 
 /*좌석 클릭 시*/
@@ -213,6 +214,15 @@ input[type=checkbox]:disabled + label{
 	font-size: 15px;
 	background-color: #3B0B5F;
 }
+/*예매확인창의 사진*/
+/* .card-img-top { */
+/* 		width: 300px; */
+/* 		height: 350px; */
+/* 		display: inline-block; */
+/* 		float: right; */
+/* 		margin-top: 20px; */
+/* 		margin-right: 20px; */
+/* 	} */
 
 </style>
 <script src="js/jquery-3.6.3.js"></script>
@@ -352,7 +362,7 @@ $(document).ready(function() {
             <li><a href="Reserve.mv">예매</a></li>
             <!-- 페이지 주소, 이름 넣는곳 -->
             <li><a href="Reserve.mv">빠른 예매</a></li>
-            <li><a href="ReserveSeat.mv">좌석선택</a></li>
+            <li>좌석선택</li>
           </ol>
         </div>
       </div>
