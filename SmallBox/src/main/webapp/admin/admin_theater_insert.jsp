@@ -102,7 +102,7 @@
 							5회차 [21:00]&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="21:00:00"><br>
 							6회차 [24:00]&nbsp;&nbsp;&nbsp;<input type="checkbox" name="theater_time" value="24:00:00">
 						</td>
-						<td><input type="number" style="border-radius: 4px;" name="theater_seat_cnt"></td>
+						<td><input type="number" style="border-radius: 4px;" name="theater_seat_cnt" value="70"></td>
 						<td></td>
 					</tr>
 					<tr>

@@ -78,7 +78,7 @@ import vo.ActionForward;
 				
 			} else if (command.equals("/MemberDeleteForm.sm")) { // 삭제폼
 				forward = new ActionForward();
-				forward.setPath("member/Member_delete.jsp");
+				forward.setPath("member/member_delete.jsp");
 				forward.setRedirect(false); // 생략 가능
 				
 			} else if (command.equals("/MemberDeletePro.sm")) { // 회원정보 수정 작업

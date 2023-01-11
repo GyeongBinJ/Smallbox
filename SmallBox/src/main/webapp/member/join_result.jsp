@@ -7,10 +7,10 @@
 </head>
 <!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->
 <!-- css -->
-<link rel="stylesheet" href="assets/css/reset.css">
-<link rel="stylesheet" href="/assets/css/top.css">
-<link rel="stylesheet" href="/assets/css/style.css">
-<link rel="stylesheet" href="/assets/css/swiper.css">
+<link rel="stylesheet" href="./assets/css/reset.css">
+<link rel="stylesheet" href="./assets/css/top.css">
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/swiper.css">
 
 <!-- Favicons -->
 <link href="assets/img/favicon.png" rel="icon">

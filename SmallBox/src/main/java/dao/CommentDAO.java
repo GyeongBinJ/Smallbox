@@ -230,6 +230,27 @@ public class CommentDAO {
 		return commentCount;
 	}
 
+	public int isContainsUser(int movie_idx, String member_id) {
+		int containsUser = 0;
+		
+		try {
+			String sql = "SELECT member_id FROM comment WHERE movie_idx=? AND member_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, movie_idx);
+			pstmt.setString(2, member_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				containsUser = 1;
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류! - isContainsUser");
+			e.printStackTrace();
+		}
+		System.out.println("dao's containsUser : " + containsUser);
+		return containsUser;
+	}
+
 	
 	
 } // ~~~~public class CommentDAO end~~~~

@@ -120,7 +120,7 @@ function confirm_logout() {
 	    <div class="container d-flex align-items-center">
 			<nav id="navbar" class="navbar">
 			
-	    	<li class="dropdown">
+	    	<li class="dropdown" style="list-style: none;">
               	<div style="margin-right: 10px;"><i class="fas fa-bars fa-2x menu"></i></div> 
               		<ul>
 	          		<li class=""><h4>전체 메뉴</h4></li>
@@ -139,7 +139,7 @@ function confirm_logout() {
               </li>
 	    	 </nav><!-- .navbar -->
 	    	  <!-- 로고 -->
-	    	  <h1 class="logo me-auto" style="margin: 0 auto;">
+	    	  <h1 class="logo me-auto">
 		    	 <a href="./">
 		     		<img src="assets/img/logo.png">
 		     	 </a>

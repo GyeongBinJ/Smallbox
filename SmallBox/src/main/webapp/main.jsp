@@ -253,7 +253,7 @@
                 <i class="fas fa-user-headset"></i>
               </div>
               <h4><a href="Notice_list.ad">공지사항</a></h4>
-              <p class="hidden">This is the customer inquiry board. If you have any questions or questions about our small box, please feel free to contact us.</p>
+              <p>This is the customer inquiry board. If you have any questions or questions about our small box, please feel free to contact us.</p>
             </div>
           </div>
 
@@ -266,7 +266,7 @@
               <i class="fas fa-building"></i>
               </div>
               <h4><a href="team.ad">조원 소개</a></h4>
-              <p class="hidden">This is the introduction space of the team members who worked on the project togethe</p>
+              <p>This is the introduction space of the team members who worked on the project togethe</p>
             </div>
           </div>
 
@@ -279,7 +279,7 @@
                 <i class="fas fa-camera-movie"></i>
               </div>
               <h4><a href="teatherList.ad">영화관 소개</a></h4>
-              <p class="hidden">Let me introduce our movie theater facilities! It's gonna be awesome!</p>
+              <p>Let me introduce our movie theater facilities! It's gonna be awesome!</p>
             </div>
           </div>
 

@@ -88,7 +88,7 @@
 		<header id="header" class="d-flex align-items-center">
 	    <div class="container d-flex align-items-center">
 	    	  <!-- 로고 -->
-	    	  <h1 class="logo me-auto" style="margin: 0 auto;">
+	    	  <h1 class="logo me-auto">
 		    	 <a href="./">
 		     		<img src="assets/img/logo.png">
 		     	 </a>

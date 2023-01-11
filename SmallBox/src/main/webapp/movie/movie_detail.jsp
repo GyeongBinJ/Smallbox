@@ -25,6 +25,7 @@
 <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
 <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<script src="js/jquery-3.6.3.js"></script>
 <script type="text/javascript">
 	var locked = 0;
 	var i;
@@ -72,7 +73,18 @@
 			location.href="DelComment.mv?comment_idx=" + comment_idx;
 		}
 	}
-	
+	$(document).ready(function() {
+		   
+	      $("form").submit(function() {
+	      
+	        if($("input[name=star]").val() == 0 || $("input[name=star]").val() == "" || $("input[name=comment_content]").val() == "") {
+	            alert("별점과 내용을 입력해주세요!");
+	           return false;
+	        } // if end
+	           
+	      }); // 결제버튼 end
+
+	   });   
 	
 </script>
 <style type="text/css">

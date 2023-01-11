@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import svc.CommentContainsUserService;
 import svc.CommentWriteProServive;
 import vo.ActionForward;
 import vo.CommentBean;
@@ -36,31 +37,55 @@ public class CommentWriteProAction implements Action {
 		cmt.setComment_star(star);
 		cmt.setComment_content(comment_content);
 				
-//		System.out.println("리뷰라이트프로액션의 cmt :" + cmt);
+		//리뷰 테이블 안에 SELECT member_id FROM comment WHERE movie_idx=? 
+		//해서 조회가 된다면 1 리턴 이미 리뷰를 작성한 회원입니다. 히스토리 백
+		// 조회가 안된다면 0리턴,  밑에 코드 실행 
 				
-		CommentWriteProServive service = new CommentWriteProServive();
-				
-		boolean isinsertCmtSuccess = service.insertComment(cmt);
-				
-		if(!isinsertCmtSuccess) { // 리뷰 쓰기 실패 시
+		CommentContainsUserService cService = new CommentContainsUserService();
+		int containsUser = cService.containsUser(movie_idx, member_id);
+
+		if(containsUser > 0) { // 영화에 댓글 쓴 아이디가 조회 될 경우(=댓글 이미 썼을 경우)
+			
 			response.setContentType("text/html; charset=UTF-8");
 			
 			try {
 				PrintWriter out = response.getWriter();
 				
 				out.println("<script>");
-				out.println("alert('리뷰 쓰기 실패!')");
+				out.println("alert('리뷰는 한 번만 작성할 수 있습니다!')");
 				out.println("history.back()");
 				out.println("</script>");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
-		} else { // 성공 시
-			forward = new ActionForward();
-			forward.setPath("MovieDetail.mv?movie_idx="+movie_idx);
-			forward.setRedirect(true);
+		} else { // 영화에 댓글 쓴 아이디가 없을경우(=댓글을 쓴적이 없을경우)
+			CommentWriteProServive service = new CommentWriteProServive();
+			
+			boolean isinsertCmtSuccess = service.insertComment(cmt);
+			
+			if(!isinsertCmtSuccess) { // 리뷰 쓰기 실패 시
+				response.setContentType("text/html; charset=UTF-8");
+				
+				try {
+					PrintWriter out = response.getWriter();
+					
+					out.println("<script>");
+					out.println("alert('리뷰 쓰기 실패!')");
+					out.println("history.back()");
+					out.println("</script>");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			} else { // 성공 시
+				forward = new ActionForward();
+				forward.setPath("MovieDetail.mv?movie_idx="+movie_idx);
+				forward.setRedirect(true);
+			}
+			
 		}
+//		System.out.println("리뷰라이트프로액션의 cmt :" + cmt);
 				
 		return forward;
 	}

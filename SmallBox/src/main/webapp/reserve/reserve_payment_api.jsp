@@ -81,8 +81,8 @@
 	          pg: 'html5_inicis',
 	          pay_method: 'card',
 	          merchant_uid: 'merchant_' + new Date().getTime(), // 고유결제번호
-	          name: '${theater_title}' + '<br>' + '${res_date}' + '<br>' + '${res_time}', // 결제창의 상품명
-	          amount: 100, // 가격 (추후에,  '${price }'로 변경)
+	          name: '${theater_title}' + '<br>' + '${res_date}', // 결제창의 상품명
+	          amount: '${res_price }', // 가격 (추후에,  '${price }'로 변경)
 // 	          movie_title: '${movie_title}', // 예매한 영화명
 // 			  movie_date: '${reserved_date}', // 예매한 영화 날짜
 // 			  movie_time: '${selected_time}', // 예매한 영화 시간
