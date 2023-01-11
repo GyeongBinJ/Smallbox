@@ -32,6 +32,10 @@ import action.NoticeDeatilAction;
 import action.NoticeDeleteProAction;
 import action.NoticeListAction;
 import action.NoticeWriteProAction;
+import action.QnaDetailAction;
+import action.QnaDetailAdminAction;
+import action.QnaListAction;
+import action.QnaListAdminAction;
 import action.AdminTheaterInsertProAction;
 import vo.ActionForward;
 
@@ -159,8 +163,14 @@ public class AdminFrontController extends HttpServlet {
 	// 회원	-------------------------------------------------------------	
 		} else if (command.equals("/MemberList.ad")) { // 회원 목록 
 			action = new MemberListAction();
+	//0111고은 추가 - 관리자용 문의게시판
 			forward = action.execute(request, response);
-		
+		} else if(command.equals("/QnaList.ad")) { // 마이페이지 - 1:1문의 내역
+			action = new QnaListAdminAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/QnaDetail.ad")) { // 마이페이지 - 1:1문의 상세보기
+			action = new QnaDetailAdminAction();
+			forward = action.execute(request, response);
 	// 쿠폰	-------------------------------------------------------------	
 		} else if (command.equals("/CouponInsert.ad")) { // 쿠폰 등록 폼
 			forward = new ActionForward();

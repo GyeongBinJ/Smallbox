@@ -71,23 +71,36 @@
    <div id="layoutSidenav_content">
 		<main>
 			<div class="container-fluid px-4">
-				<h1 class="mt-4">회원 1:1 문의 삭제</h1>
+				<h1 class="mt-4">회원 1:1 문의 상세</h1>
 				<div class="card mb-4">
 					<div class="card-body">- 관리자로 등록된 회원만 조회할 수 있는 페이지입니다.</div>
 				</div>
-	<section id="passForm" style="margin-left: 100px;">
-	<h2>1:1 문의내역을 삭제하시겠습니까?</h2>
-		<form action="QnaDeletePro.my" name="deleteForm" method="post">
-			<!-- 입력받지 않은 글번호, 페이지번호 hidden 속성으로 전달 -->
-			<input type="hidden" name="qna_idx" value="${param.qna_idx }" >
-			<input type="hidden" name="pageNum" value="${param.pageNum }" >
-			<hr>
-			<input type="submit" class="pagebtn" value="삭제">&nbsp;&nbsp;
-			<input type="button" class="pagebtn" value="돌아가기" onclick="javascript:history.back()">
-		</form>
+			<hr width="1000px;">
+		<table style="margin-top:-16px; text-align:center; width: 1000px;">
+			<thead>
+			<tr>
+				<td width="50px">제목</td>
+				<td>${qna.qna_subject }</td>
+			</tr>
+			<tr>
+				<td width="200px">글쓴이</td>
+				<td>${qna.member_id }</td>
+			<tr>
+				<td width="70">  등록일</td>
+				<td colspan="3"><fmt:formatDate value="${qna.qna_date }" pattern="yy-MM-dd HH:mm:SS" /></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td>${qna.qna_content }</td>
+			</tr>
+		</table>
+	<section id="commandList" style="float:right; margin-top: -270px; margin-right:850px;">
+		<input type="button" class="pagebtn" value="답변" onclick="location.href='QnaReplyForm.my?qna_idx=${param.qna_idx}&pageNum=${param.pageNum }'">
+		<input type="button" class="pagebtn" value="삭제" onclick="location.href='QnaDeleteForm.my?qna_idx=${param.qna_idx}&pageNum=${param.pageNum }'">
+		<input type="button" class="pagebtn" value="목록" onclick="location.href='QnaList.ad?pageNum=${param.pageNum}'">
 	</section>
 	</div>
-	</main>
+		</main>
 	<br>
 </div>
 	<!-- 본문 영역 끝 -->
@@ -96,6 +109,18 @@
 	</footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

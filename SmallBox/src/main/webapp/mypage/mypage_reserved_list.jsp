@@ -76,20 +76,20 @@
   		<label class="animate">MENU<i class="fa fa-bars float-right"></i></label>
 	  		<ul class="animate">
 			    <li class="animate"><a href="MyPageMain.my">마이페이지</a></li>
-			    <li class="animate"><a href="#">회원정보수정</a></li>
+			    <li class="animate"><a href="MemberModifyForm.sm">회원정보수정</a></li>
 			    <li class="animate"><a href="Reserved.my">예매내역</a></li>
 			    <li class="animate"><a href="CouponList.my">쿠폰함</a></li>
 			    <li class="animate"><a href="MovieLikeList.my">찜목록</a></li>
 			    <li class="animate"><a href="ReviewList.my">리뷰내역</a></li>
 			    <li class="animate"><a href="QnaList.my">문의내역</a></li>
-			    <li class="animate"><a href="#">회원탈퇴</a></li>
+			    <li class="animate"><a href="MemberDeleteForm.sm">회원탈퇴</a></li>
 	  		</ul>
   		</dropdown>
   	<!-- 사이드바 -->
    
    <section class="inner-page" style="display: inline-block;">
    
-	<table style="text-align: center;margin-top: 80px;margin-left:50px"><!-- 왼쪽공간이 너무 넓어서 margin-left설정 -->
+	<table style="text-align: center;margin-top: 80px;"><!-- 왼쪽공간이 너무 넓어서 margin-left설정 -->
 		<thead>
 		<tr>
 			<th width="100">예약 번호</th>
@@ -119,10 +119,10 @@
 					${reserve.res_seat }
 				</td>
 				<td>
-					<button onclick="location.href='ReserveCancel.my?res_idx=${reserve.res_idx }&pageNum=${pageNum }'"><iconify-icon icon="mdi:movie-off" style="color: #3b0b5f;"></iconify-icon></button>
+					<button class="pagebtn" onclick="location.href='ReserveCancel.my?res_idx=${reserve.res_idx }&pageNum=${pageNum }'"><iconify-icon icon="mdi:movie-off" style="color: #3b0b5f;"></iconify-icon></button>
 				</td>
 				<td>
-					<button onclick="location.href='ReserveToReview.my?res_idx=${reserve.res_idx }'"><iconify-icon icon="jam:write-f" style="color: #3b0b5f;"></iconify-icon></button>
+					<button class="pagebtn" onclick="location.href='ReserveToReview.my?res_idx=${reserve.res_idx }'"><iconify-icon icon="jam:write-f" style="color: #3b0b5f;"></iconify-icon></button>
 				</td>
 		</c:forEach>
 	</table>
@@ -144,10 +144,10 @@
 		-->
 		<c:choose>
 			<c:when test="${pageNum > 1}">
-				<input type="button" value="이전" onclick="location.href='Reserved.my?pageNum=${pageNum - 1}'">
+				<input type="button" class="pagebtn" value="이전" onclick="location.href='Reserved.my?pageNum=${pageNum - 1}'">
 			</c:when>
 			<c:otherwise>
-				<input type="button" value="이전">
+				<input type="button" class="pagebtn" value="이전">
 			</c:otherwise>
 		</c:choose>
 			
@@ -167,10 +167,10 @@
 		<!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 -->
 		<c:choose>
 			<c:when test="${pageNum < pageInfo.maxPage}">
-				<input type="button" value="다음" onclick="location.href='Reserved.my?pageNum=${pageNum + 1}'">
+				<input type="button" class="pagebtn" value="다음" onclick="location.href='Reserved.my?pageNum=${pageNum + 1}'">
 			</c:when>
 			<c:otherwise>
-				<input type="button" value="다음">
+				<input type="button" class="pagebtn" value="다음">
 			</c:otherwise>
 		</c:choose>
 	</section>

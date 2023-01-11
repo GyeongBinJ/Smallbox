@@ -107,7 +107,7 @@
 		   		<ul>
 					<li><a href="MemberList.ad"><span>회원목록</span></a></li>
 					<li><a href="CouponListTotal.ad"><span>쿠폰 목록</span></a></li>
-					<li><a href="QnaList.my"><span>1:1 문의관리</span></a></li>
+					<li><a href="QnaList.ad"><span>1:1 문의관리</span></a></li>
 	        	</ul>
 	        </li>
 	      	<li class="dropdown">극장관리 <i class="bi bi-chevron-down">&nbsp; &nbsp;</i>

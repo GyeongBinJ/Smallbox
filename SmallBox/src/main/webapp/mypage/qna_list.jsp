@@ -75,23 +75,23 @@
   		<label class="animate">MENU<i class="fa fa-bars float-right"></i></label>
 	  		<ul class="animate">
 			    <li class="animate"><a href="MyPageMain.my">마이페이지</a></li>
-			    <li class="animate"><a href="#">회원정보수정</a></li>
+			    <li class="animate"><a href="MemberModifyForm.sm">회원정보수정</a></li>
 			    <li class="animate"><a href="Reserved.my">예매내역</a></li>
 			    <li class="animate"><a href="CouponList.my">쿠폰함</a></li>
 			    <li class="animate"><a href="MovieLikeList.my">찜목록</a></li>
 			    <li class="animate"><a href="ReviewList.my">리뷰내역</a></li>
 			    <li class="animate"><a href="QnaList.my">문의내역</a></li>
-			    <li class="animate"><a href="#">회원탈퇴</a></li>
+			    <li class="animate"><a href="MemberDeleteForm.sm">회원탈퇴</a></li>
 	  		</ul>
   		</dropdown>
   	<!-- 사이드바 -->
-   
    <section class="inner-page" style="display: inline-block;">
-	<table style="text-align: center;margin-top: 80px;margin-left:50px;">
+   <div>
+	<table style="text-align: center; margin-top: 80px; margin-left: 220px;" >
 	<thead>
 	<tr>
 		<th width="100px">문의 번호</th>
-		<th width="300px">제목</th>
+		<th width="400px">제목</th>
 		<th width="150px">날짜</th>
 	</tr>
 	</thead>
@@ -117,7 +117,7 @@
 				<c:if test="${qna.qna_re_lev > 0 }">
 					<%-- 반복문을 통해 qna_re_lev 값 만큼 공백 추가 --%>
 					<c:forEach var="i" begin="1" end="${qna.qna_re_lev }">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</c:forEach>
 					<%-- 답글 제목 앞에 아이콘 추가 --%>
 					<i class="fa-brands fa-replyd"></i> [상담완료]
@@ -136,12 +136,7 @@
 		</tr>
 	</c:forEach>
 	</table>
-	<br>
-	<section style="margin:right">
-		<input type="button" value="문의 작성하기" onclick="location.href='QnaWriteForm.my'">
-	</section>
-	<br>
-	<section id="pageList" style="text-align: center;margin-left: 320px;"> <!-- 페이징 처리 영역 -->
+	<section id="pageList" style="text-align: center; margin-right:-450px; margin-top: -50px;"> <!-- 페이징 처리 영역 -->
 		<!-- 
 		현재 페이지 번호(pageNum)가 1보다 클 경우에만 [이전] 링크 동작
 		=> 클릭 시 QnaList.me 서블릿 주소 요청하면서 
@@ -149,10 +144,10 @@
 		-->
 		<c:choose>
 			<c:when test="${pageNum > 1}">
-				<input type="button" value="이전" onclick="location.href='QnaList.my?&pageNum=${pageNum - 1}'">
+				<input type="button" class="pagebtn" value="이전" onclick="location.href='QnaList.my?&pageNum=${pageNum - 1}'">
 			</c:when>
 			<c:otherwise>
-				<input type="button" value="이전">
+				<input type="button" class="pagebtn" value="이전">
 			</c:otherwise>
 		</c:choose>
 		<!-- 페이지 번호 목록은 시작 페이지(startPage)부터 끝 페이지(endPage) 까지 표시 -->
@@ -163,7 +158,7 @@
 					${i }
 				</c:when>
 				<c:otherwise>
-					<a href="QnaList.my?pageNum=${i }">${i }</a>
+					<a href="QnaList.ad?pageNum=${i }">${i }</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -171,13 +166,18 @@
 		<!-- 현재 페이지 번호(pageNum)가 총 페이지 수보다 작을 때만 [다음] 링크 동작 -->
 		<c:choose>
 			<c:when test="${pageNum < pageInfo.maxPage}">
-				<input type="button" value="다음" onclick="location.href='QnaList.my?pageNum=${pageNum + 1}'">
+				<input type="button" class="pagebtn" value="다음" onclick="location.href='QnaList.my?pageNum=${pageNum + 1}'">
 			</c:when>
 			<c:otherwise>
-				<input type="button" value="다음">
+				<input type="button" class="pagebtn" value="다음">
 			</c:otherwise>
 		</c:choose>
 	</section>
+	</div>
+	<section style="margin-left: 220px; margin-top: -190px;">
+		<input type="button" class="pagebtn" value="문의 작성하기" onclick="location.href='QnaWriteForm.my'">
+	</section>
+	<br>
 	</section>
 </div>
 </main>

@@ -85,16 +85,18 @@
   		</dropdown>
   	<!-- 사이드바 -->
 	
-	<section class="inner-page" style="display: inline-block;">
+	<section class="inner-page" style="display: inline-block;  margin-left:170px; margin-top:50px;">
 	
-	<h2 style="margin-left:50px">1:1 문의하기<hr></h2>
+	<h2 style="margin-left:50px">1:1 문의하기<br></h2>
+			<hr style="margin-left:40px;">
 	<form action="QnaWritePro.my" name="qnaForm" method="post" style="margin-left:50px">
+			<li style="color:gray;">문의 등록 후 삭제나 수정이 불가합니다.</li>
 			<div class="title">제목
 			<em style="color:red ">*</em>
 			<br>
 			<input type="text" name="qna_subject" style="width:100%;" required="required" />
 			</div>
-			
+			<br>
 			<div class="sub">문의사항
 			<em style="color:red ">*</em>
 			<br>
@@ -102,7 +104,7 @@
 회원로그인 후 문의작성시 나의 문의내역을 통해 답변을 확인하실 수 있습니다."></textarea>
 			</div>
 			<div class="commandCell">
-				<button type="submit" style="float:right">문의접수</button>&nbsp;&nbsp;
+				<button type="submit" class="pagebtn" style="float:right">문의접수</button>&nbsp;&nbsp;
 			</div>
 	</form>
 	</section>

@@ -66,7 +66,7 @@ public class QnaReplyProAction implements Action {
 				// 포워딩 경로 : QnaList.me, 포워딩 방식 : Redirect
 				// => 페이지번호 전달
 				forward = new ActionForward();
-				forward.setPath("QnaList.my?pageNum=" + request.getParameter("pageNum"));
+				forward.setPath("QnaList.ad?pageNum=" + request.getParameter("pageNum"));
 				forward.setRedirect(true);
 			}
 		
