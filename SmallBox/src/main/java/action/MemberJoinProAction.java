@@ -47,15 +47,16 @@ public class MemberJoinProAction implements Action {
 		
 		MemberJoinProService service = new MemberJoinProService();
 		boolean isJoinSuccess = service.joinMember(member);
+		System.out.println("MemberJoinProAction" + isJoinSuccess);
 			
 		if(!isJoinSuccess) { // 실패했을 경우
 			try {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('회원가입 실패!')");
+				out.println("alert('회원가입 실패! 이메일이 중복입니다.')");
 				out.println("history.back();");
-				out.println("/<script>");
+				out.println("</script>");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
