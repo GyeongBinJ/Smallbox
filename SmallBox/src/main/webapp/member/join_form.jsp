@@ -6,7 +6,6 @@
     <!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->
 	<!-- css -->
 	<link rel="stylesheet" href="./assets/css/reset.css">
-	<link rel="stylesheet" href="./assets/css/style.css">
 	<link rel="stylesheet" href="./assets/css/top.css">
 	<link rel="stylesheet" href="./assets/css/swiper.css">
 	<link rel="stylesheet" href="./assets/css/join.css">
@@ -47,7 +46,7 @@
 	</section>
 <!-- End Breadcrumbs -->
 <div class="formDiv">
-  <form action="MemberJoinPro.sm" method="post" class="joinForm">
+  <form action="MemberJoinPro.sm" method="post" class="joinForm" onsubmit="return submitCheck();">
   
     <h1>회원정보 입력</h1>
     
@@ -62,20 +61,20 @@
    	  <span id="checkIdResult"></span><br>
       
       <label>패스워드</label>
-   	  <input type="password" name="member_passwd" id="member_passwd" required="required" class="inputBox">
+   	  <input type="password" name="member_passwd" id="member_passwd" class="inputBox">
    	  <span id="checkPasswdResult"></span><br>
 	   
 	  <label>패스워드확인</label>
-	  <input type="password" id="member_passwd_check" name="member_passwd_check" required="required" class="inputBox">
+	  <input type="password" id="member_passwd_check" name="member_passwd_check"  class="inputBox">
 	  <span id="checkPasswdConfirmResult"></span><br>
 	  
 	  <label>전화번호</label>
-      <input type="text" name="member_phone" id="member_phone" required="required" class="inputBox">
+      <input type="text" name="member_phone" id="member_phone"  class="inputBox">
       <span id="checkPhoneResult"></span><br>
       
        <label>email</label>
-       <input type="text" name="member_email1" id="member_email1" required="required" class="inputBox">@
-       <input type="text" name="member_email2" id="member_email2" required="required" class="inputBox">
+       <input type="text" name="member_email1" id="member_email1"  class="inputBox">@
+       <input type="text" name="member_email2" id="member_email2"  class="inputBox">
        <select name="selectDomain" id="selectDomain">
 			<option value="">직접입력</option>	
 			<option value="naver.com">naver.com</option>
@@ -85,7 +84,7 @@
 		</select><br>
 	
 	  <label>이메일 인증번호</label>
-	  <input type="text" id="authInputBox" size="15" placeholder="인증코드입력란" required="required" class="inputBox">
+	  <input type="text" id="authInputBox" size="15" placeholder="인증코드입력란"  class="inputBox">
 	  <input type="button" id="authCheck" value="인증번호 전송" class="joinBtn" onclick="alert('인증코드가 발송되었습니다')">
 	  <span id= "authEmailCheck"></span><br>
 	  
@@ -97,7 +96,7 @@
     
     </fieldset>
     <div style="padding-left: 190px;">
-    	<button type="submit">가입하기</button>
+    	<button type="submit" class="sub-btn">가입하기</button>
     </div>
   </form>
 </div>
@@ -212,22 +211,22 @@ $(function() {
 		}
 	});
 	
-	// 비밀번호 재확인
-	$("#member_passwd_check").on("change", function() {
-		let passwd_check = $("#member_passwd_check").val();
-		let passwd = member_passwd;
-		
-		if(!passwd.exec(passwd_check)) {
-			$("#checkPasswdConfirmResult").html("불일치").css("color", "red");
-		} else {
-			$("#checkPasswdConfirmResult").html("일치").css("color", "green");
-		}
-	});	
-	
 });	
+// 비밀번호 재확인
+$(function(){
+    $('#member_passwd_check').change(function(){
+
+        if($('#member_passwd').val() != $('#member_passwd_check').val()){
+        	$("#checkPasswdConfirmResult").html("불일치").css("color", "red");
+        } else{
+        	$("#checkPasswdConfirmResult").html("일치").css("color", "green");
+        }
+    });
+});
 
 //이메일 인증 코드 전송
 $(function() {
+	
 	// 이메일 인증 하이퍼링크 클릭시 이벤트 처리
 	$("#authCheck").on("click", function() {
 		// AJAX 를 활용하여 MemberAuth.me 서블릿 요청
@@ -241,9 +240,11 @@ $(function() {
 				}
 			});
 	});
+	
 });
 	
 //이메일 인증 코드 비교
+var isAuthResult = false;
 $(function() {
 	$("#authInputBox").on("change", function() {
 		var checkInput = $("#authInputBox")
@@ -257,59 +258,82 @@ $(function() {
 				success: function(result) {
 					if(result == $("#authInputBox").val()) { // 입력한 인증코드가 디비에 있는 인증코드와 같다면
 						$("#authEmailCheck").html("이메일 인증 완료!").css("color", "green");
+						isAuthResult = true;
 					} else {
 						$("#authEmailCheck").html("인증 실패").css("color", "red");
+						isAuthResult = false;
 					}	
 				}
 			});
-			
 		});
+		$(".sub-btn").click(function submitCheck(){
+			if(isAuthResult==false){ //인증이 완료되지 않았다면
+				alert("메일 인증이 완료되지 않았습니다.");
+				return false;
+			} else {
+				return true;
+			}
+		});
+		
 	});
 	
 
-// $(function() {
+$(function() {
 	
-// 	//회원가입 버튼 눌렀을 때, 빈칸 있으면 다시 유효성 검사진행    
-//     $("#signupbtn").on("click",function(){
-//  	   var name = $("#member_name").val();
-//  	   var id = $("#member_id").val();
-//  	   var pw = $("#member_passwd").val();
-//  	   var phone = $("#member_phone").val();
-//  	   var email = $("#authInputBox").val();
+	//회원가입 버튼 눌렀을 때, 빈칸 있으면 다시 유효성 검사진행    
+    $(".sub-btn").on("click",function(){
+ 	   var name = $("#member_name").val();
+ 	   var id = $("#member_id").val();
+ 	   var pw = $("#member_passwd").val();
+ 	   var phone = $("#member_phone").val();
+ 	   var email = $("#member_email1").val();
+ 	   var auth = $("#authInputBox").val();
  	   
-//  	   var nameregex = /[가-힣]{2,}/;
-//  	   var idregex = /^[a-z][a-z\d]{4,11}$/;
-//  	   var pwregex = /^[A-Za-z\d]{8,12}$/;
-//  	   var phoneregex = /^01\d\d{4}\d{4}$/;
+ 	   var nameRegex = /[가-힣]{2,}/;
+ 	   var idRegex = /^[A-Z][a-z\d]{4,11}$/;
+ 	   var emailRegex = /^[A-Z][a-z\d]{4,16}$/;
+ 	   var pwRegex = /^[A-Za-z\d]{8,12}$/;
+ 	   var phoneRegex = /^01\d\d{4}\d{4}$/;
  	   
+ 	   var nameRegex = nameregex.exec(name);
+ 	   if(nameregex == null){
+ 		   alert("이름양식을 다시 확인해주세요.");
+ 		   retrun;
+ 	   }
+ 	   var idRegex = idregex.exec(id);
+ 	   if(idregex == null){
+ 		   alert("아이디양식을 다시 확인해주세요.");
+ 		   return;
+ 	   }
+ 	   var pwRegex = pwregex.exec(pw);
+ 	   if(pwregex == null){
+ 		   alert("비밀번호양식을 다시 확인해주세요.");
+ 		   retrun;
+ 	   }
+ 	   var phoneRegex = phoneregex.exec(phone);
+ 	   if(phoneregex == null){
+ 		   alert("핸드폰번호양식을 다시 확인해주세요.");
+ 		   retrun;
+ 	   }
+ 	   var emailRegex = emailregex.exec(email);
+ 	   if(phoneregex == null){
+ 		   alert("이메일을 다시 확인해주세요.");
+ 		   retrun;
+ 	   }
+ 	   if(auth == null ){
+ 		   alert("이메일인증을 완료하여 주세요.");
+ 		   retrun;
+ 	   }
+ 	   if(auth == false ){
+ 		   alert("인증번호가 유효하지 않습니다.");
+ 		   retrun;
+ 	   }
  	   
-//  	   var nameregex = nameregex.exec(name);
-//  	   if(nameregex == null){
-//  		   alert("이름양식을 다시 확인해주세요");
-//  		   retrun;
-//  	   }
-//  	   var idregex = idregex.exec(id);
-//  	   if(idregex == null){
-//  		   alert("아이디양식을 다시 확인해주세요");
-//  		   return;
-//  	   }
-//  	   var pwregex = pwregex.exec(pw);
-//  	   if(pwregex == null){
-//  		   alert("비밀번호양식을 다시 확인해주세요");
-//  		   retrun;
-//  	   }
-//  	   var phoneregex = phoneregex.exec(phone);
-//  	   if(phoneregex == null){
-//  		   alert("핸드폰번호양식을 다시 확인해주세요");
-//  		   retrun;
-//  	   } 
-//  	   var 
- 	   
-//       //빈칸 없을 때 제출.
-//  	   $("#joinForm").submit();
+      //빈칸 없을 때 제출.
+ 	   $("#joinForm").submit();
     
-//     });
+    });
 	
-// });
+});
 </script>
 </html>

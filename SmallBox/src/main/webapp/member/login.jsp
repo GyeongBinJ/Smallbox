@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->
 <!-- css -->
-<link rel="stylesheet" href="/assets/css/reset.css">
-<link rel="stylesheet" href="/assets/css/style.css">
-<link rel="stylesheet" href="/assets/css/swiper.css">
+<link rel="stylesheet" href="./assets/css/reset.css">
+<link rel="stylesheet" href="./assets/css/top.css">
+<link rel="stylesheet" href="./assets/css/swiper.css">
 
 <!-- Favicons -->
 <link href="assets/img/favicon.png" rel="icon">
@@ -22,13 +22,12 @@
 <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-<link href="assets/css/style.css" rel="stylesheet">
 <!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->  
 <style type="text/css">
 .btn_area {
 	margin-top: 30px;
 }
-.table {
+.loginTable {
 	width: 350px;
 	height: 100px;
 }
@@ -49,6 +48,8 @@ th {
 .welcome {
 	width: 300px;
 	height: 80px;
+	padding-left: 750px;
+	padding-bottom: 40px;
 }
 .btn-log{
 	width: 350px;
@@ -59,6 +60,10 @@ th {
 input {
 	width: 200px;
 	height: 30px;
+}
+.loginForm {
+	padding-top: 40px;
+	text-align: center;
 }
 </style>  
 <title>스몰박스 - 로그인</title>
@@ -87,12 +92,13 @@ input {
 
 <!--=========== Login 본문 =================-->
 
-<form action="MemberLoginPro.sm" method="post" style="margin-top: 100px;">	
-	<div align="center">
+<form action="MemberLoginPro.sm" method="post" class="loginForm">	
 		<div class="welcome">
 			<img src="./assets/img/welcome.png">
 		</div>
-		<table border="2"  class="table">
+	<div align="center">
+		
+		<table border="2"  class="LoginTable">
 			<tr>
 				<th>아이디</th>
 				<td><input type="text" name="member_id" required="required" value="${sessionScope.sId }"></td>
