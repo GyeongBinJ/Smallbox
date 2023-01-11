@@ -46,8 +46,11 @@
 			    	  movie_idx : movie_idx 
 			      }, 
 			      success: function(result) {
-			    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
-// 			    	  $('선택자').remove() // 어떻게 하나만 삭제하지
+// 			    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
+			    	  $("#moviecard"+movie_idx).remove();
+			    	  console.log(movie_idx);
+					  // 반복문으로 생성된 영역이기 때문에 각 movie_idx로 구분을 줘야함
+					  // class 태그에 ${movie.movie_idx }를 같이 넘기면 각 movie_idx별 카드 삭제
 			      }
 		      });
 
@@ -116,7 +119,7 @@
         <div class="row row-cols-1 row-cols-md-4 g-4">
         <!-- MovieLikeListProAction으로 부터 전달받은 request 객체의 likeList(영화 정보)를 꺼내서 출력 -->
 		<c:forEach var="movie" items="${likeList }">
-        <div class="col">
+        <div class="col" id="moviecard${movie.movie_idx}">
             <div class="card">
                 <img src="<%=request.getContextPath() %>/upload/${movie.movie_real_picture}"  width="300" height="350"
                      class="card-img-top" alt="..." >

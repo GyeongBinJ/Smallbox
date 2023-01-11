@@ -73,20 +73,20 @@
       <input type="text" name="member_phone" id="member_phone" required="required" class="inputBox">
       <span id="checkPhoneResult"></span><br>
       
-       <label>이메일</label>
+       <label>email</label>
        <input type="text" name="member_email1" id="member_email1" required="required" class="inputBox">@
        <input type="text" name="member_email2" id="member_email2" required="required" class="inputBox">
        <select name="selectDomain" id="selectDomain">
 			<option value="">직접입력</option>	
 			<option value="naver.com">naver.com</option>
 			<option value="nate.com">nate.com</option>
-			<option value="daum.com">daum.com</option>
-			<option value="google.gmail">google.gmail</option>
+			<option value="daum.net">daum.net</option>
+			<option value="gmail.com">gmail.com</option>
 		</select><br>
 	
 	  <label>이메일 인증번호</label>
 	  <input type="text" id="authInputBox" size="15" placeholder="인증코드입력란" required="required" class="inputBox">
-	  <input type="button" id="authCheck" value="확인" class="joinBtn">
+	  <input type="button" id="authCheck" value="확인" class="joinBtn" onclick="alert('인증코드가 발송되었습니다')">
 	  <span id= "authEmailCheck"></span><br>
 	  
 	  <label>생년월일</label>
@@ -226,89 +226,90 @@ $(function() {
 	
 });	
 
-// 이메일 인증코드
+//이메일 인증 코드 전송
 $(function() {
-	// 이메일 인증 코드 전송
 	// 이메일 인증 하이퍼링크 클릭시 이벤트 처리
 	$("#authCheck").on("click", function() {
 		// AJAX 를 활용하여 MemberAuth.me 서블릿 요청
 		$.ajax({
-			type: "get",
-			url: "MemberAuth.sm",
-			data: {
-				id : $("#member_id").val(),
-				authCode: $("#authInputBox").val(),
-				email1 : $("#member_email1").val(),
-				email2 : $("#member_email2").val()
-			},
-			success: function(result) {
-				// 리턴받은 판별 결과("true", "false") 판별
-				if(result == "true"){
-					$("#authInputBox").attr("disabled",true);
-					$("#authEmailCheck").html("이메일 인증 코드 발송!").css("color", "blue");
+				type: "get",
+				url: "MemberAuth.sm",
+				data: {
+					id : $("#member_id").val(),
+					email1 : $("#member_email1").val(),
+					email2 : $("#member_email2").val()
 				}
-			}
-		});
+			});
 	});
+});
 	
-	// 이메일 인증 코드 비교
+//이메일 인증 코드 비교
+$(function() {
 	$("#authInputBox").on("change", function() {
 		var checkInput = $("#authInputBox")
 		$.ajax({
-			type:"get",
-			url: "MemberAuthCheck.sm",
-			data : {
-				id : $("#member_id").val(),
-				authCode: $("#authInputBox").val()
-			},
-			success: function(result) {
-					$("#authEmailCheck").html("이메일 인증 완료!").css("color", "green");
-			}
+				type:"get",
+				url: "MemberAuthCheck.sm",
+				data : {
+					id : $("#member_id").val(),
+					authCode: $("#authInputBox").val()
+				},
+				success: function(result) {
+					if(result == $("#authInputBox").val()) { // 입력한 인증코드가 디비에 있는 인증코드와 같다면
+						$("#authEmailCheck").html("이메일 인증 완료!").css("color", "green");
+					} else {
+						$("#authEmailCheck").html("인증 실패").css("color", "red");
+					}	
+				}
+			});
 			
 		});
 	});
-});
+	
 
-$(function() {
+// $(function() {
 	
-	//회원가입 버튼 눌렀을 때, 빈칸 있으면 다시 유효성 검사진행    
-    $("#signupbtn").on("click",function(){
- 	   var name = $("#member_name").val();
- 	   var id = $("#member_id").val();
- 	   var pw = $("#member_passwd").val();
- 	   var phone = $("#member_phone").val();
+// 	//회원가입 버튼 눌렀을 때, 빈칸 있으면 다시 유효성 검사진행    
+//     $("#signupbtn").on("click",function(){
+//  	   var name = $("#member_name").val();
+//  	   var id = $("#member_id").val();
+//  	   var pw = $("#member_passwd").val();
+//  	   var phone = $("#member_phone").val();
+//  	   var email = $("#authInputBox").val();
  	   
- 	   var nameregex = /[가-힣]{2,}/;
- 	   var idregex = /^[a-z][a-z\d]{4,11}$/;
- 	   var pwregex = /^[A-Za-z\d]{8,12}$/;
- 	   var phoneregex = /^01\d\d{4}\d{4}$/;
+//  	   var nameregex = /[가-힣]{2,}/;
+//  	   var idregex = /^[a-z][a-z\d]{4,11}$/;
+//  	   var pwregex = /^[A-Za-z\d]{8,12}$/;
+//  	   var phoneregex = /^01\d\d{4}\d{4}$/;
  	   
- 	   var nameregex = nameregex.exec(name);
- 	   if(nameregex == null){
- 		   alert("이름양식을 다시 확인해주세요");
- 		   retrun;
- 	   }
- 	   var idregex = idregex.exec(id);
- 	   if(idregex == null){
- 		   alert("아이디양식을 다시 확인해주세요");
- 		   return;
- 	   }
- 	   var pwregex = pwregex.exec(pw);
- 	   if(pwregex == null){
- 		   alert("비밀번호양식을 다시 확인해주세요");
- 		   retrun;
- 	   }
- 	   var phoneregex = phoneregex.exec(phone);
- 	   if(phoneregex == null){
- 		   alert("핸드폰번호양식을 다시 확인해주세요");
- 		   retrun;
- 	   }
  	   
-      //빈칸 없을 때 제출.
- 	   $("#joinForm").submit();
+//  	   var nameregex = nameregex.exec(name);
+//  	   if(nameregex == null){
+//  		   alert("이름양식을 다시 확인해주세요");
+//  		   retrun;
+//  	   }
+//  	   var idregex = idregex.exec(id);
+//  	   if(idregex == null){
+//  		   alert("아이디양식을 다시 확인해주세요");
+//  		   return;
+//  	   }
+//  	   var pwregex = pwregex.exec(pw);
+//  	   if(pwregex == null){
+//  		   alert("비밀번호양식을 다시 확인해주세요");
+//  		   retrun;
+//  	   }
+//  	   var phoneregex = phoneregex.exec(phone);
+//  	   if(phoneregex == null){
+//  		   alert("핸드폰번호양식을 다시 확인해주세요");
+//  		   retrun;
+//  	   } 
+//  	   var 
+ 	   
+//       //빈칸 없을 때 제출.
+//  	   $("#joinForm").submit();
     
-    });
+//     });
 	
-});
+// });
 </script>
 </html>

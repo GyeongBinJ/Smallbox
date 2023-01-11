@@ -15,6 +15,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import encrypt.MyMessageDigest;
 import mail.GoogleMailAuthenticator;
 import svc.isRightUserService;
 import vo.ActionForward;
@@ -66,7 +67,17 @@ public class MemberFindPasswdProAction implements Action {
 			
 			System.out.println("인증코드 : " + imsiPW);
 			
-			boolean updatePasswd = service.updatePasswd(imsiPW, member);
+			// -------------------------------------------------------------------------------
+			// 패스워드 암호화(해싱) 기능 추가
+			// encrypt.MyMessageDigest 클래스 인스턴스 생성
+			MyMessageDigest md = new MyMessageDigest("SHA-256");
+			// MyMessageDigest 객체의 hashing() 메서드를 호출하여 암호화 수행
+			// => 리턴되는 암호문(해싱된 패스워드)를 저장
+			String RandomCode =md.hashing(imsiPW);
+//				member.setMember_passwd(md.hashing(imsiPW));
+			// -------------------------------------------------------------------------------
+			
+			boolean updatePasswd = service.updatePasswd(RandomCode, member);
 			if(updatePasswd) {
 				System.out.println("비밀번호 변경완료!");
 			}
@@ -108,7 +119,7 @@ public class MemberFindPasswdProAction implements Action {
 				// 수신자 정보 설정
 				mailMessage.setRecipient(Message.RecipientType.TO, resceiverAddress);
 				// 발신자 정보 설정
-				mailMessage.setFrom(new InternetAddress("yongs1041@naver.com"));
+				mailMessage.setFrom(new InternetAddress("yongs1041@naver.com","SMALLBOX"));
 				// 메일 제목 설정
 				mailMessage.setSubject("[SmallBox] 아이디 / 비밀번호 입니다");
 				// 메일 본문 설정

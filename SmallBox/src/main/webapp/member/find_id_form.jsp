@@ -24,7 +24,46 @@
 <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
 <link href="assets/css/style.css" rel="stylesheet">
-<!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- --> 
+<!-- ----------------------------------------들고다니세요-------------------------------------------------------------------------- -->  
+<style type="text/css">
+.btn_area {
+   margin-top: 30px;
+}
+.table {
+   width: 350px;
+   height: 100px;
+}
+body table tr td {
+   font-size: 20px;
+   text-align: center;
+}
+th td {
+   margin-top: 20px;
+}
+
+th {
+   font-size: 20px;
+   text-align: center;
+   padding-left: 20px;
+}
+
+.welcome {
+   width: 300px;
+   height: 80px;
+}
+.btn-log{
+   width: 350px;
+   height: 50px;
+   background: #3B0B5F;
+   color: #fff;
+}
+input {
+   width: 200px;
+   height: 30px;
+}
+</style>  
+
+
 <title>스몰박스 - 아이디 찾기</title>
 <script src="js/jquery-3.6.3.js"></script>
 <script type="text/javascript">
@@ -58,29 +97,57 @@
 	<jsp:include page="/inc/top.jsp"></jsp:include>
 </header>
 <!-- TOP -->
-<h1>아이디 찾기</h1>	
-	<form action="" >
-		<table>
-			<tr>
-				<th>이름</th>
-				<td><input type="text" name="member_name" id="member_name" ></td>
-			</tr>
-			<tr>
-				<th>핸드폰번호</th>
-				<td><input type="text" name="member_phone" id="member_phone"></td>
-			</tr>
-			<tr>
-				<th>생년월일</th>
-				<td><input type="date" name="member_birth_date" id="member_birth_date"></td>
-			</tr>
-			<tr>
-			<td align="right">
-				<input type="button" id="findId" value="아이디 찾기">
-			</td>	
-			</tr>
-		</table>
-	</form>
-	<hr>
-	<div id="resultArea"></div>	
+
+<!-- ======= Breadcrumbs ======= -->
+   <section class="breadcrumbs">
+     <div class="container">
+   
+       <div class="d-flex justify-content-between align-items-center">
+         <h2>아이디찾기</h2>
+         <ol>
+           <li><a href="./">Home</a></li>
+           <li>아이디찾기</li> 
+         </ol>
+       </div>
+   
+     </div>
+   </section>
+<!-- ======= Breadcrumbs ======= -->
+
+<!--=========== Login 본문 =================-->
+
+<form action="MemberLoginPro.sm" method="post" style="margin-top: 100px;">   
+   <div align="center">
+      <div class="welcome">
+         <img src="./assets/img/welcome.png">
+      </div>
+      <table border="2"  class="table">
+         <tr>
+            <th>이름</th>
+            <td><input type="text" name="member_name" id="member_name" required="required"></td>
+         </tr>   
+         <tr>
+            <th>핸드폰번호</th>
+            <td><input type="text" name="member_phone" id="member_phone" required="required"></td>
+         </tr>   
+         <tr>
+			<th>생년월일</th>
+			<td><input type="date" name="member_birth_date" id="member_birth_date"></td>
+		</tr>
+      </table>
+         <tr class="submit" style="text-align: center">
+            <td class="btn_login">
+				<input type="button" id="findId" value="아이디 찾기" class="btn-log" style="margin-bottom: 10px"> <br>
+            </td>
+         </tr>
+		회원님의 아이디는 <div class="btn_area" id="resultArea"></div> 입니다.
+          </div>
+</form>
+<!--=========== Login 본문 끝=================-->
+	<!-- ---------------footer------------- -->
+	<footer id="footer" style="margin-top: 120px;">
+		<jsp:include page="/inc/bottom.jsp"></jsp:include>
+	</footer>
+	<!-- ---------------footer------------- -->
 </body>
 </html>
