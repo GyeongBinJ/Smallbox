@@ -86,7 +86,7 @@
 	
 	  <label>이메일 인증번호</label>
 	  <input type="text" id="authInputBox" size="15" placeholder="인증코드입력란" required="required" class="inputBox">
-	  <input type="button" id="authCheck" value="확인" class="joinBtn" onclick="alert('인증코드가 발송되었습니다')">
+	  <input type="button" id="authCheck" value="인증번호 전송" class="joinBtn" onclick="alert('인증코드가 발송되었습니다')">
 	  <span id= "authEmailCheck"></span><br>
 	  
 	  <label>생년월일</label>
