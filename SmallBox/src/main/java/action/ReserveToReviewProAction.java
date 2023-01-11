@@ -43,7 +43,7 @@ public class ReserveToReviewProAction implements Action {
 		// ActionForward 객체를 통해 영화상세 페이지 포워딩 설정
 		// => URL 유지 및 request 객체 유지를 위해 Dispatch 방식 포워딩
 		forward = new ActionForward();
-		forward.setPath("MovieDetail.mv?movie_idx=" + movie_idx);
+		forward.setPath("MovieDetail.mv?movie_idx=" + movie_idx+"#review");
 		forward.setRedirect(true);
 		
 		return forward;
