@@ -87,7 +87,7 @@ input {
 
 <!--=========== Login 본문 =================-->
 
-<form action="MemberLoginPro.sm" method="post">	
+<form action="MemberLoginPro.sm" method="post" style="margin-top: 100px;">	
 	<div align="center">
 		<div class="welcome">
 			<img src="./assets/img/welcome.png">
@@ -117,7 +117,7 @@ input {
 <!--=========== Login 본문 끝=================-->
 
 <!-- ---------------footer------------- -->
-<footer id="footer">
+<footer id="footer" style="margin-top: 120px;">
 	<jsp:include page="/inc/bottom.jsp"></jsp:include>
 </footer>
 <!-- ---------------footer------------- -->

@@ -21,7 +21,6 @@ public class AdminCouponListAction implements Action {
 		CouponListService service = new CouponListService();
 		String member_id = request.getParameter("member_id");
 		List<CouponBean> couponList = service.getCouponList(member_id);
-		
 		// 글목록(List 객체)을 request 객체에 저장 - setAttribute()
 				
 		request.setAttribute("couponList", couponList);

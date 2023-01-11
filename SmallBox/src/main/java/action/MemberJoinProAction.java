@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import encrypt.MyMessageDigest;
+import svc.CouponInsertProService;
 import svc.MemberJoinProService;
 import vo.ActionForward;
 import vo.MemberBean;
@@ -60,6 +61,9 @@ public class MemberJoinProAction implements Action {
 			}
 		} else { // 성공했을 경우
 			// 포워딩 정보를 저장할 ActionForward 인스턴스 생성 (forward)
+			CouponInsertProService service2 = new CouponInsertProService();
+			service2.welcomeCoupon(member);
+			
 			forward = new ActionForward();
 			forward.setPath("MemberJoinResult.sm");
 			forward.setRedirect(true);

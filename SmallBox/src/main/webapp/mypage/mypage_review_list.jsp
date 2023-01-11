@@ -45,8 +45,9 @@
 			    	  
 			    	  alert("삭제 하시겠습니까?");
 			    	  
-			    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
-			    	  
+// 			    	  $(".inner-page").load(location.href+' .inner-page'); // 특정페이지 새로고침
+			    	  $("#comment_tr"+comment_idx).remove();
+			    	  console.log(comment_idx);
 			      }
 		      });
 
@@ -127,12 +128,12 @@
 			
 			<!-- ReviewListProAction으로 부터 전달받은 request 객체의 reviewList(리뷰 정보)를 꺼내서 출력 -->
 			<c:forEach var="comment" items="${reviewList }">
-			<tr>
+			<tr id="comment_tr${comment.comment_idx }">
 				<td><img src="<%=request.getContextPath() %>/upload/${comment.movie_real_picture}"  width="150" height="200"></td>
 				<td>${comment.comment_content }</td>
 				<td>${comment.comment_star }</td>
 				<td>${comment.comment_date }</td>
-				<td><input type="button" class="pagebtn"value="삭제" onclick="delete_comment('${comment.comment_idx }')"></td>
+				<td><input type="button" class="pagebtn" value="삭제" onclick="delete_comment('${comment.comment_idx }')"></td>
 			</tr>	
 			</c:forEach>
 		</table>
