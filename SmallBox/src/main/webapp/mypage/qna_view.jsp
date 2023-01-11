@@ -82,31 +82,31 @@
 	  		</ul>
   		</dropdown>
   	<!-- 사이드바 -->
-	
 	<section class="inner-page" style="display: inline-block;">
-	
-	<h2 style="margin-left:50px">문의 상세보기</h2><hr></h2>
-		<section id="basicInfoArea">
-			<table >
+	<section id="basicInfoArea">
+<!-- 	<h2 style="margin-left:80px">문의 상세보기<hr></h2> -->
+		<table style="text-align: center; margin-top: 70px; margin-left: 100px;">
 			<tr>
-				<th width="70">제 목</th><td colspan="3" >${qna.qna_subject }</td>
+				<td colspan="3" style="text-align:left"><h2>${qna.qna_subject }</h2></td>
 			</tr>
 			<tr>
-				<th width="70">작성일</th>
-				<td><fmt:formatDate value="${qna.qna_date }" pattern="yy-MM-dd HH:mm:SS" /></td>
+				<td width="70" style="color:gray;text-align:left;">  등록일</td>
+				<td colspan="3" style="color:gray"><fmt:formatDate value="${qna.qna_date }" pattern="yy-MM-dd HH:mm:SS" /></td>
 			</tr>
+		</table>
+		<table style="text-align: center; margin-top: 30px; margin-left: 100px;">
+		<hr width="800px" style="margin-left: 100px">
 			<tr>
-				<th colspan="4">내용</th><td colspan="4">${qna.qna_content }</td>
+				<td colspan="4">${qna.qna_content }</td>
 			</tr>
-			</table>
-		</section>
+		</table>
 	<section id="commandList" style="float:right">
-		<input type="button" value="답변" onclick="location.href='QnaReplyForm.my?qna_idx=${param.qna_idx}&pageNum=${param.pageNum }'">
-		<input type="button" value="삭제" onclick="location.href='QnaDeleteForm.my?qna_idx=${param.qna_idx}&pageNum=${param.pageNum }'">
-		<input type="button" value="목록" onclick="location.href='QnaList.my?pageNum=${param.pageNum}'">
+		<input type="button" class="pagebtn" value="답변" onclick="location.href='QnaReplyForm.my?qna_idx=${param.qna_idx}&pageNum=${param.pageNum }'">
+		<input type="button" class="pagebtn" value="삭제" onclick="location.href='QnaDeleteForm.my?qna_idx=${param.qna_idx}&pageNum=${param.pageNum }'">
+		<input type="button" class="pagebtn" value="목록" onclick="location.href='QnaList.my?pageNum=${param.pageNum}'">
 	</section>
 	</section>
-	</div>
+	</section>
 	</main>
 </body>
 </html>

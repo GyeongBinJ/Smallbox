@@ -85,20 +85,16 @@
   	<!-- 사이드바 -->
    
 	<!-- 게시판 글 삭제 -->
-	<section id="passForm">
-	<h2>1:1 문의내역 삭제</h2>
+	<section class="inner-page" style="display: inline-block;">
+	<section id="passForm" style="margin-left: 100px;">
+	<h2>1:1 문의내역을 삭제하시겠습니까?</h2>
 		<form action="QnaDeletePro.my" name="deleteForm" method="post">
 			<!-- 입력받지 않은 글번호, 페이지번호 hidden 속성으로 전달 -->
-			<input type="hidden" name="board_num" value="${param.qna_idx }" >
+			<input type="hidden" name="qna_idx" value="${param.qna_idx }" >
 			<input type="hidden" name="pageNum" value="${param.pageNum }" >
-			<table>
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="삭제">&nbsp;&nbsp;
-						<input type="button" value="돌아가기" onclick="javascript:history.back()">
-					</td>
-				</tr>
-			</table>
+			<hr>
+			<input type="submit" class="pagebtn" value="삭제">&nbsp;&nbsp;
+			<input type="button" class="pagebtn" value="돌아가기" onclick="javascript:history.back()">
 		</form>
 	</section>
 	</div>

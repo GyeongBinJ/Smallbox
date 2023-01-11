@@ -16,6 +16,7 @@ public class QnaDeleteProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("QnaDeleteProActon");
 		ActionForward forward = null;
 		// 글번호 가져오기
 		int qna_idx = Integer.parseInt(request.getParameter("qna_idx"));
