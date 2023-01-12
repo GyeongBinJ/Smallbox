@@ -97,7 +97,7 @@
 		<table style="text-align: center; margin-top: 30px; margin-left: 100px;">
 		<hr width="800px" style="margin-left: 100px">
 			<tr>
-				<td>${qna.qna_content }</td>
+				<td width="800px">${qna.qna_content }</td>
 			</tr>
 		</table>
 	<section id="commandList" style="float:right; margin-right:50px;">

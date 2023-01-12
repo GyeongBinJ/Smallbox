@@ -79,6 +79,7 @@
 		<thead>
 			<tr>
 				<th width="100px">문의 번호</th>
+				<th width="100px">작성자</th>
 				<th width="400px">제목</th>
 				<th width="150px">날짜</th>
 			</tr>
@@ -99,6 +100,7 @@
 					<c:set var="pageNum" value="${param.pageNum }" />
 				</c:otherwise>
 			</c:choose>
+			<td>${qna.member_id }</td>
 			<td id="subject">
 				<%-- ======================== 답글 관련 처리 ======================= --%>
 				<%-- qna_re_lev 값이 0보다 크면 답글이므로 들여쓰기 후 이미지 추가 --%>
